@@ -13,6 +13,10 @@
 class Command {
 public: 
     
+    Command();
+
+    ~Command();
+    
     std::string getName();
     
     /**

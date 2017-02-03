@@ -16,6 +16,11 @@
 class History {
 public: 
     
+    History();
+
+    ~History();
+
+
     std::string getPath();
     
     /**

@@ -15,6 +15,10 @@
 class Profile {
 public: 
     
+    Profile();
+
+    ~Profile();
+
     std::string getPath();
     
     /**

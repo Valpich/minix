@@ -14,6 +14,10 @@
 class CommandFinder {
 public: 
     
+    CommandFinder();
+
+    ~CommandFinder();
+
     std::vector<std::string> getFolderPaths();
     
     /**

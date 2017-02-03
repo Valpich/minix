@@ -13,6 +13,10 @@
 class FileManager {
 public: 
     
+    FileManager();
+
+    ~FileManager();
+
     std::string getFilePath();
     
     /**

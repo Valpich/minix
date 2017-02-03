@@ -11,6 +11,10 @@
 class SignalHandler {
 protected: 
     
+    SignalHandler();
+    
+	~SignalHandler();
+
     void sigKillHandler();
 };
 

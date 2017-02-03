@@ -16,7 +16,7 @@
  * @return std::string
  */
 std::string Profile::getPath() {
-    return NULL;
+    return "Empty";
 }
 
 /**
@@ -30,7 +30,7 @@ void Profile::setPath(std::string value) {
  * @return std::string
  */
 std::string Profile::getHome() {
-    return NULL;
+    return "Empty";
 }
 
 /**
@@ -51,5 +51,6 @@ void Profile::setFileManager(FileManager value) {
  * @return FileManager
  */
 FileManager Profile::getFileManager() {
-    return NULL;
+	FileManager fm;
+    return fm;
 }

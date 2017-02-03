@@ -22,6 +22,10 @@
 class Shell: public SignalHandler, public ContextSaver {
 public: 
     
+    Shell();
+
+    ~Shell();
+
     std::string getName();
     
     /**

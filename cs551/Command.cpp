@@ -25,3 +25,11 @@ std::string Command::getName() {
 void Command::setName(std::string value) {
 
 }
+
+Command::Command(void){
+
+}
+
+Command::~Command(void){
+	
+}

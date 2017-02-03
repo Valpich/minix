@@ -13,6 +13,10 @@
 class ContextSaver {
 public: 
     
+    ContextSaver();
+
+    ~ContextSaver();
+
     jmp_buf getJumpBuffer();
     
     /**

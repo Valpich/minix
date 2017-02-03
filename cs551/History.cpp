@@ -16,7 +16,7 @@
  * @return std::string
  */
 std::string History::getPath() {
-    return NULL;
+    return "Empty";
 }
 
 /**
@@ -37,5 +37,14 @@ void History::setFileManager(FileManager value) {
  * @return FileManager
  */
 FileManager History::getFileManager() {
-    return NULL;
+	FileManager fm;
+    return fm;
+}
+
+History::History(void){
+
+}
+
+History::~History(void){
+	
 }

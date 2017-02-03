@@ -25,3 +25,11 @@ jmp_buf ContextSaver::getJumpBuffer() {
 void ContextSaver::setJumpBuffer(jmp_buf value) {
 
 }
+
+ContextSaver::ContextSaver(void){
+
+}
+
+ContextSaver::~ContextSaver(void){
+	
+}

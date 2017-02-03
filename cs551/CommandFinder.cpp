@@ -32,3 +32,11 @@ void CommandFinder::setFolderPaths(std::vector<std::string> value) {
 std::vector<Command> CommandFinder::findAllCommands() {
     return NULL;
 }
+
+CommandFinder::CommandFinder(void){
+
+}
+
+CommandFinder::~CommandFinder(void){
+	
+}

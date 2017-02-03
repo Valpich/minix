@@ -15,3 +15,11 @@
 void SignalHandler::sigKillHandler() {
 
 }
+
+SignalHandler::SignalHandler(void){
+
+}
+
+SignalHandler::~SignalHandler(void){
+
+}

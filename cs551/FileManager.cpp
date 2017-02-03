@@ -16,7 +16,7 @@
  * @return std::string
  */
 std::string FileManager::getFilePath() {
-    return NULL;
+    return "Empty";
 }
 
 /**
@@ -24,4 +24,12 @@ std::string FileManager::getFilePath() {
  */
 void FileManager::setFilePath(std::string value) {
 
+}
+
+FileManager::FileManager(void){
+
+}
+
+FileManager::~FileManager(void){
+	
 }
