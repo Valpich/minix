@@ -16,7 +16,7 @@
  * @return std::string
  */
 std::string Command::getName() {
-    return null;
+    return NULL;
 }
 
 /**

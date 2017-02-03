@@ -9,6 +9,7 @@
 #define _COMMANDFINDER_H
 
 #include <string>
+#include <vector>
 
 class CommandFinder {
 public: 

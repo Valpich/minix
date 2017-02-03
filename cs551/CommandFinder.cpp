@@ -16,7 +16,7 @@
  * @return vector<std::string>
  */
 vector<std::string> CommandFinder::getFolderPaths() {
-    return null;
+    return NULL;
 }
 
 /**
@@ -30,5 +30,5 @@ void CommandFinder::setFolderPaths(vector<std::string> value) {
  * @return vector<Command>
  */
 vector<Command> CommandFinder::findAllCommands() {
-    return null;
+    return NULL;
 }

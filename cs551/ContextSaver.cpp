@@ -16,7 +16,7 @@
  * @return jmp_buf
  */
 jmp_buf ContextSaver::getJumpBuffer() {
-    return null;
+    return NULL;
 }
 
 /**

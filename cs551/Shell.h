@@ -10,6 +10,7 @@
 
 #include<iostream>
 #include <string>
+#include <vector>
 
 #include "SignalHandler.h"
 #include "ContextSaver.h"

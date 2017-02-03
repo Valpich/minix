@@ -16,7 +16,7 @@
  * @return std::string
  */
 std::string FileManager::getFilePath() {
-    return null;
+    return NULL;
 }
 
 /**
