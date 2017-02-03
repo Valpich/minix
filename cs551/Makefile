@@ -8,8 +8,8 @@ INCLUDE =
 LIBS = 
 NAME = main
 
-main:${OBJ}
-   ${CC} $@ ${OBJS} -o ${NAME}
+main:$*.o
+   ${CC} $*.cpp -o ${NAME}
 
 clean:
    -rm -f *.o
