@@ -8,6 +8,8 @@
 #ifndef _COMMANDFINDER_H
 #define _COMMANDFINDER_H
 
+#include <string>
+
 class CommandFinder {
 public: 
     

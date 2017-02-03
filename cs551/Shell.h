@@ -9,6 +9,7 @@
 #define _SHELL_H
 
 #include<iostream>
+#include <string>
 
 #include "SignalHandler.h"
 #include "ContextSaver.h"

@@ -8,8 +8,9 @@
 #ifndef _PROFILE_H
 #define _PROFILE_H
 
-#include "FileManager.h"
+#include <string>
 
+#include "FileManager.h"
 
 class Profile {
 public: 

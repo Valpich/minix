@@ -8,6 +8,8 @@
 #ifndef _FILEMANAGER_H
 #define _FILEMANAGER_H
 
+#include <string>
+
 class FileManager {
 public: 
     
