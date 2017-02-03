@@ -1,17 +1,15 @@
 # Define required macros here
 SHELL = /bin/sh
 
-OBJS =  main.o
+OBJS =  main.cpp
 CFLAG = 
 CC = clang++
 INCLUDE =
 LIBS = 
+NAME = main
 
 main:${OBJ}
-   ${CC} ${CFLAGS} ${INCLUDES} -o $@ ${OBJS} ${LIBS}
+   ${CC} $@ ${OBJS} -o ${NAME}
 
 clean:
-   -rm -f *.o core *.core
-
-.cpp.o:
-   ${CC} ${CFLAGS} ${INCLUDES} -c $<
+   -rm -f *.o
