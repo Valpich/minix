@@ -8,7 +8,7 @@
 #ifndef _SHELL_H
 #define _SHELL_H
 
-#include<iostream>
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -38,12 +38,12 @@ public:
     
     History getHistory();
     
-    vector<Command> getCommandList();
+    std::vector<Command> getCommandList();
     
     /**
      * @param value
      */
-    void setCommandList(vector<Command> value);
+    void setCommandList(std::vector<Command> value);
     
     CommandFinder getCommandFinder();
     
@@ -55,7 +55,7 @@ private:
     string name = Shell name;
     Profile profile;
     History history;
-    vector<Command> commandList;
+    std::vector<Command> commandList;
 };
 
 #endif //_SHELL_H

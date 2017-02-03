@@ -14,16 +14,16 @@
 class CommandFinder {
 public: 
     
-    vector<std::string> getFolderPaths();
+    std::vector<std::string> getFolderPaths();
     
     /**
      * @param value
      */
-    void setFolderPaths(vector<std::string> value);
+    void setFolderPaths(std::vector<std::string> value);
     
-    vector<Command> findAllCommands();
+    std::vector<Command> findAllCommands();
 private: 
-    vector<std::string> folderPaths;
+    std::vector<std::string> folderPaths;
 };
 
 #endif //_COMMANDFINDER_H

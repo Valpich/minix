@@ -48,16 +48,16 @@ History Shell::getHistory() {
 }
 
 /**
- * @return vector<Command>
+ * @return std::vector<Command>
  */
-vector<Command> Shell::getCommandList() {
+std::vector<Command> Shell::getCommandList() {
     return NULL;
 }
 
 /**
  * @param value
  */
-void Shell::setCommandList(vector<Command> value) {
+void Shell::setCommandList(std::vector<Command> value) {
 
 }
 
