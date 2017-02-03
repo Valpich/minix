@@ -13,16 +13,16 @@
 
 
 /**
- * @return string
+ * @return std::string
  */
-string History::getPath() {
-    return "";
+std::string History::getPath() {
+    return null;
 }
 
 /**
  * @param value
  */
-void History::setPath(string value) {
+void History::setPath(std::string value) {
 
 }
 

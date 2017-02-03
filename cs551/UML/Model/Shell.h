@@ -18,12 +18,12 @@
 class Shell: public SignalHandler, public ContextSaver {
 public: 
     
-    string getName();
+    std::string getName();
     
     /**
      * @param value
      */
-    void setName(string value);
+    void setName(std::string value);
     
     Profile getProfile();
     

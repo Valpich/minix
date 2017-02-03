@@ -13,30 +13,30 @@
 
 
 /**
- * @return string
+ * @return std::string
  */
-string Profile::getPath() {
-    return "";
+std::string Profile::getPath() {
+    return null;
 }
 
 /**
  * @param value
  */
-void Profile::setPath(string value) {
+void Profile::setPath(std::string value) {
 
 }
 
 /**
- * @return string
+ * @return std::string
  */
-string Profile::getHome() {
-    return "";
+std::string Profile::getHome() {
+    return null;
 }
 
 /**
  * @param value
  */
-void Profile::setHome(string value) {
+void Profile::setHome(std::string value) {
 
 }
 

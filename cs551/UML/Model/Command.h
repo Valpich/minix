@@ -11,15 +11,15 @@
 class Command {
 public: 
     
-    string getName();
+    std::string getName();
     
     /**
      * @param value
      */
-    void setName(string value);
+    void setName(std::string value);
 private: 
-    string name;
-    string path;
+    std::string name;
+    std::string path;
 };
 
 #endif //_COMMAND_H

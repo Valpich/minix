@@ -8,7 +8,7 @@
 #ifndef _SHELL_H
 #define _SHELL_H
 
-#include <iostream>
+#include<iostream>
 
 #include "SignalHandler.h"
 #include "ContextSaver.h"
@@ -20,12 +20,12 @@
 class Shell: public SignalHandler, public ContextSaver {
 public: 
     
-    string getName();
+    std::string getName();
     
     /**
      * @param value
      */
-    void setName(string value);
+    void setName(std::string value);
     
     Profile getProfile();
     

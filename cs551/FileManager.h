@@ -11,14 +11,14 @@
 class FileManager {
 public: 
     
-    string getFilePath();
+    std::string getFilePath();
     
     /**
      * @param value
      */
-    void setFilePath(string value);
+    void setFilePath(std::string value);
 private: 
-    string filePath;
+    std::string filePath;
 };
 
 #endif //_FILEMANAGER_H

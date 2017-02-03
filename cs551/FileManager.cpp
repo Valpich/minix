@@ -13,15 +13,15 @@
 
 
 /**
- * @return string
+ * @return std::string
  */
-string FileManager::getFilePath() {
-    return "";
+std::string FileManager::getFilePath() {
+    return null;
 }
 
 /**
  * @param value
  */
-void FileManager::setFilePath(string value) {
+void FileManager::setFilePath(std::string value) {
 
 }

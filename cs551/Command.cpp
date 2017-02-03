@@ -13,15 +13,15 @@
 
 
 /**
- * @return string
+ * @return std::string
  */
-string Command::getName() {
-    return "";
+std::string Command::getName() {
+    return null;
 }
 
 /**
  * @param value
  */
-void Command::setName(string value) {
+void Command::setName(std::string value) {
 
 }

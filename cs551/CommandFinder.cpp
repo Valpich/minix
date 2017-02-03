@@ -13,16 +13,16 @@
 
 
 /**
- * @return vector<string>
+ * @return vector<std::string>
  */
-vector<string> CommandFinder::getFolderPaths() {
+vector<std::string> CommandFinder::getFolderPaths() {
     return null;
 }
 
 /**
  * @param value
  */
-void CommandFinder::setFolderPaths(vector<string> value) {
+void CommandFinder::setFolderPaths(vector<std::string> value) {
 
 }
 

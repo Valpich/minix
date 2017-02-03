@@ -13,16 +13,16 @@
 
 
 /**
- * @return string
+ * @return std::string
  */
-string Shell::getName() {
-    return "";
+std::string Shell::getName() {
+    return null;
 }
 
 /**
  * @param value
  */
-void Shell::setName(string value) {
+void Shell::setName(std::string value) {
 
 }
 
@@ -78,7 +78,6 @@ void Shell::setCommandFinder(CommandFinder value) {
 /**
  * @return int
  */
-int main()
-{
-    std::cout << "Hello World!\n";
+int main () {
+    std::cout << "Hello !" << std::endl;
 }
