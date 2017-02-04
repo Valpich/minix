@@ -17,7 +17,7 @@ void SignalHandler::signalHandler(int sigNumber) {
 
    // TODO: Close all files / destroy all dynamics objects
 
-   std::exit(signum); 
+   exit(signum); 
 }
 
 SignalHandler::SignalHandler(void){

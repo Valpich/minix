@@ -8,6 +8,7 @@
 #ifndef _SIGNALHANDLER_H
 #define _SIGNALHANDLER_H
 
+#include <iostream>
 #include <csignal>
 
 class SignalHandler {
