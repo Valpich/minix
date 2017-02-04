@@ -99,7 +99,6 @@ int main () {
     setjmp(env);
     if(restart == false){
         std::cout << "End !" << std::endl;
-        delay(100);
         return 1;
     }
     int i = 0;
