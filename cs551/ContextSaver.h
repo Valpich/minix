@@ -13,8 +13,6 @@
 class ContextSaver {
 public: 
     
-    friend class Shell;
-
     ContextSaver();
 
     ~ContextSaver();

@@ -20,7 +20,7 @@
 #include "CommandFinder.h"
 
 
-class Shell: public SignalHandler, public ContextSaver {
+class Shell: SignalHandler, ContextSaver {
 public: 
     
     Shell();
@@ -67,7 +67,6 @@ private:
     History history;
     std::vector<Command> commandList;
     CommandFinder commandFinder;
-    ContextSaver * contextSaver;
 };
 
 #endif //_SHELL_H
