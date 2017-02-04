@@ -16,21 +16,20 @@
  * @return std::string
  */
 std::string Shell::getName() {
-    return "Empty";
+    return name;
 }
 
 /**
  * @param value
  */
 void Shell::setName(std::string value) {
-
+    name = value;
 }
 
 /**
  * @return Profile
  */
 Profile Shell::getProfile() {
-	Profile profile;
     return profile;
 }
 
@@ -38,22 +37,27 @@ Profile Shell::getProfile() {
  * @param value
  */
 void Shell::setProfile(Profile value) {
-
+    profile = value;
 }
 
 /**
  * @return History
  */
 History Shell::getHistory() {
-	History history;
     return history;
+}
+
+/**
+ * @param value
+ */
+History Shell::setHistory(History value) {
+    history = value;
 }
 
 /**
  * @return std::vector<Command>
  */
 std::vector<Command> Shell::getCommandList() {
-    std::vector<std::string> commandList;
 	return commandList;
 }
 
@@ -61,22 +65,21 @@ std::vector<Command> Shell::getCommandList() {
  * @param value
  */
 void Shell::setCommandList(std::vector<Command> value) {
-
+    commandList = value;
 }
 
 /**
  * @return CommandFinder
  */
 CommandFinder Shell::getCommandFinder() {
-	CommandFinder cf;
-    return cf;
+    return commandFinder;
 }
 
 /**
  * @param value
  */
 void Shell::setCommandFinder(CommandFinder value) {
-
+    commandFinder = value;
 }
 
 Shell::Shell(void){

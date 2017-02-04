@@ -16,29 +16,28 @@
  * @return std::string
  */
 std::string History::getPath() {
-    return "Empty";
+    return path;
 }
 
 /**
  * @param value
  */
 void History::setPath(std::string value) {
-
+	path = value;
 }
 
 /**
  * @param value
  */
 void History::setFileManager(FileManager value) {
-
+	fileManager = value;
 }
 
 /**
  * @return FileManager
  */
 FileManager History::getFileManager() {
-	FileManager fm;
-    return fm;
+    return fileManager;
 }
 
 History::History(void){

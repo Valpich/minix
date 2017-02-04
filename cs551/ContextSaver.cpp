@@ -16,14 +16,14 @@
  * @return jmp_buf
  */
 jmp_buf ContextSaver::getJumpBuffer() {
-    return NULL;
+    return jumpBuffer;
 }
 
 /**
  * @param value
  */
 void ContextSaver::setJumpBuffer(jmp_buf value) {
-
+	jumpBuffer = value;
 }
 
 ContextSaver::ContextSaver(void){

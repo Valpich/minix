@@ -16,14 +16,14 @@
  * @return std::string
  */
 std::string FileManager::getFilePath() {
-    return "Empty";
+    return filePath;
 }
 
 /**
  * @param value
  */
 void FileManager::setFilePath(std::string value) {
-
+	filePath = value;
 }
 
 FileManager::FileManager(void){

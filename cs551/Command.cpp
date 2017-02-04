@@ -16,14 +16,28 @@
  * @return std::string
  */
 std::string Command::getName() {
-    return NULL;
+    return name;
 }
 
 /**
  * @param value
  */
 void Command::setName(std::string value) {
+	name = value;
+}
 
+/**
+ * @return std::string
+ */
+std::string Command::getPath() {
+    return path;
+}
+
+/**
+ * @param value
+ */
+void Command::setPth(std::string value) {
+	path = value;
 }
 
 Command::Command(void){

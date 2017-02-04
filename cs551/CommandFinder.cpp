@@ -16,21 +16,22 @@
  * @return vector<std::string>
  */
 std::vector<std::string> CommandFinder::getFolderPaths() {
-    return NULL;
+    return folderPaths;
 }
 
 /**
  * @param value
  */
 void CommandFinder::setFolderPaths(std::vector<std::string> value) {
-
+	folderPaths = value;
 }
 
 /**
  * @return vector<Command>
  */
 std::vector<Command> CommandFinder::findAllCommands() {
-    return NULL;
+	std::vector<Command> commands;
+    return commands;
 }
 
 CommandFinder::CommandFinder(void){

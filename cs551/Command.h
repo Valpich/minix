@@ -23,6 +23,13 @@ public:
      * @param value
      */
     void setName(std::string value);
+
+    std::string getPath();
+    
+    /**
+     * @param value
+     */
+    void setPath(std::string value);
 private: 
     std::string name;
     std::string path;
