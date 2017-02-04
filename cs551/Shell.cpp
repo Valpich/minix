@@ -50,7 +50,7 @@ History Shell::getHistory() {
 /**
  * @param value
  */
-History Shell::setHistory(History value) {
+void Shell::setHistory(History value) {
     history = value;
 }
 

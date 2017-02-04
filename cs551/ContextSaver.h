@@ -8,7 +8,7 @@
 #ifndef _CONTEXTSAVER_H
 #define _CONTEXTSAVER_H
 
-#include <setjmp.h>
+#include <csetjmp>
 
 class ContextSaver {
 public: 
@@ -17,14 +17,14 @@ public:
 
     ~ContextSaver();
 
-    jmp_buf getJumpBuffer();
+    std::jmp_buf getJumpBuffer();
     
     /**
      * @param value
      */
-    void setJumpBuffer(jmp_buf value);
+    void setJumpBuffer(std::jmp_buf value);
 private: 
-    jmp_buf jumpBuffer;
+    std::jmp_buf jumpBuffer;
 };
 
 #endif //_CONTEXTSAVER_H

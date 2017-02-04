@@ -13,16 +13,16 @@
 
 
 /**
- * @return jmp_buf
+ * @return std::jmp_buf
  */
-jmp_buf ContextSaver::getJumpBuffer() {
+std::jmp_buf ContextSaver::getJumpBuffer() {
     return jumpBuffer;
 }
 
 /**
  * @param value
  */
-void ContextSaver::setJumpBuffer(jmp_buf value) {
+void ContextSaver::setJumpBuffer(std::jmp_buf value) {
 	jumpBuffer = value;
 }
 
