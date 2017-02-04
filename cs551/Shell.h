@@ -11,9 +11,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <csetjmp>
 
 #include "SignalHandler.h"
-#include "ContextSaver.h"
 #include "Profile.h"
 #include "History.h"
 #include "Command.h"
@@ -67,6 +67,7 @@ private:
     History history;
     std::vector<Command> commandList;
     CommandFinder commandFinder;
+    std::jmp_buf jumpBuffer;
 };
 
 #endif //_SHELL_H
