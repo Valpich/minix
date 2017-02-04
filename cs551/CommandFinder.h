@@ -11,6 +11,8 @@
 #include <string>
 #include <vector>
 
+#include "Command.h"
+
 class CommandFinder {
 public: 
     

@@ -42,6 +42,11 @@ public:
     void setProfile(Profile value);
     
     History getHistory();
+
+    /**
+     * @param value
+     */
+    void setHistory(History value);
     
     std::vector<Command> getCommandList();
     
