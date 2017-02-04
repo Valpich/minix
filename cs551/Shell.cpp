@@ -6,7 +6,7 @@
 
 
 #include "Shell.h"
-
+#include <ucontext.h>
 /**
  * Shell implementation
  */
@@ -96,7 +96,9 @@ Shell::~Shell(void){
 int main () {
     volatile bool exceptionInput = false;
     jmp_buf env;
+    ucontext_t context, *cp = &context;
     setjmp(env);
+    getcontext(cp);
     try{
         while(1){
             printf ("Enter a number: \n");
@@ -108,6 +110,7 @@ int main () {
         if(exceptionInput == true){
             std::cout << "You put and invalid input" << std::endl;
         }
+        setcontext(cp);
         longjmp(env,1);
     }
     return 0;
