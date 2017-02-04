@@ -67,7 +67,6 @@ private:
     History history;
     std::vector<Command> commandList;
     CommandFinder commandFinder;
-    std::jmp_buf jumpBuffer;
 };
 
 #endif //_SHELL_H

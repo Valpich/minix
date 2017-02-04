@@ -90,19 +90,26 @@ Shell::~Shell(void){
 
 }
 
-void test(int count) 
-{
-    std::cout << "test(" << count << ") called\n";
-    std::longjmp(jumpBuffer, count+1);  // setjump() will return count+1
-}
-
 /**
  * @return int
  */
 int main () {
-    volatile int count = 0;
-    if (setjmp(jumpBuffer) != 9) {
-        test(++count);
+    volatile bool restart = true;
+    jmp_buf env;
+    setjmp(env);
+    if(restart == false){
+        std::cout << "End !" << std::endl;
+        delay(100);
+        return 1;
     }
-    std::cout << "End !" << std::endl;
+    int i = 0;
+    for(i = 0; i<11;i++){
+        if(i == 9){
+            restart = false;
+            longjmp(env,1);
+        }else{
+                std::cout << "Again ! i is: " << i << std::endl;
+        }
+    }
+    return 0;
 }
