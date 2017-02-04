@@ -97,10 +97,6 @@ void Shell::signalHandler(int signum) {
    exit(signum); 
 }
 
-static void Shell::staticSignalHandler(int signum) {
-   shell.signalHandler(signum);
-}
-
 /**
  * @return int
  */
