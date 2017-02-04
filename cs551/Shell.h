@@ -67,12 +67,21 @@ public:
      */
     void signalHandler(int signum);
 
+    /**
+     * @param signum
+     */
+    static void staticSignalHandler(int signum){
+        shell.signalHandler(signum);
+    }
+
+
 private: 
     std::string name;
     Profile profile;
     History history;
     std::vector<Command> commandList;
     CommandFinder commandFinder;
+    static Shell shell;
 };
 
 #endif //_SHELL_H
