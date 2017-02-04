@@ -103,11 +103,12 @@ int main () {
             std::cout << "Enter a number:" << std::endl;
             int i;
             scanned = scanf ("%d",&i);
+            while(getchar() != '\n');
             if(scanned == 0){
                 exceptionInput = true;
+                throw 1;
             }
             std::cout << "Scanned is " << scanned << std::endl;
-            while(getchar() != '\n');
             std::cout << "Your number is " << i << std::endl;
         }
     }catch(...){
