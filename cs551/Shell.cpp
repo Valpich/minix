@@ -100,7 +100,7 @@ int main () {
     try{
         while(1){
             printf ("Enter a number: \n");
-            int i;
+            int i = 0;
             scanf ("%d",&i);
             printf ("Your number is %d.\n",i);
         }
