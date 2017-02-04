@@ -71,7 +71,7 @@ public:
      * @param signum
      */
     static void staticSignalHandler(int signum){
-        shell.signalHandler(signum);
+        shell->signalHandler(signum);
     }
 
 
@@ -81,7 +81,7 @@ private:
     History history;
     std::vector<Command> commandList;
     CommandFinder commandFinder;
-    static Shell shell;
+    static Shell * shell;
 };
 
 #endif //_SHELL_H
