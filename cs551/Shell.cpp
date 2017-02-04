@@ -113,7 +113,7 @@ int main () {
         }
     }catch(...){
         if(exceptionInput == true){
-            std::cout << "You put and invalid input" << std::endl;
+            std::cout << "You put an invalid input" << std::endl;
             errorValue = 1;
         }
         longjmp(env,errorValue);
