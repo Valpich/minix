@@ -82,7 +82,7 @@ void Shell::setCommandFinder(CommandFinder value) {
 }
 
 Shell::Shell(void){
-    shell = this;
+
 }
 
 Shell::~Shell(void){
@@ -102,7 +102,7 @@ void signalHandler(int signum) {
  */
 int main () {
     volatile bool exceptionInput = false;
-    std::signal(SIGINT, staticSignalHandler); 
+    std::signal(SIGINT, signalHandler); 
     jmp_buf env;
     int errorValue = 0;
     setjmp(env);
