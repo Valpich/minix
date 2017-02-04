@@ -82,7 +82,7 @@ void Shell::setCommandFinder(CommandFinder value) {
 }
 
 Shell::Shell(void){
-
+    shell = this;
 }
 
 Shell::~Shell(void){
