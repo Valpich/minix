@@ -100,14 +100,15 @@ int main () {
     int scanned = 0;
     try{
         while(1){
-            printf ("Enter a number: \n");
-            int i = 0;
+            std::cout << "Enter a number:" << std::endl;
+            int i;
             scanned = scanf ("%d",&i);
             if(scanned == 0){
                 exceptionInput = true;
             }
+            std::cout << "Scanned is " << scanned << std::endl;
             while(getchar() != '\n');
-            printf ("Your number is %d.\n",i);
+            std::cout << "Your number is " << i << std::endl;
         }
     }catch(...){
         if(exceptionInput == true){
