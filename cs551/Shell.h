@@ -20,7 +20,7 @@
 #include "CommandFinder.h"
 
 
-class Shell: SignalHandler, ContextSaver {
+class Shell: SignalHandler{
 public: 
     
     Shell();
