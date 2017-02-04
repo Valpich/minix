@@ -17,6 +17,7 @@
 #include "Profile.h"
 #include "History.h"
 #include "Command.h"
+#include "CommandFinder.h"
 
 
 class Shell: public SignalHandler, public ContextSaver {
