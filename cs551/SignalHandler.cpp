@@ -12,8 +12,12 @@
  */
 
 
-void SignalHandler::sigKillHandler() {
+void SignalHandler::signalHandler(int sigNumber) {
+   cout << "Interrupt signal (" << signum << ") received.\n";
 
+   // TODO: Close all files / destroy all dynamics objects
+
+   exit(signum); 
 }
 
 SignalHandler::SignalHandler(void){

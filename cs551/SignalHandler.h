@@ -8,6 +8,8 @@
 #ifndef _SIGNALHANDLER_H
 #define _SIGNALHANDLER_H
 
+#include <csignal>
+
 class SignalHandler {
 protected: 
     
@@ -15,7 +17,7 @@ protected:
     
 	~SignalHandler();
 
-    void sigKillHandler();
+    void signalHandler(int sigNumber);
 };
 
 #endif //_SIGNALHANDLER_H
