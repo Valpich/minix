@@ -102,7 +102,7 @@ void Shell::signalHandler(int signum) {
  */
 int main () {
     volatile bool exceptionInput = false;
-    signal(SIGINT, signalHandler); 
+    signal(std::SIGINT, signalHandler); 
     jmp_buf env;
     int errorValue = 0;
     setjmp(env);
