@@ -36,7 +36,7 @@ std::string Command::getPath() {
 /**
  * @param value
  */
-void Command::setPth(std::string value) {
+void Command::setPath(std::string value) {
 	path = value;
 }
 

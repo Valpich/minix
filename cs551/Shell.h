@@ -56,7 +56,7 @@ public:
      */
     void setCommandFinder(CommandFinder value);
 private: 
-    string name = "Shell name";
+    std::string name;
     Profile profile;
     History history;
     std::vector<Command> commandList;
