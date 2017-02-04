@@ -17,13 +17,7 @@ public:
 
     ~ContextSaver();
 
-    std::jmp_buf getJumpBuffer();
-    
-    /**
-     * @param value
-     */
-    void setJumpBuffer(std::jmp_buf value);
-private: 
+protected: 
     std::jmp_buf jumpBuffer;
 };
 

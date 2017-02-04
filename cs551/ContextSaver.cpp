@@ -12,20 +12,6 @@
  */
 
 
-/**
- * @return std::jmp_buf
- */
-std::jmp_buf ContextSaver::getJumpBuffer() {
-    return jumpBuffer;
-}
-
-/**
- * @param value
- */
-void ContextSaver::setJumpBuffer(std::jmp_buf value) {
-	jumpBuffer = value;
-}
-
 ContextSaver::ContextSaver(void){
 
 }
