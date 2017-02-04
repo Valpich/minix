@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include <csetjmp>
+#include <csignal>
 
 #include "Profile.h"
 #include "History.h"
