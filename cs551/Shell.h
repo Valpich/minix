@@ -23,6 +23,8 @@
 class Shell: public SignalHandler, public ContextSaver {
 public: 
     
+    ContextSaver *cx;
+
     Shell();
 
     ~Shell();
