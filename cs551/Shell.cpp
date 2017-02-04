@@ -93,7 +93,7 @@ Shell::~Shell(void){
 void test(int count) 
 {
     std::cout << "test(" << count << ") called\n";
-    std::longjmp(jump_buffer, count+1);  // setjump() will return count+1
+    std::longjmp(jumpBuffer, count+1);  // setjump() will return count+1
 }
 
 /**
@@ -101,7 +101,7 @@ void test(int count)
  */
 int main () {
     volatile int count = 0;
-    if (std::setjmp(jumpBuffer) != 9) {
+    if (setjmp(jumpBuffer) != 9) {
         test(++count);
     }
     std::cout << "End !" << std::endl;
