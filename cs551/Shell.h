@@ -23,8 +23,6 @@
 class Shell: public SignalHandler, public ContextSaver {
 public: 
     
-    ContextSaver *cx;
-
     Shell();
 
     ~Shell();
@@ -69,6 +67,7 @@ private:
     History history;
     std::vector<Command> commandList;
     CommandFinder commandFinder;
+    ContextSaver * contextSaver;
 };
 
 #endif //_SHELL_H
