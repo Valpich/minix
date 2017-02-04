@@ -13,14 +13,13 @@
 #include <vector>
 #include <csetjmp>
 
-#include "SignalHandler.h"
 #include "Profile.h"
 #include "History.h"
 #include "Command.h"
 #include "CommandFinder.h"
 
 
-class Shell: SignalHandler{
+class Shell {
 public: 
     
     Shell();
@@ -61,6 +60,12 @@ public:
      * @param value
      */
     void setCommandFinder(CommandFinder value);
+
+    /**
+     * @param signum
+     */
+    void signalHandler(int signum);
+
 private: 
     std::string name;
     Profile profile;

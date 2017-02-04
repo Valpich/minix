@@ -89,6 +89,14 @@ Shell::~Shell(void){
 
 }
 
+void Shell::signalHandler(int signum) {
+   std::cout << "Interrupt signal (" << signum << ") received." << std::endl;
+
+   // TODO: Close all files / destroy all dynamics objects
+
+   exit(signum); 
+}
+
 /**
  * @return int
  */
