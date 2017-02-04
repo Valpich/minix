@@ -94,6 +94,7 @@ Shell::~Shell(void){
  */
 int main () {
     volatile bool exceptionInput = false;
+    std::signal(SIGINT, signalHandler); 
     jmp_buf env;
     int errorValue = 0;
     setjmp(env);
