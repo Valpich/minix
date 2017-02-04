@@ -12,13 +12,13 @@
 #include <csignal>
 
 class SignalHandler {
-protected: 
+public: 
     
     SignalHandler();
     
 	~SignalHandler();
 
-    void signalHandler(int sigNumber);
+    void signalHandler(int signum);
 };
 
 #endif //_SIGNALHANDLER_H

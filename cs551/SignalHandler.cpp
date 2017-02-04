@@ -12,8 +12,8 @@
  */
 
 
-void SignalHandler::signalHandler(int sigNumber) {
-   std::cout << "Interrupt signal (" << sigNumber << ") received." << std:endl;
+void SignalHandler::signalHandler(int signum) {
+   std::cout << "Interrupt signal (" << signum << ") received." << std::endl;
 
    // TODO: Close all files / destroy all dynamics objects
 
