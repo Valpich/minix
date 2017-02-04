@@ -94,21 +94,21 @@ Shell::~Shell(void){
  * @return int
  */
 int main () {
-    volatile bool restart = true;
+    volatile bool exceptionInput = false;
     jmp_buf env;
     setjmp(env);
-    if(restart == false){
-        std::cout << "End !" << std::endl;
-        return 1;
-    }
-    int i = 0;
-    for(i = 0; i<11;i++){
-        if(i == 9){
-            restart = false;
-            longjmp(env,1);
-        }else{
-                std::cout << "Again ! i is: " << i << std::endl;
+    try{
+        while(1){
+            printf ("Enter a number: \n");
+            int i;
+            scanf ("%d",&i);
+            printf ("Your number is %d.\n",i);
         }
+    }catch(...){
+        if(exceptionInput == true){
+            std::cout << "You put and invalid input" << std::endl;
+        }
+        longjmp(env,1);
     }
     return 0;
 }
