@@ -89,7 +89,7 @@ Shell::~Shell(void){
 
 }
 
-void Shell::signalHandler(int signum) {
+void signalHandler(int signum) {
    std::cout << "Interrupt signal (" << signum << ") received." << std::endl;
 
    // TODO: Close all files / destroy all dynamics objects
@@ -102,7 +102,7 @@ void Shell::signalHandler(int signum) {
  */
 int main () {
     volatile bool exceptionInput = false;
-    std::signal(SIGINT, Shell::staticSignalHandler); 
+    std::signal(SIGINT, staticSignalHandler); 
     jmp_buf env;
     int errorValue = 0;
     setjmp(env);
