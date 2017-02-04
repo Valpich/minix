@@ -97,12 +97,16 @@ void Shell::signalHandler(int signum) {
    exit(signum); 
 }
 
+static void Shell::staticSignalHandler(int signum) {
+   shell.signalHandler(signum);
+}
+
 /**
  * @return int
  */
 int main () {
     volatile bool exceptionInput = false;
-    std::signal(SIGINT, Shell::signalHandler); 
+    std::signal(SIGINT, Shell::staticSignalHandler); 
     jmp_buf env;
     int errorValue = 0;
     setjmp(env);
