@@ -13,6 +13,8 @@
 
 #include "Command.h"
 
+using namespace std;
+
 class CommandFinder {
 public: 
     
@@ -20,16 +22,16 @@ public:
 
     ~CommandFinder();
 
-    std::vector<std::string> getFolderPaths();
+    vector<string> getFolderPaths();
     
     /**
      * @param value
      */
-    void setFolderPaths(std::vector<std::string> value);
+    void setFolderPaths(vector<string> value);
     
-    std::vector<Command> findAllCommands();
+    vector<Command> findAllCommands();
 private: 
-    std::vector<std::string> folderPaths;
+    vector<string> folderPaths;
 };
 
 #endif //_COMMANDFINDER_H

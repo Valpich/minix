@@ -12,6 +12,7 @@
 
 #include "FileManager.h"
 
+using namespace std;
 
 class History {
 public: 
@@ -21,12 +22,12 @@ public:
     ~History();
 
 
-    std::string getPath();
+    string getPath();
     
     /**
      * @param value
      */
-    void setPath(std::string value);
+    void setPath(string value);
     
     /**
      * @param value
@@ -35,8 +36,8 @@ public:
     
     FileManager getFileManager();
 private: 
-    std::string path;
-    FileManager fileManager;
+    string path;
+    FileManager * fileManager;
 };
 
 #endif //_HISTORY_H

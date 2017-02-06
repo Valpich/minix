@@ -11,74 +11,73 @@
  */
 
 
-/**
- * @return std::string
- */
-std::string Shell::getName() {
-    return name;
-}
-
-/**
- * @param value
- */
-void Shell::setName(std::string value) {
-    name = value;
-}
-
+const string Shell::name = "SHELL NAME";
 /**
  * @return Profile
  */
 Profile Shell::getProfile() {
-    return profile;
+    return *profile;
 }
 
 /**
  * @param value
  */
 void Shell::setProfile(Profile value) {
-    profile = value;
+    if(profile != NULL){
+        delete profile;
+    }
+    profile = &value;
 }
 
 /**
  * @return History
  */
 History Shell::getHistory() {
-    return history;
+    return *history;
 }
 
 /**
  * @param value
  */
 void Shell::setHistory(History value) {
-    history = value;
+    if(history != NULL){
+        delete history;
+    }
+    history = &value;
 }
 
 /**
- * @return std::vector<Command>
+ * @return vector<Command>
  */
-std::vector<Command> Shell::getCommandList() {
-	return commandList;
+vector<Command> Shell::getCommandList() {
+	return *commandList;
 }
 
 /**
  * @param value
  */
-void Shell::setCommandList(std::vector<Command> value) {
-    commandList = value;
+void Shell::setCommandList(vector<Command> value) {
+    if(commandList != NULL){
+        delete commandList;
+    }
+    commandList = &value;
 }
 
 /**
  * @return CommandFinder
  */
 CommandFinder Shell::getCommandFinder() {
-    return commandFinder;
+    return *commandFinder;
 }
 
 /**
  * @param value
  */
 void Shell::setCommandFinder(CommandFinder value) {
-    commandFinder = value;
+    if(commandFinder != NULL){
+        delete commandFinder;
+    }
+    commandFinder = &value;
 }
 
 Shell::Shell(void){
@@ -90,7 +89,7 @@ Shell::~Shell(void){
 }
 
 void signalHandler(int signum) {
-   std::cout << "\nInterrupt signal (" << signum << ") received." << std::endl;
+   cout << "\nInterrupt signal (" << signum << ") received." << endl;
 
    // TODO: Close all files / destroy all dynamics objects
 
@@ -102,14 +101,14 @@ void signalHandler(int signum) {
  */
 int main () {
     volatile bool exceptionInput = false;
-    std::signal(SIGINT, signalHandler); 
+    signal(SIGINT, signalHandler);
     jmp_buf env;
     int errorValue = 0;
     setjmp(env);
     int scanned = 0;
     try{
         while(1){
-            std::cout << "Enter a number:" << std::endl;
+            cout << "Enter a number:" << endl;
             int i;
             scanned = scanf ("%d",&i);
             while(getchar() != '\n');
@@ -117,12 +116,32 @@ int main () {
                 exceptionInput = true;
                 throw 1;
             }
-            std::cout << "Scanned is " << scanned << std::endl;
-            std::cout << "Your number is " << i << std::endl;
+            cout << "Scanned is " << scanned << endl;
+            cout << "Your number is " << i << endl;
+#ifdef DEBUG
+            cout << "First "<< endl;
+            FileManager * fm = new FileManager();
+            vector<string> fileStrings = fm->readFileToString("test.txt");
+            cout << "Second "<< endl;
+            vector<string> fileStringsTwo;
+            fileStringsTwo.push_back("Hi,");
+            fileStringsTwo.push_back("This is a test.");
+            fm->replaceFileContent("test.txt",fileStringsTwo);
+            cout << "Third "<< endl;
+            fileStrings = fm->readFileToString("test.txt");
+            cout << "Fourth "<< endl;
+            vector<string> fileStringsFour;
+            fileStringsFour.push_back("At the end");
+            fm->appendToEndOfFile("test.txt",fileStringsFour);
+            cout << "File content "<< endl;
+            fm->readFileToString("test.txt");
+            cout << "End "<< endl;
+            delete fm;
+#endif
         }
     }catch(...){
         if(exceptionInput == true){
-            std::cout << "You put an invalid input" << std::endl;
+            cout << "You put an invalid input" << endl;
             errorValue = 1;
         }
         longjmp(env,errorValue);

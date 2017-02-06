@@ -13,30 +13,30 @@
 
 
 /**
- * @return std::string
+ * @return string
  */
-std::string Command::getName() {
+string Command::getName() {
     return name;
 }
 
 /**
  * @param value
  */
-void Command::setName(std::string value) {
+void Command::setName(string value) {
 	name = value;
 }
 
 /**
- * @return std::string
+ * @return string
  */
-std::string Command::getPath() {
+string Command::getPath() {
     return path;
 }
 
 /**
  * @param value
  */
-void Command::setPath(std::string value) {
+void Command::setPath(string value) {
 	path = value;
 }
 

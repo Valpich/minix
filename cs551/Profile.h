@@ -12,6 +12,8 @@
 
 #include "FileManager.h"
 
+using namespace std;
+
 class Profile {
 public: 
     
@@ -19,19 +21,19 @@ public:
 
     ~Profile();
 
-    std::string getPath();
+    string getPath();
     
     /**
      * @param value
      */
-    void setPath(std::string value);
+    void setPath(string value);
     
-    std::string getHome();
+    string getHome();
     
     /**
      * @param value
      */
-    void setHome(std::string value);
+    void setHome(string value);
     
     /**
      * @param value
@@ -40,9 +42,9 @@ public:
     
     FileManager getFileManager();
 private: 
-    std::string path;
-    std::string home;
-    FileManager fileManager;
+    string * path;
+    string * home;
+    FileManager * fileManager;
 };
 
 #endif //_PROFILE_H

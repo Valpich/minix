@@ -10,6 +10,8 @@
 
 #include <string>
 
+using namespace std;
+
 class Command {
 public: 
     
@@ -17,22 +19,22 @@ public:
 
     ~Command();
     
-    std::string getName();
+    string getName();
     
     /**
      * @param value
      */
-    void setName(std::string value);
+    void setName(string value);
 
-    std::string getPath();
+    string getPath();
     
     /**
      * @param value
      */
-    void setPath(std::string value);
+    void setPath(string value);
 private: 
-    std::string name;
-    std::string path;
+    string name;
+    string path;
 };
 
 #endif //_COMMAND_H

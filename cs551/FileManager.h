@@ -8,7 +8,12 @@
 #ifndef _FILEMANAGER_H
 #define _FILEMANAGER_H
 
+#include <iostream>
 #include <string>
+#include <fstream>
+#include <vector>
+
+using namespace std;
 
 class FileManager {
 public: 
@@ -17,14 +22,15 @@ public:
 
     ~FileManager();
 
-    std::string getFilePath();
-    
-    /**
-     * @param value
-     */
-    void setFilePath(std::string value);
-private: 
-    std::string filePath;
+    bool appendToEndOfFile(string filePath, vector<string> textToAppend);
+
+    bool replaceFileContent(string filePath, vector<string> newFileContent);
+
+    vector<string> readFileToString(string filePath);
+
+private:
+    ofstream * outStream;
+    ifstream * inStream;
 };
 
 #endif //_FILEMANAGER_H

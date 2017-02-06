@@ -13,24 +13,24 @@
 
 
 /**
- * @return vector<std::string>
+ * @return vector<string>
  */
-std::vector<std::string> CommandFinder::getFolderPaths() {
+vector<string> CommandFinder::getFolderPaths() {
     return folderPaths;
 }
 
 /**
  * @param value
  */
-void CommandFinder::setFolderPaths(std::vector<std::string> value) {
+void CommandFinder::setFolderPaths(vector<string> value) {
 	folderPaths = value;
 }
 
 /**
  * @return vector<Command>
  */
-std::vector<Command> CommandFinder::findAllCommands() {
-	std::vector<Command> commands;
+vector<Command> CommandFinder::findAllCommands() {
+	vector<Command> commands;
     return commands;
 }
 

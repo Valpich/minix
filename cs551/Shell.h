@@ -18,21 +18,18 @@
 #include "History.h"
 #include "Command.h"
 #include "CommandFinder.h"
+#include "FileManager.h"
 
+using namespace std;
 
 class Shell {
-public: 
-    
+public:
+
+    static const string name;
+
     Shell();
 
     ~Shell();
-
-    std::string getName();
-    
-    /**
-     * @param value
-     */
-    void setName(std::string value);
     
     Profile getProfile();
     
@@ -48,12 +45,12 @@ public:
      */
     void setHistory(History value);
     
-    std::vector<Command> getCommandList();
+    vector<Command> getCommandList();
     
     /**
      * @param value
      */
-    void setCommandList(std::vector<Command> value);
+    void setCommandList(vector<Command> value);
     
     CommandFinder getCommandFinder();
     
@@ -63,11 +60,10 @@ public:
     void setCommandFinder(CommandFinder value);
 
 private: 
-    std::string name;
-    Profile profile;
-    History history;
-    std::vector<Command> commandList;
-    CommandFinder commandFinder;
+    Profile * profile;
+    History * history;
+    vector<Command> * commandList;
+    CommandFinder * commandFinder;
 };
 
 #endif //_SHELL_H
