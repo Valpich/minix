@@ -10,8 +10,6 @@
  * Shell implementation
  */
 
-#define DEBUG 1
-
 const string Shell::name = "SHELL NAME";
 /**
  * @return Profile
@@ -101,6 +99,10 @@ void signalHandler(int signum) {
  * @return int
  */
 int main () {
+#ifdef TEST
+    Test * test = new Test();
+    test->executeTestOne();
+#endif
     volatile bool exceptionInput = false;
     signal(SIGINT, signalHandler);
     jmp_buf env;
@@ -120,24 +122,7 @@ int main () {
             cout << "Scanned is " << scanned << endl;
             cout << "Your number is " << i << endl;
 #ifdef DEBUG
-            cout << "First "<< endl;
-            FileManager * fm = new FileManager();
-            vector<string> fileStrings = fm->readFileToString("test.txt");
-            cout << "Second "<< endl;
-            vector<string> fileStringsTwo;
-            fileStringsTwo.push_back("Hi,");
-            fileStringsTwo.push_back("This is a test.");
-            fm->replaceFileContent("test.txt",fileStringsTwo);
-            cout << "Third "<< endl;
-            fileStrings = fm->readFileToString("test.txt");
-            cout << "Fourth "<< endl;
-            vector<string> fileStringsFour;
-            fileStringsFour.push_back("At the end");
-            fm->appendToFile("test.txt",fileStringsFour);
-            cout << "File content "<< endl;
-            fm->readFileToString("test.txt");
-            cout << "End "<< endl;
-            delete fm;
+
 #endif
         }
     }catch(...){

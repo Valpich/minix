@@ -8,6 +8,12 @@
 #ifndef _SHELL_H
 #define _SHELL_H
 
+#define TEST 1
+
+#ifdef TEST
+#include "Test.h"
+#endif
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -19,6 +25,8 @@
 #include "Command.h"
 #include "CommandFinder.h"
 #include "FileManager.h"
+
+#define TEST 1
 
 using namespace std;
 
