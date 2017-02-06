@@ -10,6 +10,7 @@
  * Shell implementation
  */
 
+#define DEBUG 1
 
 const string Shell::name = "SHELL NAME";
 /**
@@ -132,7 +133,7 @@ int main () {
             cout << "Fourth "<< endl;
             vector<string> fileStringsFour;
             fileStringsFour.push_back("At the end");
-            fm->appendToEndOfFile("test.txt",fileStringsFour);
+            fm->appendToFile("test.txt",fileStringsFour);
             cout << "File content "<< endl;
             fm->readFileToString("test.txt");
             cout << "End "<< endl;

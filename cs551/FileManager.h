@@ -22,7 +22,7 @@ public:
 
     ~FileManager();
 
-    bool appendToEndOfFile(string filePath, vector<string> textToAppend);
+    bool appendToFile(string filePath, vector<string> textToAppend);
 
     bool replaceFileContent(string filePath, vector<string> newFileContent);
 
