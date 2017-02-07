@@ -11,6 +11,7 @@
  */
 
 const string Shell::name = "SHELL NAME";
+
 /**
  * @return Profile
  */
@@ -85,52 +86,4 @@ Shell::Shell(void){
 
 Shell::~Shell(void){
 
-}
-
-void signalHandler(int signum) {
-   cout << "\nInterrupt signal (" << signum << ") received." << endl;
-
-   // TODO: Close all files / destroy all dynamics objects
-
-   exit(signum); 
-}
-
-/**
- * @return int
- */
-int main () {
-#ifdef TEST
-    Test * test = new Test();
-    test->executeTestOne();
-#endif
-    volatile bool exceptionInput = false;
-    signal(SIGINT, signalHandler);
-    jmp_buf env;
-    int errorValue = 0;
-    setjmp(env);
-    int scanned = 0;
-    try{
-        while(1){
-            cout << "Enter a number:" << endl;
-            int i;
-            scanned = scanf ("%d",&i);
-            while(getchar() != '\n');
-            if(scanned == 0){
-                exceptionInput = true;
-                throw 1;
-            }
-            cout << "Scanned is " << scanned << endl;
-            cout << "Your number is " << i << endl;
-#ifdef DEBUG
-
-#endif
-        }
-    }catch(...){
-        if(exceptionInput == true){
-            cout << "You put an invalid input" << endl;
-            errorValue = 1;
-        }
-        longjmp(env,errorValue);
-    }
-    return 0;
 }

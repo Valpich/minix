@@ -26,8 +26,6 @@
 #include "CommandFinder.h"
 #include "FileManager.h"
 
-#define TEST 1
-
 using namespace std;
 
 class Shell {

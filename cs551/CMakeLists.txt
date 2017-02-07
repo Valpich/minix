@@ -17,6 +17,8 @@ set(SOURCE_FILES
         Shell.cpp
         Shell.h
         Test.cpp
-        Test.h)
+        Test.h
+        Main.cpp
+        Main.h)
 
 add_executable(cs551 ${SOURCE_FILES})
