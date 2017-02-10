@@ -26,38 +26,22 @@ void Main::signalHandler(int signum) {
 int main () {
 #ifdef TEST
     Test * test = new Test();
-    test->executeTest1();
-    test->executeTest2();
-    test->executeTest3();
+    test->executeTestSuite();
     delete test;
 #endif
-    volatile bool exceptionInput = false;
     signal(SIGINT, Main::signalHandler);
     jmp_buf buf;
-    int errorValue = 0;
+    bool exit = false;
+    Shell * shell = NULL;
     setjmp(buf);
-    int scanned = 0;
     try{
-        while(1){
-            cout << "Enter a number:" << endl;
-            int i;
-            scanned = scanf ("%d",&i);
-            while(getchar() != '\n');
-            if(scanned == 0){
-                exceptionInput = true;
-                throw 1;
-            }
-            cout << "Scanned is " << scanned << endl;
-            cout << "Your number is " << i << endl;
-#ifdef DEBUG
-
-#endif
+        shell = new Shell();
+        while(exit == false){
+           exit = shell->run();
         }
     }catch(...){
-        if(exceptionInput == true){
-            cout << "You put an invalid input" << endl;
-            errorValue = 1;
-        }
-        longjmp(buf,errorValue);
+        cout << "Exception catched" << endl;
+        if(shell != NULL) delete shell;
+        longjmp(buf,1);
     }
 }

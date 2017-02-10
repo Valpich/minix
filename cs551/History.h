@@ -9,18 +9,21 @@
 #define _HISTORY_H
 
 #include <string>
+#include <vector>
 
 #include "FileManager.h"
+#include "Command.h"
 
 using namespace std;
 
 class History {
-public: 
-    
+public:
+
+    static const string defaultPath;
+
     History();
 
     ~History();
-
 
     string * getPath();
     
@@ -35,7 +38,12 @@ public:
      * @param value
      */
     void setFileManager(FileManager * value);
-    
+
+    /**
+    * @param command
+    */
+    void logCommand(Command * command);
+
 private:
     string * path;
     FileManager * fileManager;

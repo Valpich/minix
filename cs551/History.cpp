@@ -11,45 +11,76 @@
  * History implementation
  */
 
+const string History::defaultPath = ".shell_history";
 
 /**
  * @return string
  */
-string * History::getPath() {
+string *History::getPath() {
     return path;
 }
 
 /**
  * @param value
  */
-void History::setPath(string * value) {
-	path = value;
+void History::setPath(string *value) {
+    if (path != NULL) {
+        delete path;
+        path = NULL;
+    }
+    path = value;
 }
 
 /**
  * @param value
  */
-void History::setFileManager(FileManager * value) {
-    if(fileManager != NULL){
+void History::setFileManager(FileManager *value) {
+    if (fileManager != NULL) {
         delete fileManager;
+        fileManager = NULL;
     }
-	fileManager = value;
+    fileManager = value;
 }
 
 /**
  * @return FileManager
  */
-FileManager * History::getFileManager() {
+FileManager *History::getFileManager() {
     return fileManager;
 }
 
-History::History(void){
-    fileManager = NULL;
+/**
+ * @return FileManager
+ */
+void History::logCommand(Command *command) {
+    // Should never be false.
+    if (this->getFileManager() == NULL) {
+        this->setFileManager(new FileManager());
+    }
+    // Should ever be true.
+    if (this->getFileManager() != NULL) {
+        vector<string> * commands = new vector<string>();
+        commands->push_back(*command->getName());
+        this->fileManager->appendToFile(*this->getPath(),*commands);
+    }
 }
 
-History::~History(void){
-	if(fileManager != NULL){
+History::History(void) {
+    fileManager = new FileManager();
+    path = new string(defaultPath);
+}
+
+History::~History(void) {
+    cout << "Deleting fileMananger in History" << endl;
+    if (fileManager != NULL) {
         delete fileManager;
         fileManager = NULL;
     }
+    cout << "fileMananger delete in History" << endl;
+    cout << "Deleting path in History" << endl;
+    if (path != NULL) {
+        delete path;
+        path = NULL;
+    }
+    cout << "path deleted in History" << endl;
 }

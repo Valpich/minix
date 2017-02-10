@@ -36,7 +36,7 @@ public:
     Shell();
 
     ~Shell();
-    
+
     Profile * getProfile();
     
     /**
@@ -64,6 +64,8 @@ public:
      * @param value
      */
     void setCommandFinder(CommandFinder * value);
+
+    bool run();
 
 private: 
     Profile * profile;

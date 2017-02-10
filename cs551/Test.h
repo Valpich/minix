@@ -26,14 +26,17 @@ public:
 
     ~Test();
 
+    void executeTestSuite();
+
+private:
+
     void executeTest1();
 
     void executeTest2();
 
     void executeTest3();
 
-private: 
-
+    void executeTest4();
 };
 
 #endif //_TEST_H

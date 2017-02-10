@@ -19,6 +19,13 @@ Test::~Test(void) {
 
 }
 
+void Test::executeTestSuite() {
+    executeTest1();
+    executeTest2();
+    executeTest3();
+    executeTest4();
+}
+
 /**
  * @param value
  */
@@ -70,4 +77,16 @@ void Test::executeTest3() {
     cout << command->execute("EXAMPLE=test env","-al") << endl;
     delete command;
     cout << "End of third test !! " << endl;
+}
+
+void Test::executeTest4() {
+    cout << "Test four started !! " << endl;
+    Command * command = new Command();
+    command->setName(new string("ls"));
+    History * history = new History();
+    cout << command->execute("EXAMPLE=test env","-al") << endl;
+    history->logCommand(command);
+    delete command;
+    delete history;
+    cout << "End test four !! " << endl;
 }

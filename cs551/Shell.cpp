@@ -80,9 +80,23 @@ void Shell::setCommandFinder(CommandFinder * value) {
     commandFinder = value;
 }
 
+bool Shell::run() {
+    Command * command = new Command();
+    string commandString;
+    cout << "Please, enter the command: " << endl;
+    getline (std::cin,commandString);
+    History * history = new History();
+    command->setName(new string(commandString));
+    cout << command->execute("EXAMPLE=test env","-al") << endl;
+    history->logCommand(command);
+    delete command;
+    delete history;
+    return false;
+}
+
 Shell::Shell(void){
-    profile = NULL;
-    history = NULL;
+    profile = new Profile();
+    history = new History();
     commandList = NULL;
     commandFinder = NULL;
 }
