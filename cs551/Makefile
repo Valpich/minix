@@ -1,1 +1,1 @@
-clang++ *.cpp -o main
+clang++ -std=c++11 -stdlib=libc++ *.cpp -o main
