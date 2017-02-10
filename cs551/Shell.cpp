@@ -6,6 +6,7 @@
 
 
 #include "Shell.h"
+
 /**
  * Shell implementation
  */
@@ -82,9 +83,15 @@ void Shell::setCommandFinder(CommandFinder * value) {
 
 bool Shell::run() {
     Command * command = new Command();
-    string commandString;
     cout << "Please, enter the command: " << endl;
-    getline (std::cin,commandString);
+    bool scanning = true;
+    string commandString;
+    while(scanning){
+        // TODO: scanner la command et utiliser le tab
+        if(1){
+            scanning = false;
+        }
+    }
     History * history = new History();
     command->setName(new string(commandString));
     cout << command->execute("EXAMPLE=test env","-al") << endl;
