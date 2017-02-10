@@ -8,7 +8,13 @@
 #ifndef _COMMAND_H
 #define _COMMAND_H
 
+#include <cstdio>
+#include <iostream>
+#include <memory>
+#include <stdexcept>
 #include <string>
+#include <array>
+
 
 using namespace std;
 
@@ -19,22 +25,16 @@ public:
 
     ~Command();
     
-    string getName();
+    string * getName();
     
     /**
      * @param value
      */
-    void setName(string value);
+    void setName(string * value);
 
-    string getPath();
-    
-    /**
-     * @param value
-     */
-    void setPath(string value);
+    string execute(string env, string params);
 private: 
-    string name;
-    string path;
+    string * name;
 };
 
 #endif //_COMMAND_H

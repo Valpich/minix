@@ -26,7 +26,11 @@ public:
 
     ~Test();
 
-    void executeTestOne();
+    void executeTest1();
+
+    void executeTest2();
+
+    void executeTest3();
 
 private: 
 

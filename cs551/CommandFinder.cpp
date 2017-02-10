@@ -15,22 +15,22 @@
 /**
  * @return vector<string>
  */
-vector<string> CommandFinder::getFolderPaths() {
+vector<string> * CommandFinder::getFolderPaths() {
     return folderPaths;
 }
 
 /**
  * @param value
  */
-void CommandFinder::setFolderPaths(vector<string> value) {
+void CommandFinder::setFolderPaths(vector<string> * value) {
 	folderPaths = value;
 }
 
 /**
  * @return vector<Command>
  */
-vector<Command> CommandFinder::findAllCommands() {
-	vector<Command> commands;
+vector<Command> * CommandFinder::findAllCommands() {
+	vector<Command> * commands = new vector<Command>();
     return commands;
 }
 

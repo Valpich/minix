@@ -15,35 +15,45 @@
 /**
  * @return string
  */
-string Command::getName() {
+string * Command::getName() {
     return name;
 }
 
 /**
  * @param value
  */
-void Command::setName(string value) {
+void Command::setName(string * value) {
+    if(name != NULL){
+        delete name;
+    }
 	name = value;
 }
 
-/**
- * @return string
- */
-string Command::getPath() {
-    return path;
-}
-
-/**
- * @param value
- */
-void Command::setPath(string value) {
-	path = value;
+string Command::execute(string env, string params) {
+    if(name != NULL && env.empty() != true){
+        string cmd = env +"|"+*name+" "+params;
+        array<char, 128> buffer;
+        string result;
+        shared_ptr<FILE> pipe(popen(cmd.c_str(), "r"), pclose);
+        if (!pipe) throw runtime_error("popen() failed!");
+        while (!feof(pipe.get())) {
+            if (fgets(buffer.data(), 128, pipe.get()) != NULL)
+                result += buffer.data();
+        }
+        return result;
+    }
+    return NULL;
 }
 
 Command::Command(void){
-
+    name = NULL;
 }
 
 Command::~Command(void){
-	
+    cout << "Deleting name in Command" << endl;
+    if(name != NULL){
+        delete name;
+        name = NULL;
+    }
+    cout << "name deleted in command" << endl;
 }

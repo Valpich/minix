@@ -13,21 +13,30 @@
 
 
 FileManager::FileManager(void){
-
+    outStream = NULL;
+    inStream = NULL;
 }
 
 FileManager::~FileManager(void){
     // Close file stream if open
+    cout<< "Deleting outStream in fileManager" << endl;
     if(outStream != NULL){
         if(outStream->is_open()){
             outStream->close();
         }
+        delete outStream;
+        outStream = NULL;
     }
+    cout<< "outStream deleted in fileManager" << endl;
+    cout<< "Deleting inStream in fileManager" << endl;
     if(inStream != NULL) {
         if (inStream->is_open()) {
             inStream->close();
         }
+        delete inStream;
+        inStream = NULL;
     }
+    cout<< "inStream deleted in fileManager" << endl;
 }
 
 bool FileManager::appendToFile(string filePath, vector<string> textToAppend){
@@ -41,11 +50,15 @@ bool FileManager::appendToFile(string filePath, vector<string> textToAppend){
 #endif
         }
         outStream->close();
+        delete outStream;
+        outStream = NULL;
         return true;
     }else{
 #ifdef DEBUG
         cout << "Failed to open the file" << '\n';
 #endif
+        delete outStream;
+        inStream = NULL;
         return false;
     }
 }
@@ -61,11 +74,15 @@ bool FileManager::replaceFileContent(string filePath, vector<string> newFileCont
 #endif
         }
         outStream->close();
+        delete outStream;
+        outStream = NULL;
         return true;
     }else{
 #ifdef DEBUG
         cout << "Failed to open the file" << '\n';
 #endif
+        delete outStream;
+        outStream = NULL;
         return false;
     }
 }
@@ -84,12 +101,14 @@ vector<string> FileManager::readFileToString(string filePath){
         }
         inStream->close();
         delete inStream;
+        inStream = NULL;
         return vectorOfString;
     }else{
 #ifdef DEBUG
         cout << "Failed to open the file" << '\n';
 #endif
         delete inStream;
+        inStream = NULL;
         return vectorOfString;
     }
 }

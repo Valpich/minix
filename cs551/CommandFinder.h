@@ -22,16 +22,16 @@ public:
 
     ~CommandFinder();
 
-    vector<string> getFolderPaths();
+    vector<string> * getFolderPaths();
     
     /**
      * @param value
      */
-    void setFolderPaths(vector<string> value);
+    void setFolderPaths(vector<string> * value);
     
-    vector<Command> findAllCommands();
+    vector<Command> * findAllCommands();
 private: 
-    vector<string> folderPaths;
+    vector<string> * folderPaths;
 };
 
 #endif //_COMMANDFINDER_H

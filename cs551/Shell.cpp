@@ -15,75 +15,93 @@ const string Shell::name = "SHELL NAME";
 /**
  * @return Profile
  */
-Profile Shell::getProfile() {
-    return *profile;
+Profile * Shell::getProfile() {
+    return profile;
 }
 
 /**
  * @param value
  */
-void Shell::setProfile(Profile value) {
+void Shell::setProfile(Profile * value) {
     if(profile != NULL){
         delete profile;
     }
-    profile = &value;
+    profile = value;
 }
 
 /**
  * @return History
  */
-History Shell::getHistory() {
-    return *history;
+History * Shell::getHistory() {
+    return history;
 }
 
 /**
  * @param value
  */
-void Shell::setHistory(History value) {
+void Shell::setHistory(History * value) {
     if(history != NULL){
         delete history;
     }
-    history = &value;
+    history = value;
 }
 
 /**
  * @return vector<Command>
  */
-vector<Command> Shell::getCommandList() {
-	return *commandList;
+vector<Command> * Shell::getCommandList() {
+	return commandList;
 }
 
 /**
  * @param value
  */
-void Shell::setCommandList(vector<Command> value) {
+void Shell::setCommandList(vector<Command> * value) {
     if(commandList != NULL){
         delete commandList;
     }
-    commandList = &value;
+    commandList = value;
 }
 
 /**
  * @return CommandFinder
  */
-CommandFinder Shell::getCommandFinder() {
-    return *commandFinder;
+CommandFinder * Shell::getCommandFinder() {
+    return commandFinder;
 }
 
 /**
  * @param value
  */
-void Shell::setCommandFinder(CommandFinder value) {
+void Shell::setCommandFinder(CommandFinder * value) {
     if(commandFinder != NULL){
         delete commandFinder;
     }
-    commandFinder = &value;
+    commandFinder = value;
 }
 
 Shell::Shell(void){
-
+    profile = NULL;
+    history = NULL;
+    commandList = NULL;
+    commandFinder = NULL;
 }
 
 Shell::~Shell(void){
-
+    if(profile != NULL){
+        delete profile;
+        profile = NULL;
+    }
+    if(history != NULL){
+        delete history;
+        history = NULL;
+    }
+    if(commandList != NULL){
+        delete commandList;
+        commandList = NULL;
+    }
+    if(commandFinder != NULL){
+        delete commandFinder;
+        commandFinder = NULL;
+    }
 }

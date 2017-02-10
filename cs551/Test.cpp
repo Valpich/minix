@@ -22,7 +22,8 @@ Test::~Test(void) {
 /**
  * @param value
  */
-void Test::executeTestOne() {
+void Test::executeTest1() {
+    cout << "First test started !! " << endl;
     cout << "First " << endl;
     FileManager *fm = new FileManager();
     vector<string> fileStrings = fm->readFileToString("test.txt");
@@ -46,5 +47,27 @@ void Test::executeTestOne() {
     if (!failed) {
         cerr << "Error deleting file" << endl;
     }
+    cout << "End of first test !! " << endl;
 }
 
+void Test::executeTest2() {
+    cout << "Second test started !! " << endl;
+    Profile * profile = new Profile();
+    cout << "Content " << endl;
+    for(string line: *profile->getContent()) {
+        cout << line << endl;
+    }
+    cout << "End of content " << endl;
+    delete profile;
+    cout << "End of second test !! " << endl;
+}
+
+
+void Test::executeTest3() {
+    cout << "Third test started !! " << endl;
+    Command * command = new Command();
+    command->setName(new string("ls"));
+    cout << command->execute("EXAMPLE=test env","-al") << endl;
+    delete command;
+    cout << "End of third test !! " << endl;
+}

@@ -37,33 +37,33 @@ public:
 
     ~Shell();
     
-    Profile getProfile();
+    Profile * getProfile();
     
     /**
      * @param value
      */
-    void setProfile(Profile value);
+    void setProfile(Profile * value);
     
-    History getHistory();
+    History * getHistory();
 
     /**
      * @param value
      */
-    void setHistory(History value);
+    void setHistory(History * value);
     
-    vector<Command> getCommandList();
-    
-    /**
-     * @param value
-     */
-    void setCommandList(vector<Command> value);
-    
-    CommandFinder getCommandFinder();
+    vector<Command> * getCommandList();
     
     /**
      * @param value
      */
-    void setCommandFinder(CommandFinder value);
+    void setCommandList(vector<Command> * value);
+    
+    CommandFinder * getCommandFinder();
+    
+    /**
+     * @param value
+     */
+    void setCommandFinder(CommandFinder * value);
 
 private: 
     Profile * profile;

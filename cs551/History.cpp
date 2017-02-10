@@ -15,38 +15,41 @@
 /**
  * @return string
  */
-string History::getPath() {
+string * History::getPath() {
     return path;
 }
 
 /**
  * @param value
  */
-void History::setPath(string value) {
+void History::setPath(string * value) {
 	path = value;
 }
 
 /**
  * @param value
  */
-void History::setFileManager(FileManager value) {
+void History::setFileManager(FileManager * value) {
     if(fileManager != NULL){
         delete fileManager;
     }
-	fileManager = &value;
+	fileManager = value;
 }
 
 /**
  * @return FileManager
  */
-FileManager History::getFileManager() {
-    return *fileManager;
+FileManager * History::getFileManager() {
+    return fileManager;
 }
 
 History::History(void){
-
+    fileManager = NULL;
 }
 
 History::~History(void){
-	
+	if(fileManager != NULL){
+        delete fileManager;
+        fileManager = NULL;
+    }
 }

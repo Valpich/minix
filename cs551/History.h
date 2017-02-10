@@ -22,21 +22,22 @@ public:
     ~History();
 
 
-    string getPath();
+    string * getPath();
     
     /**
      * @param value
      */
-    void setPath(string value);
-    
+    void setPath(string * value);
+
+    FileManager * getFileManager();
+
     /**
      * @param value
      */
-    void setFileManager(FileManager value);
+    void setFileManager(FileManager * value);
     
-    FileManager getFileManager();
-private: 
-    string path;
+private:
+    string * path;
     FileManager * fileManager;
 };
 

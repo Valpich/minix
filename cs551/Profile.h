@@ -9,41 +9,44 @@
 #define _PROFILE_H
 
 #include <string>
+#include <vector>
 
 #include "FileManager.h"
 
 using namespace std;
 
 class Profile {
-public: 
-    
+public:
+
+    static const char *defaultProfile[];
+
     Profile();
 
     ~Profile();
 
-    string getPath();
+    string * getPath();
     
     /**
      * @param value
      */
-    void setPath(string value);
+    void setPath(string * value);
     
-    string getHome();
-    
-    /**
-     * @param value
-     */
-    void setHome(string value);
+    vector<string> * getContent();
     
     /**
      * @param value
      */
-    void setFileManager(FileManager value);
+    void setContent(vector<string> * value);
     
-    FileManager getFileManager();
+    /**
+     * @param value
+     */
+    void setFileManager(FileManager * value);
+    
+    FileManager * getFileManager();
 private: 
     string * path;
-    string * home;
+    vector<string> * content;
     FileManager * fileManager;
 };
 
