@@ -8,6 +8,8 @@ set(SOURCE_FILES
         Command.h
         CommandFinder.cpp
         CommandFinder.h
+        CommandManager.cpp
+        CommandManager.h
         FileManager.cpp
         FileManager.h
         History.cpp

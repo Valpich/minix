@@ -30,11 +30,27 @@ public:
     /**
      * @param value
      */
-    void setName(string * value);
+    void setName(string * name);
 
-    string execute(string env, string params);
+    string * getEnv();
+
+    /**
+     * @param value
+     */
+    void setEnv(string * name);
+
+    string * getParams();
+
+    /**
+     * @param value
+     */
+    void setParams(string * params);
+
+    string execute();
 private: 
     string * name;
+    string * env;
+    string * params;
 };
 
 #endif //_COMMAND_H

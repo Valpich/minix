@@ -85,7 +85,7 @@ bool Shell::run() {
     Command * command = new Command();
     cout << "Please, enter the command: " << endl;
     bool scanning = true;
-    string commandString;
+    string commandString ="ls";
     while(scanning){
         // TODO: scanner la command et utiliser le tab
         if(1){
@@ -94,7 +94,9 @@ bool Shell::run() {
     }
     History * history = new History();
     command->setName(new string(commandString));
-    cout << command->execute("EXAMPLE=test env","-al") << endl;
+    command->setEnv(new string("EXAMPLE=test env"));
+    command->setParams(new string("-al"));
+    cout << command->execute() << endl;
     history->logCommand(command);
     delete command;
     delete history;

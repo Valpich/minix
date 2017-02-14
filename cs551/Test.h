@@ -12,6 +12,7 @@
 
 #include "Command.h"
 #include "CommandFinder.h"
+#include "CommandManager.h"
 #include "FileManager.h"
 #include "History.h"
 #include "Profile.h"
@@ -37,6 +38,11 @@ private:
     void executeTest3();
 
     void executeTest4();
+
+    void executeTest5();
+
+    void executeTest6();
+
 };
 
 #endif //_TEST_H

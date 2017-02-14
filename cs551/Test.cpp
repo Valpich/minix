@@ -24,6 +24,8 @@ void Test::executeTestSuite() {
     executeTest2();
     executeTest3();
     executeTest4();
+    executeTest5();
+    executeTest6();
 }
 
 /**
@@ -74,7 +76,9 @@ void Test::executeTest3() {
     cout << "Third test started !! " << endl;
     Command * command = new Command();
     command->setName(new string("ls"));
-    cout << command->execute("EXAMPLE=test env","-al") << endl;
+    command->setEnv(new string("EXAMPLE=test env"));
+    command->setParams(new string("-al"));
+    cout << command->execute() << endl;
     delete command;
     cout << "End of third test !! " << endl;
 }
@@ -82,11 +86,72 @@ void Test::executeTest3() {
 void Test::executeTest4() {
     cout << "Test four started !! " << endl;
     Command * command = new Command();
-    command->setName(new string("ls"));
     History * history = new History();
-    cout << command->execute("EXAMPLE=test env","-al") << endl;
+    command->setName(new string("ls"));
+    command->setEnv(new string("EXAMPLE=test env"));
+    command->setParams(new string("-al"));
+    cout << command->execute() << endl;
     history->logCommand(command);
     delete command;
     delete history;
     cout << "End test four !! " << endl;
+}
+
+
+void Test::executeTest5() {
+    cout << "Test five started !! " << endl;
+    vector<Command *> commands;
+    CommandManager * commandManager = new CommandManager();
+    Command * command = new Command();
+    command->setName(new string("ls"));
+    command->setEnv(new string("EXAMPLE=test env"));
+    command->setParams(new string("-al"));
+    commands.push_back(command);
+    Command * commandTwo = new Command();
+    commandTwo->setName(new string("pwd"));
+    commandTwo->setEnv(new string("EXAMPLE=test env"));
+    commandTwo->setParams(new string(""));
+    commands.push_back(commandTwo);
+    Command * commandThree = new Command();
+    commandThree->setName(new string("ls"));
+    commandThree->setEnv(new string("EXAMPLE=test env"));
+    commandThree->setParams(new string(""));
+    commands.push_back(commandThree);
+    commandManager->executeInParallelWithWait(commands);
+    delete commandManager;
+    // DO NOT DELETE THIS POINTER, THREAD WILL DO IT
+    // delete command;
+    // delete commandTwo;
+    // delete commandThree;
+    cout << "End test five !! " << endl;
+}
+
+
+void Test::executeTest6() {
+    cout << "Test six started !! " << endl;
+    vector<Command *> commands;
+    CommandManager * commandManager = new CommandManager();
+    Command * command = new Command();
+    command->setName(new string("ls"));
+    command->setEnv(new string("EXAMPLE=test env"));
+    command->setParams(new string("-al"));
+    commands.push_back(command);
+    Command * commandTwo = new Command();
+    commandTwo->setName(new string("pwd"));
+    commandTwo->setEnv(new string("EXAMPLE=test env"));
+    commandTwo->setParams(new string(""));
+    commands.push_back(commandTwo);
+    Command * commandThree = new Command();
+    commandThree->setName(new string("ls"));
+    commandThree->setEnv(new string("EXAMPLE=test env"));
+    commandThree->setParams(new string(""));
+    commands.push_back(commandThree);
+    commandManager->executeInParallelWithoutWait(commands);
+    cout << "Hi" <<endl;
+   delete commandManager;
+    // DO NOT DELETE THIS POINTER, THREAD WILL DO IT
+    // delete command;
+    // delete commandTwo;
+    // delete commandThree;
+    cout << "End test six !! " << endl;
 }

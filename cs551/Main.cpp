@@ -37,7 +37,7 @@ int main () {
     try{
         shell = new Shell();
         while(exit == false){
-           exit = shell->run();
+        //   exit = shell->run();
         }
     }catch(...){
         cout << "Exception catched" << endl;
