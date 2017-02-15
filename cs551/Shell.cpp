@@ -26,6 +26,7 @@ Profile * Shell::getProfile() {
 void Shell::setProfile(Profile * value) {
     if(profile != NULL){
         delete profile;
+        profile = NULL;
     }
     profile = value;
 }
@@ -43,6 +44,7 @@ History * Shell::getHistory() {
 void Shell::setHistory(History * value) {
     if(history != NULL){
         delete history;
+        history = NULL;
     }
     history = value;
 }
@@ -60,6 +62,7 @@ vector<Command> * Shell::getCommandList() {
 void Shell::setCommandList(vector<Command> * value) {
     if(commandList != NULL){
         delete commandList;
+        commandList = NULL;
     }
     commandList = value;
 }
@@ -77,6 +80,7 @@ CommandFinder * Shell::getCommandFinder() {
 void Shell::setCommandFinder(CommandFinder * value) {
     if(commandFinder != NULL){
         delete commandFinder;
+        commandFinder = NULL;
     }
     commandFinder = value;
 }

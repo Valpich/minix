@@ -44,6 +44,9 @@ private:
     void executeTest6();
 
     void executeTest7();
+
+    void executeTest8();
+
 };
 
 #endif //_TEST_H

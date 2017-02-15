@@ -27,6 +27,7 @@ void Test::executeTestSuite() {
     executeTest5();
     executeTest6();
     executeTest7();
+    executeTest8();
 }
 
 /**
@@ -166,4 +167,19 @@ void Test::executeTest7() {
     command->executeWithExecve();
     delete command;
     cout << "End test seven !! " << endl;
+}
+
+void Test::executeTest8() {
+    cout << "Test 8 started !! " << endl;
+    Profile * profile = new Profile();
+    cout << "Content " << endl;
+    for(string line: *profile->getContent()) {
+        cout << line << endl;
+    }
+    cout << "End of content " << endl;
+    CommandFinder * commandFinder = new CommandFinder();
+    commandFinder->setProfile(profile);
+    commandFinder->findAllCommands();
+    delete commandFinder;
+    cout << "End test 8 !! " << endl;
 }

@@ -30,6 +30,7 @@ string * Profile::getPath() {
 void Profile::setPath(string * value) {
     if(path != NULL){
         delete path;
+        path = NULL;
     }
 	path = value;
 }
@@ -47,6 +48,7 @@ vector<string> * Profile::getContent() {
 void Profile::setContent(vector<string> * value) {
     if(content != NULL){
         delete content;
+        content = NULL;
     }
     content = value;
 }
@@ -57,6 +59,7 @@ void Profile::setContent(vector<string> * value) {
 void Profile::setFileManager(FileManager * value) {
     if(fileManager != NULL){
         delete fileManager;
+        fileManager = NULL;
     }
 	fileManager = value;
 }

@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "Command.h"
+#include "Profile.h"
 
 using namespace std;
 
@@ -22,16 +23,27 @@ public:
 
     ~CommandFinder();
 
-    vector<string> * getFolderPaths();
-    
+    string * getFolderPaths();
+
     /**
      * @param value
      */
-    void setFolderPaths(vector<string> * value);
+    void setFolderPaths(string * value);
+
+
+    Profile * getProfile();
+
+    /**
+     * @param value
+     */
+    void setProfile(Profile * value);
     
     vector<Command> * findAllCommands();
 private: 
-    vector<string> * folderPaths;
+    string * folderPaths;
+    Profile * profile;
+
+    vector<string> * parseProfileContent();
 };
 
 #endif //_COMMANDFINDER_H

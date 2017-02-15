@@ -27,6 +27,7 @@ string * Command::getPath() {
 void Command::setPath(string * value) {
     if(path != NULL){
         delete path;
+        path = NULL;
     }
     path = value;
 }
@@ -44,6 +45,7 @@ string * Command::getName() {
 void Command::setName(string * value) {
     if(name != NULL){
         delete name;
+        name = NULL;
     }
 	name = value;
 }
@@ -61,6 +63,7 @@ string * Command::getEnv() {
 void Command::setEnv(string * value) {
     if(env != NULL){
         delete env;
+        env = NULL;
     }
     env = value;
 }
@@ -78,6 +81,7 @@ string * Command::getParams() {
 void Command::setParams(string * value) {
     if(params != NULL){
         delete params;
+        params = NULL;
     }
     params = value;
 }
