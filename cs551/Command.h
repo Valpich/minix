@@ -14,6 +14,8 @@
 #include <stdexcept>
 #include <string>
 #include <array>
+#include <vector>
+#include <unistd.h>
 
 
 using namespace std;
@@ -47,10 +49,15 @@ public:
     void setParams(string * params);
 
     string execute();
+
+    void executeWithExecve();
 private: 
     string * name;
     string * env;
     string * params;
+    const char *  generateFileName();
+    char * const * generateParams();
+    char * const * generateEnv();
 };
 
 #endif //_COMMAND_H

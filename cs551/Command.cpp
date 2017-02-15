@@ -10,8 +10,9 @@
 /**
  * Command implementation
  */
-#define DEBUG 1
 
+#define DEBUG 1
+#define TEST 1
 /**
  * @return string
  */
@@ -80,7 +81,47 @@ string Command::execute() {
 #endif
             return result;
         }
+
     }
+    return NULL;
+}
+
+void Command::executeWithExecve() {
+    cout << "Begin of execve with code " << endl;
+    pid_t pid;
+    if ((pid = fork()) ==-1) {
+        perror("fork error");
+    } else if (pid == 0){
+        cout << "env " << env->c_str() << endl;
+        int i = execve(generateFileName(),generateParams(),generateEnv());
+        cout << "End of execve with code " << i << endl;
+        cout << "Return not expected. Must be an execve error.n" <<endl;
+    }
+}
+
+const char * Command::generateFileName() {
+    //TODO: return the filename of the file that contains the executable image of the new process
+#ifdef TEST
+    return "/bin/ls";
+#endif
+    return NULL;
+}
+
+char * const * Command::generateParams(){
+    // TODO:  return a param list like that: char *const parmList[] = {"/bin/ls", "-l", "/u/userid/dirname", NULL};
+#ifdef TEST
+    char *const paramList[] = { "-al",NULL};
+    return paramList;
+#endif
+    return NULL;
+}
+
+char * const * Command::generateEnv(){
+    // TODO:  return a env list like that: char *const envParms[2] = {"EXAMPLE=test", NULL};
+#ifdef TEST
+    char *const envParams[2] = {"EXAMPLE=test", NULL};
+    return envParams;
+#endif
     return NULL;
 }
 

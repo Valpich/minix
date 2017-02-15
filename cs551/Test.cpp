@@ -26,6 +26,7 @@ void Test::executeTestSuite() {
     executeTest4();
     executeTest5();
     executeTest6();
+    executeTest7();
 }
 
 /**
@@ -117,7 +118,7 @@ void Test::executeTest5() {
     commandThree->setEnv(new string("EXAMPLE=test env"));
     commandThree->setParams(new string(""));
     commands.push_back(commandThree);
-    commandManager->executeInParallelWithWait(commands);
+    commandManager->executeInParallelWithWaitAndPopen(commands);
     delete commandManager;
     // DO NOT DELETE THIS POINTER, THREAD WILL DO IT
     // delete command;
@@ -146,7 +147,7 @@ void Test::executeTest6() {
     commandThree->setEnv(new string("EXAMPLE=test env"));
     commandThree->setParams(new string(""));
     commands.push_back(commandThree);
-    commandManager->executeInParallelWithoutWait(commands);
+    commandManager->executeInParallelWithoutWaitAndPopen(commands);
     cout << "Hi" <<endl;
    delete commandManager;
     // DO NOT DELETE THIS POINTER, THREAD WILL DO IT
@@ -154,4 +155,15 @@ void Test::executeTest6() {
     // delete commandTwo;
     // delete commandThree;
     cout << "End test six !! " << endl;
+}
+
+void Test::executeTest7() {
+    cout << "Test seven started !! " << endl;
+    Command * command = new Command();
+    command->setName(new string("ls"));
+    command->setEnv(new string("EXAMPLE=test env"));
+    command->setParams(new string("-al"));
+    command->executeWithExecve();
+    delete command;
+    cout << "End test seven !! " << endl;
 }

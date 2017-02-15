@@ -8,11 +8,11 @@
 #include "CommandManager.h"
 
 /**
- * Command implementation
+ * CommandManager implementation
  */
 
 
-void CommandManager::executeInParallelWithWait(vector <Command *> commands) {
+void CommandManager::executeInParallelWithWaitAndPopen(vector<Command *> commands) {
     vector<thread> threads;
     for (Command * command: commands) {
         shared_ptr<Command> ptr_command(command);
@@ -29,7 +29,7 @@ void CommandManager::executeInParallelWithWait(vector <Command *> commands) {
     cout<< "Threads joined" <<endl;
 }
 
-void CommandManager::executeInParallelWithoutWait(vector <Command *> commands) {
+void CommandManager::executeInParallelWithoutWaitAndPopen(vector<Command *> commands) {
     for (Command * command: commands) {
         shared_ptr<Command> ptr_command(command);
         cout << " Command name " << *command->getName() <<endl;

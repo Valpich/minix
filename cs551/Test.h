@@ -43,6 +43,7 @@ private:
 
     void executeTest6();
 
+    void executeTest7();
 };
 
 #endif //_TEST_H

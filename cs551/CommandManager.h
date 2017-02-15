@@ -28,9 +28,9 @@ public:
 
     ~CommandManager();
 
-    void executeInParallelWithWait(vector<Command *> commands);
+    void executeInParallelWithWaitAndPopen(vector<Command *> commands);
 
-    void executeInParallelWithoutWait(vector<Command *> commands);
+    void executeInParallelWithoutWaitAndPopen(vector<Command *> commands);
 
 private: 
 };
