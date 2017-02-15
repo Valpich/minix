@@ -82,25 +82,38 @@ void Shell::setCommandFinder(CommandFinder * value) {
 }
 
 bool Shell::run() {
-    Command * command = new Command();
-    cout << "Please, enter the command: " << endl;
     bool scanning = true;
-    string commandString ="ls";
+#ifdef MINIX
     while(scanning){
-        // TODO: scanner la command et utiliser le tab
-        if(1){
+            int c;
+            initscr();    /* Start curses mode */
+            //One-character-a-time.
+            cbreak();
+            //No echo.
+            noecho();
+            //Special keys. In order to capture special keystrokes like Backspace, Delete and the four arrow keys by getch()
+            keypad(stdscr, TRUE);
+            cout << "Please, enter the command: " << '\r'<< endl;
+            while (10 != (c = getch())) {
+                if (halfdelay(1) != ERR) {   /* getch function waits 1 tenths of a second */
+                    while (getch() == c)
+                        if (halfdelay(1) == ERR) /* getch function waits 1 tenth of a second */
+                            break;
+                }
+                if (c == 9) {
+                    //TODO: Auto complete
+                    cout << "Tab pressed" << '\r' << endl;
+                } else {
+                    cout << static_cast<char>(c) << " pressed" << '\r'<< endl;
+                }
+                cbreak();
+            }
             scanning = false;
-        }
+            endwin();
+            cout << "Scan done!" << '\r'<< endl;
     }
-    History * history = new History();
-    command->setName(new string(commandString));
-    command->setEnv(new string("EXAMPLE=test env"));
-    command->setParams(new string("-al"));
-    cout << command->execute() << endl;
-    history->logCommand(command);
-    delete command;
-    delete history;
-    return false;
+#endif
+    return true;
 }
 
 Shell::Shell(void){

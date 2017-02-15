@@ -17,31 +17,33 @@ void Main::signalHandler(int signum) {
 
     // TODO : Delete all dynamics objects
 
+    //Disable cursive mode if still enabled
+    endwin();
     exit(signum);
 }
 
 /**
  * @return int
  */
-int main () {
+int main() {
 #ifdef TEST
-    Test * test = new Test();
+    Test *test = new Test();
     test->executeTestSuite();
     delete test;
 #endif
     signal(SIGINT, Main::signalHandler);
     jmp_buf buf;
     bool exit = false;
-    Shell * shell = NULL;
+    Shell *shell = NULL;
     setjmp(buf);
-    try{
+    try {
         shell = new Shell();
-        while(exit == false){
-        //   exit = shell->run();
+        while (exit == false) {
+            exit = shell->run();
         }
-    }catch(...){
+    } catch (...) {
         cout << "Exception catched" << endl;
-        if(shell != NULL) delete shell;
-        longjmp(buf,1);
+        if (shell != NULL) delete shell;
+        longjmp(buf, 1);
     }
 }

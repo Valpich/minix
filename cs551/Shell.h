@@ -19,6 +19,7 @@
 #include <vector>
 #include <csetjmp>
 #include <csignal>
+#include <ncurses.h>
 
 #include "Profile.h"
 #include "History.h"
