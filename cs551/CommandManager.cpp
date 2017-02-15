@@ -13,6 +13,7 @@
 
 
 void CommandManager::executeInParallelWithWaitAndPopen(vector<Command *> commands) {
+#ifdef MINIX
     vector<thread> threads;
     for (Command * command: commands) {
         shared_ptr<Command> ptr_command(command);
@@ -27,9 +28,12 @@ void CommandManager::executeInParallelWithWaitAndPopen(vector<Command *> command
         threads.at(i).join();
     }
     cout<< "Threads joined" <<endl;
+#endif
+    // TODO: the same with forks and wait
 }
 
 void CommandManager::executeInParallelWithoutWaitAndPopen(vector<Command *> commands) {
+#ifdef MINIX
     for (Command * command: commands) {
         shared_ptr<Command> ptr_command(command);
         cout << " Command name " << *command->getName() <<endl;
@@ -37,6 +41,8 @@ void CommandManager::executeInParallelWithoutWaitAndPopen(vector<Command *> comm
         tmp.detach();
     }
     cout<< "Threads started" <<endl;
+#endif
+    // TODO: the same with forks without wait
 }
 
 CommandManager::CommandManager(void){
