@@ -26,7 +26,14 @@ public:
     Command();
 
     ~Command();
-    
+
+    string * getPath();
+
+    /**
+     * @param value
+     */
+    void setPath(string * value);
+
     string * getName();
     
     /**
@@ -51,7 +58,8 @@ public:
     string execute();
 
     void executeWithExecve();
-private: 
+private:
+    string * path;
     string * name;
     string * env;
     string * params;

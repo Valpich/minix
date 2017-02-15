@@ -13,6 +13,24 @@
 
 #define DEBUG 1
 #define TEST 1
+
+/**
+ * @return string
+ */
+string * Command::getPath() {
+    return path;
+}
+
+/**
+ * @param value
+ */
+void Command::setPath(string * value) {
+    if(path != NULL){
+        delete path;
+    }
+    path = value;
+}
+
 /**
  * @return string
  */
@@ -126,12 +144,19 @@ char * const * Command::generateEnv(){
 }
 
 Command::Command(void){
+    path = NULL;
     name = NULL;
     env = NULL;
     params = NULL;
 }
 
 Command::~Command(void){
+    cout << "Deleting path in Command" << endl;
+    if(path != NULL){
+        delete path;
+        path = NULL;
+    }
+    cout << "path deleted in command" << endl;
     cout << "Deleting name in Command" << endl;
     if(name != NULL){
         delete name;
