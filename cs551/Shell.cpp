@@ -87,7 +87,6 @@ void Shell::setCommandFinder(CommandFinder * value) {
 
 bool Shell::run() {
     bool scanning = true;
-#ifdef MINIX
     while(scanning){
             int c;
             initscr();    /* Start curses mode */
@@ -116,7 +115,6 @@ bool Shell::run() {
             endwin();
             cout << "Scan done!" << '\r'<< endl;
     }
-#endif
     return true;
 }
 

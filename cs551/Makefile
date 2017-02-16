@@ -1,1 +1,1 @@
-clang++ -std=c++11 -lncurses -stdlib=libc++ -D MINIX *.cpp -o main
+clang++ -std=c++11 -stdlib=libc++ -lcurses -D MINIX *.cpp -o main
