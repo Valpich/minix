@@ -147,6 +147,12 @@ char * const * Command::generateEnv(){
     return NULL;
 }
 
+ostream &operator<<(ostream &os, const Command &command) {
+    os << "path: " << (command.path  == NULL ? "":*command.path) << " name: " << (command.name  == NULL ? "":*command.name) << " env: " << (command.env  == NULL ? "":*command.env) << " params: "
+       << (command.params  == NULL ? "":*command.params);
+    return os;
+}
+
 Command::Command(void){
     path = NULL;
     name = NULL;

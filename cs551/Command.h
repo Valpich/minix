@@ -15,6 +15,7 @@
 #include <string>
 #include <array>
 #include <vector>
+
 #include <unistd.h>
 
 
@@ -58,6 +59,9 @@ public:
     string execute();
 
     void executeWithExecve();
+
+    friend ostream &operator<<(ostream &os, const Command &command);
+
 private:
     string * path;
     string * name;

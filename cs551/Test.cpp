@@ -179,7 +179,13 @@ void Test::executeTest8() {
     cout << "End of content " << endl;
     CommandFinder * commandFinder = new CommandFinder();
     commandFinder->setProfile(profile);
-    commandFinder->findAllCommands();
+    vector<Command *> * commands = new vector<Command *> ();
+    commandFinder->findAllCommands(commands);
+    cout << "The finded commands are" << endl;
+    for(Command * command : *commands){
+        cout<< *command <<endl;
+    }
+    cout << "End of the commands are" << endl;
     delete commandFinder;
     cout << "End test 8 !! " << endl;
 }

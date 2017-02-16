@@ -10,6 +10,8 @@
 
 #include <string>
 #include <vector>
+#include <dirent.h>
+#include <unistd.h>
 
 #include "Command.h"
 #include "Profile.h"
@@ -38,7 +40,8 @@ public:
      */
     void setProfile(Profile * value);
     
-    vector<Command> * findAllCommands();
+    void findAllCommands(vector<Command *> * commands);
+
 private: 
     string * folderPaths;
     Profile * profile;
@@ -46,8 +49,9 @@ private:
     vector<string> * parseProfileContent();
     vector<string> * parseLinePath(string line);
     string * validateToken(const string &token);
-    void split(const string &s, char c, vector<string> &v);
 
+    void split(const string &s, char c, vector<string> &v);
+    void getFilesInDirectory(vector<string> * listOfCommand,const string &directory);
 };
 
 #endif //_COMMANDFINDER_H

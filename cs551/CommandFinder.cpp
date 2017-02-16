@@ -51,18 +51,32 @@ void CommandFinder::setProfile(Profile *value) {
 /**
  * @return vector<Command>
  */
-vector<Command> *CommandFinder::findAllCommands() {
-    vector<Command> *commands = new vector<Command>();
+void CommandFinder::findAllCommands(vector<Command *> * commands) {
     vector<string> *paths = parseProfileContent();
     cout << "Profile content parsed in find all commands";
     if(!paths->empty()){
         for (string line: *paths) {
             cout << "One path is " << line << endl;
+            vector<string> * tempFolderFiles = new vector<string>();
+            if(tempFolderFiles != NULL){
+                getFilesInDirectory(tempFolderFiles,line);
+                for(string file: *tempFolderFiles){
+                    string filePath = line+"/"+file;
+                    if (! access (filePath.c_str(), X_OK)){
+                        cout<< filePath <<" is executable" << endl;
+                        Command * command = new Command();
+                        command->setPath(new string(line));
+                        command->setName(new string(file));
+                        commands->push_back(command);
+                    } else {
+                        cout << "Command "<< filePath <<"is not executable " << endl;
+                    }
+                }
+            }
         }
     }else{
         // RE-GENERATE DEFAULT PROFILE
     }
-    return commands;
 }
 
 vector<string> *CommandFinder::parseProfileContent() {
@@ -74,13 +88,13 @@ vector<string> *CommandFinder::parseProfileContent() {
             for (string line: *profile->getContent()) {
                 size_t index = line.find("PATH");
                 if (index == string::npos) {
-                    cout << "Path line not found" << endl;
+                    cout << "PATH line not found" << endl;
                 } else {
-                    cout << "Path line found at " << index << endl;
+                    cout << "PATH line found at " << index << endl;
                     for (string tmp: *parseLinePath(line.substr(index, line.size()))) {
                         paths->push_back(tmp);
                     }
-                    cout << "Path line parsed ! " << endl;
+                    cout << "PATH line parsed ! " << endl;
                 }
             }
             cout << "End of parsing profile content" << endl;
@@ -94,9 +108,9 @@ vector<string> *CommandFinder::parseLinePath(string line) {
     vector<string> *paths = new vector<string>();
     size_t index = line.find("=");
     if (index == string::npos || line.substr(index + 1, line.size()).length() == 0) {
-        cout << "PATH empty" << endl;
+        cout << "Path empty" << endl;
     } else {
-        cout << "PATH found at " << index << endl;
+        cout << "Path found at " << index << endl;
         vector<string> v;
         split(line, ':', v);
         for (string tmp: v) {
@@ -129,15 +143,28 @@ string *CommandFinder::validateToken(const string &token) {
 void CommandFinder::split(const string &s, char c, vector<string> &v) {
     string::size_type i = 0;
     string::size_type j = s.find(c);
-
     while (j != string::npos) {
         v.push_back(s.substr(i, j - i));
         i = ++j;
         j = s.find(c, j);
-
-        if (j == string::npos)
+        if (j == string::npos) {
             v.push_back(s.substr(i, s.length()));
+        }
     }
+}
+
+void CommandFinder::getFilesInDirectory(vector<string> * listOfCommand,const string &directory) {
+    cout <<"Getting all files in the directory "<<directory<<endl;
+    DIR * dpdf;
+    struct dirent * epdf;
+    dpdf = opendir(directory.c_str());
+    if (dpdf != NULL){
+        while ((epdf = readdir(dpdf))){
+            listOfCommand->push_back(epdf->d_name);
+        }
+        closedir(dpdf);
+    }
+    cout <<"End of getting all files in the directory "<<directory<<endl;
 }
 
 CommandFinder::CommandFinder(void) {
