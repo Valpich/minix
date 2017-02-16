@@ -17,17 +17,25 @@ void CommandManager::executeInParallelWithWaitAndPopen(vector<Command *> command
     vector<thread> threads;
     for (Command * command: commands) {
         shared_ptr<Command> ptr_command(command);
+#ifdef DEBUG
         cout << " Command name " << *command->getName() <<endl;
+#endif
         thread tmp(bind(&Command::execute, ptr_command));
         threads.push_back(move(tmp));
     }
+    #ifdef DEBUG
     cout<< "Threads started" <<endl;
+    #endif
     unsigned int size = threads.size();
+    #ifdef DEBUG
     cout<< "Threads size is "<< size <<endl;
+    #endif
     for(unsigned int i=0; i<size; ++i){
         threads.at(i).join();
     }
+    #ifdef DEBUG
     cout<< "Threads joined" <<endl;
+    #endif
 #endif
     // TODO: the same with forks and wait
 }
@@ -36,11 +44,15 @@ void CommandManager::executeInParallelWithoutWaitAndPopen(vector<Command *> comm
 #ifndef MINIX
     for (Command * command: commands) {
         shared_ptr<Command> ptr_command(command);
+        #ifdef DEBUG
         cout << " Command name " << *command->getName() <<endl;
+        #endif
         thread tmp(bind(&Command::execute, ptr_command));
         tmp.detach();
     }
+    #ifdef DEBUG
     cout<< "Threads started" <<endl;
+    #endif
 #endif
     // TODO: the same with forks without wait
 }

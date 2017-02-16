@@ -71,16 +71,22 @@ History::History(void) {
 }
 
 History::~History(void) {
+#ifdef DEBUG
     cout << "Deleting fileMananger in History" << endl;
+#endif
     if (fileManager != NULL) {
         delete fileManager;
         fileManager = NULL;
     }
+    #ifdef DEBUG
     cout << "fileMananger delete in History" << endl;
     cout << "Deleting path in History" << endl;
+    #endif
     if (path != NULL) {
         delete path;
         path = NULL;
     }
+    #ifdef DEBUG
     cout << "path deleted in History" << endl;
+    #endif
 }

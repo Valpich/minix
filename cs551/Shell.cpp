@@ -105,15 +105,21 @@ bool Shell::run() {
                 }
                 if (c == 9) {
                     //TODO: Auto complete
+#ifdef DEBUG
                     cout << "Tab pressed" << '\r' << endl;
+#endif
                 } else {
+#ifdef DEBUG
                     cout << static_cast<char>(c) << " pressed" << '\r'<< endl;
+#endif
                 }
                 cbreak();
             }
             scanning = false;
             endwin();
+#ifdef DEBUG
             cout << "Scan done!" << '\r'<< endl;
+#endif
     }
     return true;
 }
@@ -126,20 +132,38 @@ Shell::Shell(void){
 }
 
 Shell::~Shell(void){
+#ifdef DEBUG
+    cout << "Deleting profile in shell" << endl;
+#endif
     if(profile != NULL){
         delete profile;
         profile = NULL;
     }
+#ifdef DEBUG
+    cout << "profile deleted in shell" << endl;
+    cout << "Deleting history in shell" << endl;
+#endif
     if(history != NULL){
         delete history;
         history = NULL;
     }
+#ifdef DEBUG
+    cout << "history deleted in shell" << endl;
+    cout << "Deleting commandList in shell" << endl;
+#endif
     if(commandList != NULL){
         delete commandList;
         commandList = NULL;
     }
+#ifdef DEBUG
+    cout << "commandList deleted in shell" << endl;
+    cout << "Deleting commandFinder in shell" << endl;
+#endif
     if(commandFinder != NULL){
         delete commandFinder;
         commandFinder = NULL;
     }
+#ifdef DEBUG
+    cout << "commandFinder deleted in shell" << endl;
+#endif
 }

@@ -13,8 +13,9 @@
 
 
 void Main::signalHandler(int signum) {
+#ifdef DEBUG
     cout << "\nInterrupt signal (" << signum << ") received." << endl;
-
+#endif
     // TODO : Delete all dynamics objects
 
     //Disable cursive mode if still enabled
@@ -42,7 +43,9 @@ int main() {
             exit = shell->run();
         }
     } catch (...) {
+#ifdef DEBUG
         cout << "Exception catched" << endl;
+#endif
         if (shell != NULL) delete shell;
         longjmp(buf, 1);
     }

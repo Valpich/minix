@@ -93,22 +93,30 @@ Profile::Profile(void){
 }
 
 Profile::~Profile(void){
+#ifdef DEBUG
     cout << "Deleting fileManager in profile" << endl;
+#endif
     if(fileManager != NULL){
         delete fileManager;
         fileManager = NULL;
     }
+#ifdef DEBUG
     cout << "fileManager deleted in profile" << endl;
     cout << "Deleting path in profile" << endl;
+#endif
     if(path != NULL){
         delete path;
         path = NULL;
     }
+#ifdef DEBUG
     cout << "path deleted in profile" << endl;
     cout << "Deleting content in profile" << endl;
+#endif
     if(content != NULL){
         delete content;
         content = NULL;
     }
+#ifdef DEBUG
     cout << "content deleted in profile" << endl;
+#endif
 }

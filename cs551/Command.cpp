@@ -11,7 +11,6 @@
  * Command implementation
  */
 
-#define DEBUG 1
 #define TEST 1
 
 /**
@@ -161,28 +160,38 @@ Command::Command(void){
 }
 
 Command::~Command(void){
+#ifdef DEBUG
     cout << "Deleting path in Command" << endl;
+#endif
     if(path != NULL){
         delete path;
         path = NULL;
     }
+#ifdef DEBUG
     cout << "path deleted in command" << endl;
     cout << "Deleting name in Command" << endl;
+#endif
     if(name != NULL){
         delete name;
         name = NULL;
     }
+#ifdef DEBUG
     cout << "name deleted in command" << endl;
     cout << "Deleting env in Command" << endl;
+#endif
     if(env != NULL){
         delete env;
         env = NULL;
     }
+#ifdef DEBUG
     cout << "env deleted in command" << endl;
     cout << "Deleting params in Command" << endl;
+#endif
     if(params != NULL){
         delete params;
         params = NULL;
     }
+#ifdef DEBUG
     cout << "params deleted in command" << endl;
+#endif
 }

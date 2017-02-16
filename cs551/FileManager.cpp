@@ -6,7 +6,7 @@
 
 
 #include "FileManager.h"
-#define DEBUG 1
+
 /**
  * FileManager implementation
  */
@@ -19,7 +19,9 @@ FileManager::FileManager(void){
 
 FileManager::~FileManager(void){
     // Close file stream if open
+#ifdef DEBUG
     cout<< "Deleting outStream in fileManager" << endl;
+#endif
     if(outStream != NULL){
         if(outStream->is_open()){
             outStream->close();
@@ -27,8 +29,10 @@ FileManager::~FileManager(void){
         delete outStream;
         outStream = NULL;
     }
+#ifdef DEBUG
     cout<< "outStream deleted in fileManager" << endl;
     cout<< "Deleting inStream in fileManager" << endl;
+#endif
     if(inStream != NULL) {
         if (inStream->is_open()) {
             inStream->close();
@@ -36,7 +40,9 @@ FileManager::~FileManager(void){
         delete inStream;
         inStream = NULL;
     }
+#ifdef DEBUG
     cout<< "inStream deleted in fileManager" << endl;
+#endif
 }
 
 bool FileManager::appendToFile(string filePath, vector<string> textToAppend){
