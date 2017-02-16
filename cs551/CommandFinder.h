@@ -44,6 +44,10 @@ private:
     Profile * profile;
 
     vector<string> * parseProfileContent();
+    vector<string> * parseLinePath(string line);
+    string * validateToken(const string &token);
+    void split(const string &s, char c, vector<string> &v);
+
 };
 
 #endif //_COMMANDFINDER_H
