@@ -56,12 +56,9 @@
       <file leaf-file-name="CommandManager.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CommandManager.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-              <folding>
-                <element signature="e#178#195#0" expanded="true" />
-                <element signature="e#321#338#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="225">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -426,12 +423,12 @@
       <workItem from="1486761508864" duration="4288000" />
       <workItem from="1487028563145" duration="5601000" />
       <workItem from="1487181725442" duration="17975000" />
-      <workItem from="1487214348361" duration="33000" />
+      <workItem from="1487214348361" duration="97000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45760000" />
+    <option name="totallyTimeSpent" value="45824000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="833" extended-state="6" />
@@ -870,12 +867,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CommandManager.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-          <folding>
-            <element signature="e#178#195#0" expanded="true" />
-            <element signature="e#321#338#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>

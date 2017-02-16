@@ -15,7 +15,7 @@
 #include <string>
 #include <array>
 #include <vector>
-#ifdef MINIX
+#ifndef MINIX
 #include <thread>
 #endif
 #include "Command.h"
