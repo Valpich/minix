@@ -14,9 +14,10 @@
 #include <stdexcept>
 #include <string>
 #include <array>
-#include <thread>
 #include <vector>
-
+#ifdef MINIX
+#include <thread>
+#endif
 #include "Command.h"
 
 using namespace std;
