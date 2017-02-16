@@ -111,6 +111,7 @@ bool Shell::run() {
                 } else {
 #ifdef DEBUG
                     cout << static_cast<char>(c) << " pressed" << '\r'<< endl;
+                    cout << c << " pressed" << '\r'<< endl;
 #endif
                 }
                 cbreak();
