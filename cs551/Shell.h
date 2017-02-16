@@ -19,7 +19,12 @@
 #include <vector>
 #include <csetjmp>
 #include <csignal>
+
+#ifndef MINIX
 #include <ncurses.h>
+#else
+#include <curses.h>
+#endif
 
 #include "Profile.h"
 #include "History.h"
