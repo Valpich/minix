@@ -97,18 +97,21 @@ bool Shell::run() {
             //Special keys. In order to capture special keystrokes like Backspace, Delete and the four arrow keys by getch()
             keypad(stdscr, TRUE);
             cout << "Please, enter the command: " << '\r'<< endl;
-            c = getch();
-            while (10 != c) {
+            string commandLine ="";
+            while (c != 10) { // Enter pressed
                 c = getch();
-                if (c == 9) {
+                if (c == 9) { // Tab pressed
                     //TODO: Auto complete
 #ifdef DEBUG
                     cout << "Tab pressed" << '\r' << endl;
 #endif
                 } else {
+                    if (c != 10) { // We didn't scan the enter pressed
+                        char cToChar = static_cast<char>(c);
+                        commandLine += cToChar;
+                    }
 #ifdef DEBUG
                     cout << static_cast<char>(c) << " pressed" << '\r'<< endl;
-                    cout << c << " pressed" << '\r'<< endl;
 #endif
                 }
                 cbreak();
@@ -116,8 +119,9 @@ bool Shell::run() {
             scanning = false;
             endwin();
 #ifdef DEBUG
-            cout << "Scan done!" << '\r'<< endl;
+            cout << "Scan of "<< commandLine <<"done!" << '\r'<< endl;
 #endif
+        // TODO: Call the command line before deleting
     }
     return true;
 }

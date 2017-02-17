@@ -32,7 +32,10 @@ int main() {
     test->executeTestSuite();
     delete test;
 #endif
-    signal(SIGINT, Main::signalHandler);
+    // Registering all 22 signal of POSIX
+    for(int i = 0 ; i<=22; i++){
+        signal(i, Main::signalHandler);
+    }
     jmp_buf buf;
     bool exit = false;
     Shell *shell = NULL;
