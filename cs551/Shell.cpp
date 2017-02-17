@@ -97,13 +97,9 @@ bool Shell::run() {
             //Special keys. In order to capture special keystrokes like Backspace, Delete and the four arrow keys by getch()
             keypad(stdscr, TRUE);
             cout << "Please, enter the command: " << '\r'<< endl;
-            while (10 != (c = getch())) {
-
-                if (halfdelay(0) != ERR) {   /* getch function waits 1 tenths of a second */
-                    while (getch() == c)
-                        if (halfdelay(0) == ERR) /* getch function waits 1 tenth of a second */
-                            break;
-                }
+            c = getch();
+            while (10 != c) {
+                c = getch();
                 if (c == 9) {
                     //TODO: Auto complete
 #ifdef DEBUG
