@@ -98,9 +98,10 @@ bool Shell::run() {
             keypad(stdscr, TRUE);
             cout << "Please, enter the command: " << '\r'<< endl;
             while (10 != (c = getch())) {
-                if (halfdelay(1) != ERR) {   /* getch function waits 1 tenths of a second */
+
+                if (halfdelay(0) != ERR) {   /* getch function waits 1 tenths of a second */
                     while (getch() == c)
-                        if (halfdelay(1) == ERR) /* getch function waits 1 tenth of a second */
+                        if (halfdelay(0) == ERR) /* getch function waits 1 tenth of a second */
                             break;
                 }
                 if (c == 9) {
