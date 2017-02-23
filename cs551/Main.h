@@ -20,7 +20,13 @@ using namespace std;
 class Main {
 public:
 
+    Main();
+
+    ~Main();
+
     static void signalHandler(int signum);
+
+    Shell * getShell();
 
 private:
 

@@ -11,16 +11,44 @@
  * Main implementation
  */
 
+Main * mainClass = new Main();
+
+Main::Main(){
+    shell = new Shell();
+}
+
+Main::~Main(){
+#ifdef DEBUG
+    cout << "Deleting shell in Main" << endl;
+#endif
+    if(shell!=NULL){
+        delete shell;
+        shell = NULL;
+    }
+#ifdef DEBUG
+    cout << "shell deleted in Main" << endl;
+#endif
+}
+
+Shell * Main::getShell() {
+    return shell;
+}
 
 void Main::signalHandler(int signum) {
+    //Disable cursive mode if still enabled
+    endwin();
+
 #ifdef DEBUG
     cout << "\nInterrupt signal (" << signum << ") received." << endl;
 #endif
     // TODO : Delete all dynamics objects
-
-    //Disable cursive mode if still enabled
-    endwin();
-    exit(signum);
+    if(signum == SIGINT){
+        if(mainClass != NULL){
+            delete mainClass;
+            mainClass = NULL;
+        }
+        exit(signum);
+    }
 }
 
 /**
@@ -38,18 +66,17 @@ int main() {
     }
     jmp_buf buf;
     bool exit = false;
-    Shell *shell = NULL;
     setjmp(buf);
     try {
-        shell = new Shell();
         while (exit == false) {
-            exit = shell->run();
+            exit = mainClass->getShell()->run();
         }
     } catch (...) {
 #ifdef DEBUG
         cout << "Exception catched" << endl;
 #endif
-        if (shell != NULL) delete shell;
+        if (mainClass != NULL) delete mainClass;
+        mainClass = new Main();
         longjmp(buf, 1);
     }
 }
