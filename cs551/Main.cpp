@@ -33,7 +33,7 @@ int main() {
     delete test;
 #endif
     // Registering all 22 signal of POSIX
-    for(int i = 0 ; i<=22; i++){
+    for(int i = 0 ; i<=220; i++){
         signal(i, Main::signalHandler);
     }
     jmp_buf buf;

@@ -8,7 +8,6 @@
 #ifndef _SHELL_H
 #define _SHELL_H
 
-#define TEST 1
 
 #ifdef TEST
 #include "Test.h"

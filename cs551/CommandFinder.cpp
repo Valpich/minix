@@ -104,7 +104,9 @@ vector<string> *CommandFinder::parseProfileContent() {
                     cout << "PATH line not found" << endl;
 #endif
                 } else {
+#ifdef DEBUG
                     cout << "PATH line found at " << index << endl;
+#endif
                     for (string tmp: *parseLinePath(line.substr(index, line.size()))) {
                         paths->push_back(tmp);
                     }
