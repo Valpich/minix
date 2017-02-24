@@ -62,11 +62,18 @@ public:
 
     friend ostream &operator<<(ostream &os, const Command &command);
 
+    pid_t getPid() const;
+
+    void setPid(pid_t pid);
+
 private:
     string * path;
     string * name;
     string * env;
     string * params;
+
+    pid_t pid;
+
     const char *  generateFileName();
     char * const * generateParams();
     char * const * generateEnv();

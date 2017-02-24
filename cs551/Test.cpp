@@ -160,12 +160,14 @@ void Test::executeTest6() {
 
 void Test::executeTest7() {
     cout << "Test seven started !! " << endl;
+    waitingAlarm = true;
     Command * command = new Command();
     command->setName(new string("ls"));
     command->setEnv(new string("EXAMPLE=test env"));
     command->setParams(new string("-al"));
     command->executeWithExecve();
     delete command;
+    while(waitingAlarm);
     cout << "End test seven !! " << endl;
 }
 

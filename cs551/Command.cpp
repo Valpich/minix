@@ -107,9 +107,12 @@ string Command::execute() {
     return NULL;
 }
 
+#include "Main.h"
+
 void Command::executeWithExecve() {
     cout << "Begin of execve with code " << endl;
-    pid_t pid;
+    signal(SIGALRM, Main::signalHandler);
+    alarm(5);
     if ((pid = fork()) ==-1) {
         perror("fork error");
     } else if (pid == 0){
@@ -194,4 +197,12 @@ Command::~Command(void){
 #ifdef DEBUG
     cout << "params deleted in command" << endl;
 #endif
+}
+
+pid_t Command::getPid() const {
+    return pid;
+}
+
+void Command::setPid(pid_t pid) {
+    Command::pid = pid;
 }

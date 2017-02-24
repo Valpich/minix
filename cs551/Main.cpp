@@ -7,6 +7,11 @@
 
 #include "Main.h"
 
+
+#ifdef TEST
+Test *test = new Test();
+#endif
+
 /**
  * Main implementation
  */
@@ -35,33 +40,64 @@ Shell * Main::getShell() {
 }
 
 void Main::signalHandler(int signum) {
-    //Disable cursive mode if still enabled
-    endwin();
 
-#ifdef DEBUG
-    cout << "\nInterrupt signal (" << signum << ") received." << endl;
-#endif
-    // TODO : Delete all dynamics objects
     if(signum == SIGINT){
+        //Disable cursive mode if still enabled
+        endwin();
+#ifdef DEBUG
+        cout << "\nCTRL+C INTERCEPTED." << endl;
+#endif
         if(mainClass != NULL){
             delete mainClass;
             mainClass = NULL;
         }
         exit(signum);
     }
+    if(signum == SIGALRM){
+        bool scanning = true;
+        int c;
+        cout <<"Do you want to kill the command ?" <<endl;
+        while (scanning) {
+         // TODO: Scan the reponse
+            // If Y/y
+            if(c == 89 || c == 121){
+                if(mainClass->shell != NULL){
+                    if(mainClass->shell->getCommand()!= NULL){
+                        if(mainClass->shell->getCommand()->getPid()!= NULL){
+                            kill(mainClass->shell->getCommand()->getPid(),SIGKILL);
+                        }
+                    }
+                }
+            }
+            // If N/n
+            if(c == 78 || c == 110){
+                // Else back to normal
+                scanning = false;
+            }
+            sleep(1);
+        }
+#ifdef TEST
+        test->waitingAlarm = false;
+#endif
+#ifdef DEBUG
+        //Disable cursive mode if still enabled
+        endwin();
+        cout << "\nSIGALRM INTERCEPTED." << endl;
+#endif
+    }
 }
+
 
 /**
  * @return int
  */
 int main() {
 #ifdef TEST
-    Test *test = new Test();
     test->executeTestSuite();
     delete test;
 #endif
     // Registering all 22 signal of POSIX
-    for(int i = 0 ; i<=220; i++){
+    for(int i = 0 ; i<=22; i++){
         signal(i, Main::signalHandler);
     }
     jmp_buf buf;
@@ -73,7 +109,7 @@ int main() {
         }
     } catch (...) {
 #ifdef DEBUG
-        cout << "Exception catched" << endl;
+        cout << "Exception catch" << endl;
 #endif
         if (mainClass != NULL) delete mainClass;
         mainClass = new Main();

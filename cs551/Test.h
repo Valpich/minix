@@ -29,6 +29,7 @@ public:
 
     void executeTestSuite();
 
+    bool waitingAlarm;
 private:
 
     void executeTest1();

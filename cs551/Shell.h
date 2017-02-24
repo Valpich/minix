@@ -27,6 +27,15 @@
 #include "CommandFinder.h"
 #include "FileManager.h"
 
+#define TAB_PRESSED 9
+#define ENTER_PRESSED 10
+#define DOWN_ARROW_PRESSED 258
+#define UP_ARROW_PRESSED 259
+#define LEFT_ARROW_PRESSED 260
+#define RIGHT_ARROW_PRESSED 261
+#define DELETE_PRESSED 127
+#define ESC_PRESSED 27
+
 using namespace std;
 
 class Shell {
@@ -70,6 +79,15 @@ public:
 
 private: 
     Profile * profile;
+    Command * command;
+public:
+    static const string &getName();
+
+    Command *getCommand() const;
+
+    void setCommand(Command *command);
+
+private:
     History * history;
     vector<Command> * commandList;
     CommandFinder * commandFinder;

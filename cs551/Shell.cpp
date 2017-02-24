@@ -16,15 +16,15 @@ const string Shell::name = "SHELL NAME";
 /**
  * @return Profile
  */
-Profile * Shell::getProfile() {
+Profile *Shell::getProfile() {
     return profile;
 }
 
 /**
  * @param value
  */
-void Shell::setProfile(Profile * value) {
-    if(profile != NULL){
+void Shell::setProfile(Profile *value) {
+    if (profile != NULL) {
         delete profile;
         profile = NULL;
     }
@@ -34,15 +34,15 @@ void Shell::setProfile(Profile * value) {
 /**
  * @return History
  */
-History * Shell::getHistory() {
+History *Shell::getHistory() {
     return history;
 }
 
 /**
  * @param value
  */
-void Shell::setHistory(History * value) {
-    if(history != NULL){
+void Shell::setHistory(History *value) {
+    if (history != NULL) {
         delete history;
         history = NULL;
     }
@@ -52,15 +52,15 @@ void Shell::setHistory(History * value) {
 /**
  * @return vector<Command>
  */
-vector<Command> * Shell::getCommandList() {
-	return commandList;
+vector<Command> *Shell::getCommandList() {
+    return commandList;
 }
 
 /**
  * @param value
  */
-void Shell::setCommandList(vector<Command> * value) {
-    if(commandList != NULL){
+void Shell::setCommandList(vector<Command> *value) {
+    if (commandList != NULL) {
         delete commandList;
         commandList = NULL;
     }
@@ -70,24 +70,43 @@ void Shell::setCommandList(vector<Command> * value) {
 /**
  * @return CommandFinder
  */
-CommandFinder * Shell::getCommandFinder() {
+CommandFinder *Shell::getCommandFinder() {
     return commandFinder;
 }
 
 /**
  * @param value
  */
-void Shell::setCommandFinder(CommandFinder * value) {
-    if(commandFinder != NULL){
+void Shell::setCommandFinder(CommandFinder *value) {
+    if (commandFinder != NULL) {
         delete commandFinder;
         commandFinder = NULL;
     }
     commandFinder = value;
 }
 
+const string &Shell::getName() {
+    return name;
+}
+
+Command *Shell::getCommand() const {
+    return command;
+}
+
+void Shell::setCommand(Command *value) {
+    if (command!= NULL) {
+        delete command;
+        command = NULL;
+    }
+    command = value;
+}
+
+
 bool Shell::run() {
-    bool scanning = true;
-    while(scanning){
+    bool exit = false;
+    while (!exit) {
+        bool scanning = true;
+        while (scanning) {
             int c;
             initscr();    /* Start curses mode */
             //One-character-a-time.
@@ -96,48 +115,114 @@ bool Shell::run() {
             noecho();
             //Special keys. In order to capture special keystrokes like Backspace, Delete and the four arrow keys by getch()
             keypad(stdscr, TRUE);
-            cout << "Please, enter the command: " << '\r'<< endl;
-            string commandLine ="";
-            while (c != 10) { // Enter pressed
+            cout << "Please, enter the command: " << '\r' << endl;
+            string commandLine = "";
+            bool suggestingMode = false;
+            int x, y;
+            while (scanning) {
                 c = getch();
-                if (c == 9) { // Tab pressed
-                    //TODO: Auto complete
+                switch (c) {
+                    case ESC_PRESSED:
+                        suggestingMode = false;
+                        scanning = false;
+                        exit = true;
 #ifdef DEBUG
-                    cout << "Tab pressed" << '\r' << endl;
+                        cout << "Esc pressed" << '\r' << endl;
 #endif
-                } else {
-                    if (c != 10) { // We didn't scan the enter pressed
-                        char cToChar = static_cast<char>(c);
-                        commandLine += cToChar;
-                    }
+                        break;
+                    case ENTER_PRESSED:
+                        suggestingMode = false;
+                        scanning = false;
 #ifdef DEBUG
-                    cout << static_cast<char>(c) << " pressed" << '\r'<< endl;
+                        cout << "Enter pressed" << '\r' << endl;
 #endif
+                        break;
+                    case TAB_PRESSED:
+                        //TODO: Auto complete
+                        suggestingMode = true;
+#ifdef DEBUG
+                        cout << "Tab pressed" << '\r' << endl;
+#endif
+                        break;
+                    case UP_ARROW_PRESSED:
+                        if (suggestingMode) {
+#ifdef DEBUG
+                            cout << "Find previous suggestion" << '\r' << endl;
+#endif
+                        }
+                        break;
+                    case DOWN_ARROW_PRESSED:
+                        if (suggestingMode) {
+#ifdef DEBUG
+                            cout << "Find next suggestion" << '\r' << endl;
+#endif
+                        }
+                        break;
+                    case LEFT_ARROW_PRESSED:
+                        suggestingMode = false;
+                        //TODO: Go to the left if possible
+#ifdef DEBUG
+                        cout << "Left arrow pressed" << '\r' << endl;
+                        cout << commandLine << flush;
+#endif
+                        break;
+                    case RIGHT_ARROW_PRESSED:
+                        suggestingMode = false;
+                        //TODO: Go to the right if possible
+#ifdef DEBUG
+                        cout << "Right arrow pressed" << '\r' << endl;
+                        cout << commandLine << flush;
+#endif
+                        break;
+                    case DELETE_PRESSED:
+                        suggestingMode = false;
+                        //TODO: Delete current char if possible
+#ifdef DEBUG
+                        cout << "Delete pressed" << '\r' << endl;
+                        cout << commandLine << flush;
+#endif
+                        break;
+                    default:
+                        suggestingMode = false;
+#ifdef DEBUG
+                        cout << static_cast<char>(c) << " char pressed" << '\r' << endl;
+                        cout << c << " int pressed" << '\r' << endl;
+#endif
+                        if (c >= 32 && c <= 127) {// The first ascii char
+                            char cToChar = static_cast<char>(c);
+                            commandLine += cToChar;
+                            cout << commandLine << flush;
+                        }
+                        break;
                 }
                 cbreak();
             }
-            scanning = false;
             endwin();
+            if(!exit) {
 #ifdef DEBUG
-            cout << "Scan of "<< commandLine <<"done!" << '\r'<< endl;
+                cout << "Scan of " << commandLine << " done!" << '\r' << endl;
 #endif
-        // TODO: Call the command line before deleting
+                // TODO: Get the command and set it as the Command value in Shell
+                // TODO: Execute the command from command
+            }
+        }
     }
     return true;
 }
 
-Shell::Shell(void){
+Shell::Shell(void) {
     profile = new Profile();
     history = new History();
+    command = NULL;
     commandList = NULL;
     commandFinder = NULL;
 }
 
-Shell::~Shell(void){
+Shell::~Shell(void) {
 #ifdef DEBUG
     cout << "Deleting profile in shell" << endl;
 #endif
-    if(profile != NULL){
+    if (profile != NULL) {
         delete profile;
         profile = NULL;
     }
@@ -145,7 +230,7 @@ Shell::~Shell(void){
     cout << "profile deleted in shell" << endl;
     cout << "Deleting history in shell" << endl;
 #endif
-    if(history != NULL){
+    if (history != NULL) {
         delete history;
         history = NULL;
     }
@@ -153,7 +238,7 @@ Shell::~Shell(void){
     cout << "history deleted in shell" << endl;
     cout << "Deleting commandList in shell" << endl;
 #endif
-    if(commandList != NULL){
+    if (commandList != NULL) {
         delete commandList;
         commandList = NULL;
     }
@@ -161,11 +246,19 @@ Shell::~Shell(void){
     cout << "commandList deleted in shell" << endl;
     cout << "Deleting commandFinder in shell" << endl;
 #endif
-    if(commandFinder != NULL){
+    if (commandFinder != NULL) {
         delete commandFinder;
         commandFinder = NULL;
     }
 #ifdef DEBUG
     cout << "commandFinder deleted in shell" << endl;
+    cout << "Deleting command in shell" << endl;
+#endif
+    if (command != NULL) {
+        delete command;
+        command = NULL;
+    }
+#ifdef DEBUG
+    cout << "command deleted in shell" << endl;
 #endif
 }

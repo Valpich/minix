@@ -1,1 +1,1 @@
-clang++ -std=c++11 -stdlib=libc++ -lcurses -D MINIX -D DEBUG *.cpp -o main
+clang++ -std=c++11 -stdlib=libc++ -lcurses -D MINIX -D DEBUG -D TEST *.cpp -o main
