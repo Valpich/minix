@@ -11,7 +11,7 @@
  * Command implementation
  */
 
-#define TEST 1
+bool Command::alarmEnabled;
 
 /**
  * @return string
@@ -111,8 +111,10 @@ string Command::execute() {
 
 void Command::executeWithExecve() {
     cout << "Begin of execve with code " << endl;
-    signal(SIGALRM, Main::signalHandler);
-    alarm(5);
+    if(Command::alarmEnabled) {
+        signal(SIGALRM, Main::signalHandler);
+        alarm(5);
+    }
     if ((pid = fork()) ==-1) {
         perror("fork error");
     } else if (pid == 0){
@@ -205,4 +207,12 @@ pid_t Command::getPid() const {
 
 void Command::setPid(pid_t pid) {
     Command::pid = pid;
+}
+
+bool Command::isAlarmEnabled() {
+    return alarmEnabled;
+}
+
+void Command::setAlarmEnabled(bool alarmEnabled) {
+    Command::alarmEnabled = alarmEnabled;
 }

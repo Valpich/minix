@@ -46,7 +46,7 @@ private:
     string * folderPaths;
     Profile * profile;
 
-    vector<string> * parseProfileContent();
+    vector<string> * parseProfilePathContent();
     vector<string> * parseLinePath(string line);
     string * validateToken(const string &token);
 

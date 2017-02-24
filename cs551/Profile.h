@@ -48,6 +48,8 @@ private:
     string * path;
     vector<string> * content;
     FileManager * fileManager;
+
+    void setAlarmStatus();
 };
 
 #endif //_PROFILE_H

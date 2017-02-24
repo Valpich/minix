@@ -52,7 +52,7 @@ void CommandFinder::setProfile(Profile *value) {
  * @return vector<Command>
  */
 void CommandFinder::findAllCommands(vector<Command *> * commands) {
-    vector<string> *paths = parseProfileContent();
+    vector<string> *paths = parseProfilePathContent();
 #ifdef DEBUG
     cout << "Profile content parsed in find all commands";
 #endif
@@ -87,7 +87,7 @@ void CommandFinder::findAllCommands(vector<Command *> * commands) {
     }
 }
 
-vector<string> *CommandFinder::parseProfileContent() {
+vector<string> *CommandFinder::parseProfilePathContent() {
     vector<string> *paths = new vector<string>();
     if (profile != NULL) {
 #ifdef DEBUG

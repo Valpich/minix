@@ -66,6 +66,10 @@ public:
 
     void setPid(pid_t pid);
 
+    static bool isAlarmEnabled();
+
+    static void setAlarmEnabled(bool alarmEnabled);
+
 private:
     string * path;
     string * name;
@@ -73,6 +77,8 @@ private:
     string * params;
 
     pid_t pid;
+
+    static bool alarmEnabled;
 
     const char *  generateFileName();
     char * const * generateParams();
