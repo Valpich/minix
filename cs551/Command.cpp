@@ -11,18 +11,15 @@
  * Command implementation
  */
 
+/**
+ * The static attribute representing if the alarm option is enabled
+ */
 bool Command::alarmEnabled;
 
-/**
- * @return string
- */
 string * Command::getPath() {
     return path;
 }
 
-/**
- * @param value
- */
 void Command::setPath(string * value) {
     if(path != NULL){
         delete path;
@@ -31,16 +28,10 @@ void Command::setPath(string * value) {
     path = value;
 }
 
-/**
- * @return string
- */
 string * Command::getName() {
     return name;
 }
 
-/**
- * @param value
- */
 void Command::setName(string * value) {
     if(name != NULL){
         delete name;
@@ -49,16 +40,10 @@ void Command::setName(string * value) {
 	name = value;
 }
 
-/**
- * @return string
- */
 string * Command::getEnv() {
     return env;
 }
 
-/**
- * @param value
- */
 void Command::setEnv(string * value) {
     if(env != NULL){
         delete env;
@@ -67,16 +52,26 @@ void Command::setEnv(string * value) {
     env = value;
 }
 
-/**
- * @return string
- */
 string * Command::getParams() {
     return params;
 }
 
-/**
- * @param value
- */
+pid_t Command::getPid() const {
+    return pid;
+}
+
+void Command::setPid(pid_t pid) {
+    Command::pid = pid;
+}
+
+bool Command::isAlarmEnabled() {
+    return alarmEnabled;
+}
+
+void Command::setAlarmEnabled(bool alarmEnabled) {
+    Command::alarmEnabled = alarmEnabled;
+}
+
 void Command::setParams(string * value) {
     if(params != NULL){
         delete params;
@@ -86,10 +81,40 @@ void Command::setParams(string * value) {
 }
 
 string Command::execute() {
+    // If we have a name and an environment
     if(name != NULL && env != NULL){
+        // If the environment is not empty
         if(!(*env).empty()) {
-            string cmd = *env + "|" + *name + " " + *params;
+            string cmd;
+            // If there is parameters
+            if(params!=NULL){
+                // We create the command
+                cmd = *env + "|" + *name + " " + *params;
+            } else{
+                cmd = *env + "|" + *name;
+            }
             array<char, 128> buffer;
+            string result;
+            // We create a pipe process to save a shared_ptr of FILE
+            shared_ptr<FILE> pipe(popen(cmd.c_str(), "r"), pclose);
+            if (!pipe) throw runtime_error("popen() failed!");
+            // We copy the content of the command output from the buffer to the result string
+            while (!feof(pipe.get())) {
+                if (fgets(buffer.data(), 128, pipe.get()) != NULL)
+                    result += buffer.data();
+            }
+#ifdef DEBUG
+            cout << result << endl;
+#endif
+            // We return the result
+            return result;
+        } else{
+            string cmd;
+            if(params!=NULL){
+                cmd = *name + " " + *params;
+            } else{
+                cmd = *name;
+            }            array<char, 128> buffer;
             string result;
             shared_ptr<FILE> pipe(popen(cmd.c_str(), "r"), pclose);
             if (!pipe) throw runtime_error("popen() failed!");
@@ -104,6 +129,7 @@ string Command::execute() {
         }
 
     }
+    // If failed
     return NULL;
 }
 
@@ -199,20 +225,4 @@ Command::~Command(void){
 #ifdef DEBUG
     cout << "params deleted in command" << endl;
 #endif
-}
-
-pid_t Command::getPid() const {
-    return pid;
-}
-
-void Command::setPid(pid_t pid) {
-    Command::pid = pid;
-}
-
-bool Command::isAlarmEnabled() {
-    return alarmEnabled;
-}
-
-void Command::setAlarmEnabled(bool alarmEnabled) {
-    Command::alarmEnabled = alarmEnabled;
 }

@@ -22,67 +22,113 @@
 using namespace std;
 
 class Command {
-public: 
-    
+public:
+
+
+    /**
+     * Construct a Command instance
+     */
     Command();
 
+    /**
+     * Destroy a Command instance
+     */
     ~Command();
 
-    string * getPath();
+    /**
+     * @return The path string
+     */
+    string *getPath();
+
+    /**
+     * Set the path string and remove the previous one if exists
+     * @param value The new value of the path
+     */
+    void setPath(string *value);
+
+    /**
+     * @return The name string
+     */
+    string *getName();
+
+    /**
+     * Set the name string and remove the previous one if exists
+     * @param value The new value of the name
+     */
+    void setName(string *name);
+
+    /**
+     * @return The env string
+     */
+    string *getEnv();
 
     /**
      * @param value
      */
-    void setPath(string * value);
-
-    string * getName();
-    
-    /**
-     * @param value
-     */
-    void setName(string * name);
-
-    string * getEnv();
+    void setEnv(string *name);
 
     /**
-     * @param value
+     * @return The params string
      */
-    void setEnv(string * name);
-
-    string * getParams();
+    string *getParams();
 
     /**
-     * @param value
+     * Set the params string and remove the previous one if exists
+     * @param value The new value of the params
      */
-    void setParams(string * params);
-
-    string execute();
-
-    void executeWithExecve();
-
-    friend ostream &operator<<(ostream &os, const Command &command);
+    void setParams(string *params);
 
     pid_t getPid() const;
 
+    /**
+     * Set the new pid value of the executed command
+     * @param pid The new value of the pid
+     */
     void setPid(pid_t pid);
 
+    /**
+     * @return If the the alarm is enable return true else false
+     */
     static bool isAlarmEnabled();
 
+    /**
+     * Set the new alarmEnabled value to say if a command should use an alarm or not
+     * @param alarmEnabled The new value of the alarmEnabled
+     */
     static void setAlarmEnabled(bool alarmEnabled);
 
+    /**
+     * Execute a the command with popen if possible and return
+     * @return th
+     */
+    string execute();
+
+    /**
+     * Execute a the command with popen if possible and return the output of the command
+     * @return
+     */
+    void executeWithExecve();
+
+    /**
+     * Overload the ostream operator to display as a string a Command
+     */
+    friend ostream &operator<<(ostream &os, const Command &command);
+
 private:
-    string * path;
-    string * name;
-    string * env;
-    string * params;
+    string *path;
+    string *name;
+    string *env;
+    string *params;
 
     pid_t pid;
 
     static bool alarmEnabled;
 
-    const char *  generateFileName();
-    char * const * generateParams();
-    char * const * generateEnv();
+    const char *generateFileName();
+
+    char *const *generateParams();
+
+    char *const *generateEnv();
 };
 
 #endif //_COMMAND_H
