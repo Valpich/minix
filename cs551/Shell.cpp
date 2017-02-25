@@ -1,6 +1,5 @@
-/**
- * Project 1 Develop your own shell
- * @author Jules Baud / Valentin Pichavant / Antoine Regnier
+
+/** @author Jules Baud / Valentin Pichavant / Antoine Regnier
  * @version 1.0
  */
 
@@ -108,6 +107,7 @@ bool Shell::run() {
         bool scanning = true;
         while (scanning) {
             int c;
+	    string ch;
             initscr();    /* Start curses mode */
             //One-character-a-time.
             cbreak();
@@ -163,6 +163,10 @@ bool Shell::run() {
                         //TODO: Go to the left if possible
 #ifdef DEBUG
                         cout << "Left arrow pressed" << '\r' << endl;
+                        if(!commandLine.empty()){
+                        ch+= commandLine.back();
+                        commandLine = commandLine.substr(0,commandLine.size()-1);
+	                }	
                         cout << commandLine << flush;
 #endif
                         break;
@@ -179,7 +183,10 @@ bool Shell::run() {
                         //TODO: Delete current char if possible
 #ifdef DEBUG
                         cout << "Delete pressed" << '\r' << endl;
-                        cout << commandLine << flush;
+
+			if (!commandLine.empty())
+			commandLine = commandLine.substr(0,commandLine.size()-1);	
+			cout << commandLine << flush;
 #endif
                         break;
                     default:
@@ -191,6 +198,10 @@ bool Shell::run() {
                         if (c >= 32 && c <= 127) {// The first ascii char
                             char cToChar = static_cast<char>(c);
                             commandLine += cToChar;
+
+			    reverse(ch.begin(),ch.end()); 
+                            ch.erase(0,1);
+			    commandLine.append(ch);
                             cout << commandLine << flush;
                         }
                         break;

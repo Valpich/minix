@@ -33,7 +33,7 @@
 #define UP_ARROW_PRESSED 259
 #define LEFT_ARROW_PRESSED 260
 #define RIGHT_ARROW_PRESSED 261
-#define DELETE_PRESSED 127
+#define DELETE_PRESSED 263 
 #define ESC_PRESSED 27
 
 using namespace std;
