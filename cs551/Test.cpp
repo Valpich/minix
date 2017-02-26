@@ -184,18 +184,25 @@ void Test::executeTest8() {
     commandFinder->setProfile(profile);
     vector<Command *> *commands = new vector<Command *>();
     commandFinder->findAllCommands(commands);
-    cout << "The finded commands are" << endl;
+    cout << "The found commands are" << endl;
     for (Command *command : *commands) {
         cout << *command << endl;
     }
-    cout << "End of the commands are" << endl;
+    cout << "End of the found commands" << endl;
     delete commandFinder;
     cout << "End test 8 !! " << endl;
 }
 
 void Test::executeTest9() {
+    cout << "Test 9 started !! " << endl;
     History *history = new History();
     vector<Command *> *commands = new vector<Command *>();
     history->getCommandHistory(commands);
+    cout << "This is the list of history command found" << endl;
+    for(Command * command : *commands){
+        cout << *command <<endl;
+    }
+    cout << "End of the found command" << endl;
+    cout << "End test 9 !! " << endl;
     delete history;
 }

@@ -58,39 +58,42 @@ void History::logCommand(Command *command) {
     }
 }
 
-void History::getCommandHistory(vector<Command *> *commands){
+void History::getCommandHistory(vector<Command *> *commands) {
     char buffer[300];
     char *answer = getcwd(buffer, sizeof(buffer));
-    string s_cwd;
-    if (answer){
-        s_cwd = answer;
-        remove(s_cwd.begin(), s_cwd.end(), ' ');
+    string currentPathToString;
+    if (answer) {
+        currentPathToString = answer;
+        remove(currentPathToString.begin(), currentPathToString.end(), ' ');
     }
-    cout <<"Current path is " << s_cwd <<endl;
-    /*
+#ifdef DEBUG
+    cout << "Current path is " << currentPathToString << endl;
+#endif
     if (commands != NULL) {
-        getcwd(cCurrentPath, sizeof(cCurrentPath));
-      vector<string> *paths = parseProfilePathContent();
+        if (currentPathToString.size() != 0) {
+            string pathOfHistory = currentPathToString;
+            pathOfHistory+="/";
+            pathOfHistory+=*path;
+            vector<string> paths = fileManager->readFileToString(pathOfHistory);
 #ifdef DEBUG
-        cout << "History content parsed in find all commands";
+            cout << "History content parsed in find all commands";
 #endif
-        if (!paths->empty()) {
-            for (string line: *paths) {
+            if (!paths.empty()) {
+                for (string line: paths) {
 #ifdef DEBUG
-                cout << "One command line was " << line << endl;
+                    cout << "One history line was " << line << endl;
 #endif
-
-                            Command *command = new Command();
-                           // command->setPath(new string(line));
-                           // command->setName(new string(file));
-                            commands->push_back(command);
-                        }
-                    }
+                    Command *command = new Command();
+                    command->setPath(new string(currentPathToString));
+                    command->setName(new string(line));
+                    commands->push_back(command);
                 }
-    }else{
-        cout <<"You may have altered the source code, commands is not supposed to be NULL vector !"<<endl;
+            }
+        }
+    } else {
+        cout << "You may have altered the source code, commands is not supposed to be NULL vector !" << endl;
     }
-    */
+
 }
 
 ostream &operator<<(ostream &os, const History &history) {
