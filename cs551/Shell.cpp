@@ -103,11 +103,17 @@ void Shell::setCommand(Command *value) {
 
 
 bool Shell::run() {
+    History *history = new History();
+    vector<Command *> *commands = new vector<Command *>();
+    history->getCommandHistory(commands); 
+    vector<string> substrings;
     bool exit = false;
     while (!exit) {
         bool scanning = true;
         while (scanning) {
             int c;
+	    // i is used to iterate throught the substrings
+	    int i = 1;
             string ch;
             initscr();    /* Start curses mode */
             //One-character-a-time.
@@ -119,6 +125,7 @@ bool Shell::run() {
             cout << "Please, enter the command: " << '\r' << endl;
             string commandLine = "";
             bool suggestingMode = false;
+          //  int x, y;
             while (scanning) {
                 c = getch();
                 switch (c) {
@@ -144,20 +151,52 @@ bool Shell::run() {
                         //TODO: Auto complete
                         suggestingMode = true;
 #ifdef DEBUG
-                        cout << "Tab pressed" << '\r' << endl;
+                    for(Command * command : *commands){
+                    string value = *command->getName();
+		    cout << "this is value : " << value << endl;
+		    cout << "this is commandLine : " << commandLine << endl; 
+                     if(value.find(commandLine) != string::npos){
+                        cout << "new value found - adding " <<endl;
+                        cout << value <<endl;
+                        // checking if already there 
+			if(find(substrings.begin(), substrings.end(), value) !=substrings.end()) {
+ 			   /* v contains x */
+			cout << "key already present" <<endl;
+			} else {
+   			 /* v does not contain x */
+			substrings.push_back(value);
+			}
+                        //substrings.push_back(value);
+			//commandLine.assign(value);
+			}
+
+                    }
+                     commandLine.assign(substrings[0]); 
+		     cout << " this is the value assigned " << commandLine << endl;
+ 		     cout << "Tab pressed" << '\r' << endl;
 #endif
                         break;
                     case UP_ARROW_PRESSED:
                         if (suggestingMode) {
 #ifdef DEBUG
-                            cout << "Find previous suggestion" << '\r' << endl;
+                     if(i > 0 ){
+			commandLine.assign(substrings[i-1]);
+			i = i-1;
+		cout << "new suggestion found : " << commandLine << endl;   
+			}       
+		cout << "Find previous suggestion" << '\r' << endl;
 #endif
                         }
                         break;
                     case DOWN_ARROW_PRESSED:
                         if (suggestingMode) {
 #ifdef DEBUG
-                            cout << "Find next suggestion" << '\r' << endl;
+                        if(i < substrings.size()){
+			commandLine.assign(substrings[i]);
+			i = i+1;
+                        cout << "new suggestion found " << commandLine << endl;
+			}   
+			 cout << "Find next suggestion" << '\r' << endl;
 #endif
                         }
                         break;
@@ -175,7 +214,7 @@ bool Shell::run() {
                     case RIGHT_ARROW_PRESSED:
                         suggestingMode = false;
 #ifdef DEBUG
-                        cout << "Right arrow pressed" << '\r' << endl;
+                       cout << "Right arrow pressed" << '\r' << endl;
                         if (!ch.empty()) {
                             reverse(ch.begin(), ch.end());
                             commandLine += ch.at(0);
