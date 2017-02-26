@@ -25,12 +25,28 @@ using namespace std;
 class CommandManager {
 public:
 
+    /**
+     * Construct a CommandManager instance
+     */
     CommandManager();
 
+    /**
+     * Destroy a CommandManager instance
+     */
     ~CommandManager();
 
+    /**
+     * Execute a list of command using Popen with a wait to the threads to join
+     * CANNOT BE EXECUTED ON MINIX BECAUSE "pthread.h" IS NOT IMPLEMENTED, WORKS ON UNIX BASED OS
+     * @param commands The list of commands to be executed
+     */
     void executeInParallelWithWaitAndPopen(vector<Command *> commands);
 
+    /**
+     * Execute a list of command using Popen without waiting the threads to join
+     * CANNOT BE EXECUTED ON MINIX BECAUSE "pthread.h" IS NOT IMPLEMENTED, WORKS ON UNIX BASED OS
+     * @param commands The list of commands to be executed
+     */
     void executeInParallelWithoutWaitAndPopen(vector<Command *> commands);
 
 private: 

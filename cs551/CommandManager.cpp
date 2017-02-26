@@ -11,8 +11,8 @@
  * CommandManager implementation
  */
 
-
 void CommandManager::executeInParallelWithWaitAndPopen(vector<Command *> commands) {
+    //If we are not on minix
 #ifndef MINIX
     vector<thread> threads;
     for (Command * command: commands) {
@@ -41,6 +41,7 @@ void CommandManager::executeInParallelWithWaitAndPopen(vector<Command *> command
 }
 
 void CommandManager::executeInParallelWithoutWaitAndPopen(vector<Command *> commands) {
+    //If we are not on minix
 #ifndef MINIX
     for (Command * command: commands) {
         shared_ptr<Command> ptr_command(command);

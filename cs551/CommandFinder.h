@@ -25,6 +25,7 @@ public:
      * Construct a CommandFinder instance
      */
     CommandFinder();
+
     /**
      * Destroy a CommandFinder instance
      */
