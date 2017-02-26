@@ -93,7 +93,7 @@ Command *Shell::getCommand() const {
 }
 
 void Shell::setCommand(Command *value) {
-    if (command!= NULL) {
+    if (command != NULL) {
         delete command;
         command = NULL;
     }
@@ -107,7 +107,7 @@ bool Shell::run() {
         bool scanning = true;
         while (scanning) {
             int c;
-	    string ch;
+            string ch;
             initscr();    /* Start curses mode */
             //One-character-a-time.
             cbreak();
@@ -163,10 +163,10 @@ bool Shell::run() {
                         //TODO: Go to the left if possible
 #ifdef DEBUG
                         cout << "Left arrow pressed" << '\r' << endl;
-                        if(!commandLine.empty()){
-                        ch+= commandLine.back();
-                        commandLine = commandLine.substr(0,commandLine.size()-1);
-	                }	
+                        if (!commandLine.empty()) {
+                            ch += commandLine.back();
+                            commandLine = commandLine.substr(0, commandLine.size() - 1);
+                        }
                         cout << commandLine << flush;
 #endif
                         break;
@@ -184,9 +184,20 @@ bool Shell::run() {
 #ifdef DEBUG
                         cout << "Delete pressed" << '\r' << endl;
 
-			if (!commandLine.empty())
-			commandLine = commandLine.substr(0,commandLine.size()-1);	
-			cout << commandLine << flush;
+                        if (!commandLine.empty())
+                            commandLine = commandLine.substr(0, commandLine.size() - 1);
+                        cout << commandLine << flush;
+#endif
+                        break;
+                    case DELETE_BIS_PRESSED:
+                        suggestingMode = false;
+                        //TODO: Delete current char if possible
+#ifdef DEBUG
+                        cout << "Delete pressed" << '\r' << endl;
+
+                        if (!commandLine.empty())
+                            commandLine = commandLine.substr(0, commandLine.size() - 1);
+                        cout << commandLine << flush;
 #endif
                         break;
                     default:
@@ -199,9 +210,9 @@ bool Shell::run() {
                             char cToChar = static_cast<char>(c);
                             commandLine += cToChar;
 
-			    reverse(ch.begin(),ch.end()); 
-                            ch.erase(0,1);
-			    commandLine.append(ch);
+                            reverse(ch.begin(), ch.end());
+                            ch.erase(0, 1);
+                            commandLine.append(ch);
                             cout << commandLine << flush;
                         }
                         break;
@@ -209,7 +220,7 @@ bool Shell::run() {
                 cbreak();
             }
             endwin();
-            if(!exit) {
+            if (!exit) {
 #ifdef DEBUG
                 cout << "Scan of " << commandLine << " done!" << '\r' << endl;
 #endif
