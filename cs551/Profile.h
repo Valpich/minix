@@ -66,6 +66,11 @@ public:
      */
     void setFileManager(FileManager * value);
 
+    /**
+     * @return The default content of the profile
+     */
+    vector<string> *getDefaultContent();
+    
 private: 
     string * path;
     vector<string> * content;

@@ -54,6 +54,14 @@ FileManager *Profile::getFileManager() {
     return fileManager;
 }
 
+vector<string>* Profile::getDefaultContent() {
+    vector<string> *defaultContent = new vector<string>();
+    for (string line : defaultProfile) {
+        defaultContent->push_back(line);
+    }
+    return defaultContent;
+}
+
 Profile::Profile(void) {
     // We create a new file manager
     fileManager = new FileManager();

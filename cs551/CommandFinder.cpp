@@ -72,15 +72,11 @@ void CommandFinder::findAllCommands(vector<Command *> *commands) {
         } else {
             // We regenerate the user profile from default and we retry one time to parse it
             // We exit with error code 2 if the program is unable to recover
-            vector<string> *defaultContent = new vector<string>();
-            for (string line : Profile::defaultProfile) {
-                defaultContent->push_back(line);
-            }
             FileManager * fileManager = new FileManager();
-            fileManager->replaceFileContent(*profile->getPath(), *defaultContent);
+            fileManager->replaceFileContent(*profile->getPath(), *profile->getDefaultContent());
             cout << "Profile was not found or cannot be opened" << endl;
             cout << "Default profile used, old profile replaced" << endl;
-            profile->setContent(defaultContent);
+            profile->setContent(profile->getDefaultContent());
             delete fileManager;
             if(retry){
                 retry = false;

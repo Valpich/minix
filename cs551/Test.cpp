@@ -167,7 +167,7 @@ void Test::executeTest7() {
     command->setParams(new string("-al"));
     command->executeWithExecve();
     delete command;
-   // while(waitingAlarm);
+    while(waitingAlarm);
     cout << "End test seven !! " << endl;
 }
 
