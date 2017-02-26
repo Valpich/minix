@@ -18,32 +18,54 @@ using namespace std;
 class Profile {
 public:
 
+    /**
+     * A string array which represent the default profile
+     */
     static const char *defaultProfile[];
 
+    /**
+     * Construct a Profile instance
+     */
     Profile();
 
+    /**
+     * Destroy a Profile instance
+     */
     ~Profile();
 
-    string * getPath();
-    
     /**
-     * @param value
+     * @return The profile path string
+     */
+    string * getPath();
+
+    /**
+     * Set the path string of the profile and remove the previous one if exists
+     * @param value The new value of profile path
      */
     void setPath(string * value);
-    
-    vector<string> * getContent();
-    
+
     /**
-     * @param value
+      * @return The profile content as an array of string (one string per line)
+      */
+    vector<string> * getContent();
+
+    /**
+     * Set the content of the profile and remove the previous one if exists
+     * @param value The new value of the content
      */
     void setContent(vector<string> * value);
-    
+
     /**
-     * @param value
+     * @return The file manager of the profile
+     */
+    FileManager * getFileManager();
+
+    /**
+     * Set the file manager of the profile and remove the previous one if exists
+     * @param value The new value of the file manager
      */
     void setFileManager(FileManager * value);
-    
-    FileManager * getFileManager();
+
 private: 
     string * path;
     vector<string> * content;

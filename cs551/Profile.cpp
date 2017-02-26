@@ -12,23 +12,16 @@
  * Profile implementation
  */
 
-
 const char *Profile::defaultProfile[] =
         {"export PATH=",
          "export PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/pkg/sbin:/usr/pkg/bin",
          "export PATH=${PATH}:/usr/X11R7/bin:/usr/X11R6/bin:/usr/local/sbin:/usr/local/bin",
          "export ALARM=ON", "export HOST=\"$(hostname)\""};
 
-/**
- * @return string
- */
 string *Profile::getPath() {
     return path;
 }
 
-/**
- * @param value
- */
 void Profile::setPath(string *value) {
     if (path != NULL) {
         delete path;
@@ -37,16 +30,10 @@ void Profile::setPath(string *value) {
     path = value;
 }
 
-/**
- * @return string
- */
 vector<string> *Profile::getContent() {
     return content;
 }
 
-/**
- * @param value
- */
 void Profile::setContent(vector<string> *value) {
     if (content != NULL) {
         delete content;
@@ -55,9 +42,6 @@ void Profile::setContent(vector<string> *value) {
     content = value;
 }
 
-/**
- * @param value
- */
 void Profile::setFileManager(FileManager *value) {
     if (fileManager != NULL) {
         delete fileManager;
@@ -66,17 +50,17 @@ void Profile::setFileManager(FileManager *value) {
     fileManager = value;
 }
 
-/**
- * @return FileManager
- */
 FileManager *Profile::getFileManager() {
     return fileManager;
 }
 
 Profile::Profile(void) {
+    // We create a new file manager
     fileManager = new FileManager();
     path = new string(".profile");
+    // We try to read the profile
     vector<string> findProfile = fileManager->readFileToString(*path);
+    // If their is no profile then we use the default profile and try to replace the previous content by the default profile
     if (findProfile.empty()) {
         vector<string> *defaultContent = new vector<string>();
         for (string line : defaultProfile) {
@@ -84,20 +68,23 @@ Profile::Profile(void) {
         }
         fileManager->replaceFileContent(*path, *defaultContent);
         cout << "Profile was not found or cannot be opened" << endl;
-        cout << "Default profile used" << endl;
+        cout << "Default profile used, old profile replaced" << endl;
         content = defaultContent;
     } else {
+        // Else we get the found profile
         vector<string> *profile = new vector<string>();
         for (string line : findProfile) {
             profile->push_back(line);
         }
         content = profile;
     }
+    // We set up or not the alarm using the profile content
     setAlarmStatus();
 }
 
 void Profile::setAlarmStatus() {
     bool alarmFind = false;
+    // We try to find the alarm in the profile content for each line
     for (string line: *content) {
         size_t index = line.find("ALARM");
         if (index == string::npos) {
@@ -109,19 +96,23 @@ void Profile::setAlarmStatus() {
             cout << "ALARM line found at " << index << endl;
 #endif
             string alarmString = line.substr(index+5, line.size());
+            // If the value contains ON
             if(alarmString.find("ON")==1){
+                // If we have already find an alarm status we inform the user, the
                 if(alarmFind){
                     cout <<"Multiple definition detected of ALARM on the .profile file!"<<endl;
+                    cout <<"Last definition is used."<<endl;
                 }
 #ifdef DEBUG
                 cout << "ALARM line is ON ! " << endl;
 #endif
                 alarmFind = true;
                 Command::setAlarmEnabled(true);
-            }
-            if(alarmString.find("OFF") == 1){
+            }else if(alarmString.find("OFF") == 1){
+                // If we have already find an alarm status we inform the user, the
                 if(alarmFind) {
                     cout << "Multiple definition detected of ALARM on the .profile file!" << endl;
+                    cout <<"Last definition is used."<<endl;
                 }
 #ifdef DEBUG
                 cout << "ALARM line is OFF ! " << endl;
@@ -136,6 +127,7 @@ void Profile::setAlarmStatus() {
 #endif
         }
     }
+    // If we didn't find the alarm status, the alarm is activated by default
     if(!alarmFind){
         Command::setAlarmEnabled(true);
         cout << "Alarm status not found or corrupted on the .profile file, be sure to follow the following format ALARM=ON || ALARM=OFF" << endl;
