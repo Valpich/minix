@@ -12,6 +12,7 @@
 #include <vector>
 #include <dirent.h>
 #include <unistd.h>
+#include <ostream>
 
 #include "Command.h"
 #include "Profile.h"
@@ -58,6 +59,8 @@ public:
      * @param commands The vector used to contains all the commands
      */
     void findAllCommands(vector<Command *> * commands);
+
+    friend ostream &operator<<(ostream &os, const CommandFinder &finder);
 
 private: 
     string * folderPaths;

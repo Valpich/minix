@@ -51,14 +51,14 @@ void Shell::setHistory(History *value) {
 /**
  * @return vector<Command>
  */
-vector<Command> *Shell::getCommandList() {
+vector<Command*> *Shell::getCommandList() {
     return commandList;
 }
 
 /**
  * @param value
  */
-void Shell::setCommandList(vector<Command> *value) {
+void Shell::setCommandList(vector<Command*> *value) {
     if (commandList != NULL) {
         delete commandList;
         commandList = NULL;
@@ -246,12 +246,34 @@ Shell::Shell(void) {
     profile = new Profile();
     history = new History();
     command = NULL;
-    commandList = NULL;
-    commandFinder = NULL;
+    commandFinder = new CommandFinder();
+    commandFinder->setProfile(profile);
+    commandList = new vector<Command *> ();
+    commandFinder->findAllCommands(commandList);
+#ifdef DEBUG
+    cout<< "Command list in shell is :"<<endl;
+    for(Command *commandTmp : *commandList){
+        cout << *commandTmp <<endl;
+    }
+    cout<< "Profile content in shell is :"<<endl;
+    for(string stringTmp : *profile->getContent()){
+        cout<< stringTmp <<endl;
+    }
+#endif
+
 }
 
 Shell::~Shell(void) {
 #ifdef DEBUG
+    cout << "Deleting commandFinder in shell" << endl;
+#endif
+    if (commandFinder != NULL) {
+        delete commandFinder;
+        commandFinder = NULL;
+        profile = NULL;
+    }
+#ifdef DEBUG
+    cout << "commandFinder deleted in shell" << endl;
     cout << "Deleting profile in shell" << endl;
 #endif
     if (profile != NULL) {
@@ -276,14 +298,6 @@ Shell::~Shell(void) {
     }
 #ifdef DEBUG
     cout << "commandList deleted in shell" << endl;
-    cout << "Deleting commandFinder in shell" << endl;
-#endif
-    if (commandFinder != NULL) {
-        delete commandFinder;
-        commandFinder = NULL;
-    }
-#ifdef DEBUG
-    cout << "commandFinder deleted in shell" << endl;
     cout << "Deleting command in shell" << endl;
 #endif
     if (command != NULL) {

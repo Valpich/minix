@@ -139,6 +139,9 @@ void Command::executeWithExecve() {
     cout << "Begin of execve with code " << endl;
     if(Command::alarmEnabled) {
         signal(SIGALRM, Main::signalHandler);
+#ifdef DEBUG
+        cout << "ALARM STARTED" <<endl;
+#endif
         alarm(5);
     }
     if ((pid = fork()) ==-1) {

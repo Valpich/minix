@@ -82,13 +82,13 @@ public:
     /**
      * @return The available command list of commands used by the shell
      */
-    vector<Command> * getCommandList();
+    vector<Command*> * getCommandList();
 
     /**
       * Set the coammd list and remove the previous one if exists
       * @param value The new value of the command list
       */
-    void setCommandList(vector<Command> * value);
+    void setCommandList(vector<Command*> * value);
 
     /**
      * @return The command finder used by the shell
@@ -126,7 +126,7 @@ private:
     Profile * profile;
     Command * command;
     History * history;
-    vector<Command> * commandList;
+    vector<Command *> * commandList;
     CommandFinder * commandFinder;
 };
 
