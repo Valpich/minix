@@ -20,12 +20,25 @@ using namespace std;
 class Main {
 public:
 
+    /**
+     * Construct a Main instance
+     */
     Main();
 
+    /**
+     * Desotry a Main instance
+     */
     ~Main();
 
+    /**
+     * Static method used to handle signals
+     * @param signum The signal number of the signal to be registred
+     */
     static void signalHandler(int signum);
 
+    /**
+     * @return The shell of the main
+     */
     Shell * getShell();
 
 private:

@@ -16,6 +16,9 @@ Test *test = new Test();
  * Main implementation
  */
 
+/**
+ * The main class of the program
+ */
 Main * mainClass = new Main();
 
 Main::Main(){
@@ -90,7 +93,7 @@ void Main::signalHandler(int signum) {
 
 
 /**
- * @return int
+ * @return int The return code of the program, should always be 0
  */
 int main() {
 #ifdef TEST
@@ -103,8 +106,11 @@ int main() {
     }
     jmp_buf buf;
     bool exit = false;
+    // Save the program state before running the shell
     setjmp(buf);
+    // We try to run the shell and we catch every possible exceptions to avoid crash
     try {
+        // While the user use the shell
         while (exit == false) {
             exit = mainClass->getShell()->run();
         }
@@ -112,8 +118,12 @@ int main() {
 #ifdef DEBUG
         cout << "Exception catch" << endl;
 #endif
+        // If the main class is not null then we delete the main class
         if (mainClass != NULL) delete mainClass;
+        // We create it back as a new one to avoid that the issue that caused the crash happen again
         mainClass = new Main();
+        // We restore the state of the program to the previous setjmp
         longjmp(buf, 1);
     }
+    return 0;
 }

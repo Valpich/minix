@@ -27,6 +27,9 @@ public:
 
     ~Test();
 
+    /**
+     * Execute all tests cases
+     */
     void executeTestSuite();
 
     bool waitingAlarm;
