@@ -41,53 +41,89 @@ using namespace std;
 class Shell {
 public:
 
+    /**
+     * A string array which represent name of the shell
+     */
     static const string name;
 
+    /**
+     * Construct a Shell instance
+     */
     Shell();
 
+    /**
+     * Destroy a Shell instance
+     */
     ~Shell();
 
-    Profile * getProfile();
-    
     /**
-     * @param value
+     * @return The profile used by the shell
+     */
+    Profile * getProfile();
+
+    /**
+     * Set the profile and remove the previous one if exists
+     * @param value The new value of the profile
      */
     void setProfile(Profile * value);
-    
+
+    /**
+     * @return The history used by the shell
+     */
     History * getHistory();
 
     /**
-     * @param value
-     */
+      * Set the history and remove the previous one if exists
+      * @param value The new value of the history
+      */
     void setHistory(History * value);
-    
+
+    /**
+     * @return The available command list of commands used by the shell
+     */
     vector<Command> * getCommandList();
-    
+
     /**
-     * @param value
-     */
+      * Set the coammd list and remove the previous one if exists
+      * @param value The new value of the command list
+      */
     void setCommandList(vector<Command> * value);
-    
-    CommandFinder * getCommandFinder();
-    
+
     /**
-     * @param value
+     * @return The command finder used by the shell
      */
+    CommandFinder * getCommandFinder();
+
+    /**
+      * Set the command finder and remove the previous one if exists
+      * @param value The new value of the command finder
+      */
     void setCommandFinder(CommandFinder * value);
 
+    /**
+     * @return The name of the shell
+     */
+    static const string &getName();
+
+    /**
+     * @return The command currently used by the shell
+     */
+    Command *getCommand() const;
+
+    /**
+      * Set the command and remove the previous one if exists
+      * @param value The new value of the command
+      */
+    void setCommand(Command *command);
+
+    /**
+     * @return The result of the running execution of the shell
+     */
     bool run();
 
 private: 
     Profile * profile;
     Command * command;
-public:
-    static const string &getName();
-
-    Command *getCommand() const;
-
-    void setCommand(Command *command);
-
-private:
     History * history;
     vector<Command> * commandList;
     CommandFinder * commandFinder;

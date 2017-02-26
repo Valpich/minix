@@ -71,6 +71,9 @@ private:
     vector<string> * content;
     FileManager * fileManager;
 
+    /**
+     * Utility method used to set if the shell uses or not an alarm of 5 second after starting a command
+     */
     void setAlarmStatus();
 };
 
