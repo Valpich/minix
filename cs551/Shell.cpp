@@ -153,27 +153,23 @@ bool Shell::run() {
 #ifdef DEBUG
                     for(Command * command : *commands){
                     string value = *command->getName();
-		    cout << "this is value : " << value << endl;
-		    cout << "this is commandLine : " << commandLine << endl; 
+		   // cout << "this is value : " << value << endl;
+		  //  cout << "this is commandLine : " << commandLine << endl; 
                      if(value.find(commandLine) != string::npos){
-                        cout << "new value found - adding " <<endl;
-                        cout << value <<endl;
+                    //    cout << "new value found - adding " <<endl;
+                     //   cout << value <<endl;
                         // checking if already there 
 			if(find(substrings.begin(), substrings.end(), value) !=substrings.end()) {
- 			   /* v contains x */
-			cout << "key already present" <<endl;
+		//	cout << "key already present" <<endl;
 			} else {
-   			 /* v does not contain x */
 			substrings.push_back(value);
 			}
-                        //substrings.push_back(value);
-			//commandLine.assign(value);
 			}
 
                     }
                      commandLine.assign(substrings[0]); 
-		     cout << " this is the value assigned " << commandLine << endl;
- 		     cout << "Tab pressed" << '\r' << endl;
+		//     cout << " this is the value assigned " << commandLine << endl;
+ 		//     cout << "Tab pressed" << '\r' << endl;
 #endif
                         break;
                     case UP_ARROW_PRESSED:
@@ -182,7 +178,7 @@ bool Shell::run() {
                      if(i > 0 ){
 			commandLine.assign(substrings[i-1]);
 			i = i-1;
-		cout << "new suggestion found : " << commandLine << endl;   
+	cout << endl <<"new suggestion found : " << commandLine << endl;   
 			}       
 		cout << "Find previous suggestion" << '\r' << endl;
 #endif
@@ -194,7 +190,7 @@ bool Shell::run() {
                         if(i < substrings.size()){
 			commandLine.assign(substrings[i]);
 			i = i+1;
-                        cout << "new suggestion found " << commandLine << endl;
+                        cout <<endl<< "new suggestion found " << commandLine << endl;
 			}   
 			 cout << "Find next suggestion" << '\r' << endl;
 #endif
