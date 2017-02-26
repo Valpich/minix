@@ -11,16 +11,10 @@
  * CommandFinder implementation
  */
 
-/**
- * @return string
- */
 string *CommandFinder::getFolderPaths() {
     return folderPaths;
 }
 
-/**
- * @param value
- */
 void CommandFinder::setFolderPaths(string *value) {
     if (folderPaths != NULL) {
         delete folderPaths;
@@ -29,17 +23,10 @@ void CommandFinder::setFolderPaths(string *value) {
     folderPaths = value;
 }
 
-
-/**
- * @return vector<string>
- */
 Profile *CommandFinder::getProfile() {
     return profile;
 }
 
-/**
- * @param value
- */
 void CommandFinder::setProfile(Profile *value) {
     if (profile != NULL) {
         delete profile;
@@ -48,42 +35,41 @@ void CommandFinder::setProfile(Profile *value) {
     profile = value;
 }
 
-/**
- * @return vector<Command>
- */
-void CommandFinder::findAllCommands(vector<Command *> * commands) {
-    vector<string> *paths = parseProfilePathContent();
+void CommandFinder::findAllCommands(vector<Command *> *commands) {
+    if (commands != NULL) {
+        vector<string> *paths = parseProfilePathContent();
 #ifdef DEBUG
-    cout << "Profile content parsed in find all commands";
+        cout << "Profile content parsed in find all commands";
 #endif
-    if(!paths->empty()){
-        for (string line: *paths) {
+        if (!paths->empty()) {
+            for (string line: *paths) {
 #ifdef DEBUG
-            cout << "One path is " << line << endl;
+                cout << "One path is " << line << endl;
 #endif
-            vector<string> * tempFolderFiles = new vector<string>();
-            if(tempFolderFiles != NULL){
-                getFilesInDirectory(tempFolderFiles,line);
-                for(string file: *tempFolderFiles){
-                    string filePath = line+"/"+file;
-                    if (! access (filePath.c_str(), X_OK)){
+                vector<string> *tempFolderFiles = new vector<string>();
+                if (tempFolderFiles != NULL) {
+                    getFilesInDirectory(tempFolderFiles, line);
+                    for (string file: *tempFolderFiles) {
+                        string filePath = line + "/" + file;
+                        if (!access(filePath.c_str(), X_OK)) {
 #ifdef DEBUG
-                        cout<< filePath <<" is executable" << endl;
+                            cout << filePath << " is executable" << endl;
 #endif
-                        Command * command = new Command();
-                        command->setPath(new string(line));
-                        command->setName(new string(file));
-                        commands->push_back(command);
-                    } else {
+                            Command *command = new Command();
+                            command->setPath(new string(line));
+                            command->setName(new string(file));
+                            commands->push_back(command);
+                        } else {
 #ifdef DEBUG
-                        cout << "Command "<< filePath <<"is not executable " << endl;
+                            cout << "Command " << filePath << "is not executable " << endl;
 #endif
+                        }
                     }
                 }
             }
+        } else {
+            // TODO: RE-GENERATE DEFAULT PROFILE
         }
-    }else{
-        // TODO: RE-GENERATE DEFAULT PROFILE
     }
 }
 
@@ -179,7 +165,9 @@ string *CommandFinder::validateToken(const string &token) {
 void CommandFinder::split(const string &s, char c, vector<string> &v) {
     string::size_type i = 0;
     string::size_type j = s.find(c);
+    // While the string is not fully split
     while (j != string::npos) {
+        // We add the string to the vector and get to the next one until the end
         v.push_back(s.substr(i, j - i));
         i = ++j;
         j = s.find(c, j);
@@ -189,21 +177,23 @@ void CommandFinder::split(const string &s, char c, vector<string> &v) {
     }
 }
 
-void CommandFinder::getFilesInDirectory(vector<string> * listOfCommand,const string &directory) {
+void CommandFinder::getFilesInDirectory(vector<string> *listOfCommand, const string &directory) {
 #ifdef DEBUG
-    cout <<"Getting all files in the directory "<<directory<<endl;
+    cout << "Getting all files in the directory " << directory << endl;
 #endif
-    DIR * dpdf;
-    struct dirent * epdf;
+    DIR *dpdf;
+    struct dirent *epdf;
     dpdf = opendir(directory.c_str());
-    if (dpdf != NULL){
-        while ((epdf = readdir(dpdf))){
+    // If we didn't fail to open the directory
+    if (dpdf != NULL) {
+        while ((epdf = readdir(dpdf))) {
+            // We add the found command to the list of potential commands
             listOfCommand->push_back(epdf->d_name);
         }
         closedir(dpdf);
     }
 #ifdef DEBUG
-    cout <<"End of getting all files in the directory "<<directory<<endl;
+    cout << "End of getting all files in the directory " << directory << endl;
 #endif
 }
 
