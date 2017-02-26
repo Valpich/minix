@@ -160,7 +160,6 @@ bool Shell::run() {
                         break;
                     case LEFT_ARROW_PRESSED:
                         suggestingMode = false;
-                        //TODO: Go to the left if possible
 #ifdef DEBUG
                         cout << "Left arrow pressed" << '\r' << endl;
                         if (!commandLine.empty()) {
@@ -172,11 +171,6 @@ bool Shell::run() {
                         break;
                     case RIGHT_ARROW_PRESSED:
                         suggestingMode = false;
-                        //TODO: Go to the right if possible
-
-
-
-
 #ifdef DEBUG
                         cout << "Right arrow pressed" << '\r' << endl;
                         if (!ch.empty()) {
@@ -190,7 +184,6 @@ bool Shell::run() {
                         break;
                     case DELETE_PRESSED:
                         suggestingMode = false;
-                        //TODO: Delete current char if possible
 #ifdef DEBUG
                         cout << "Delete pressed" << '\r' << endl;
 
@@ -201,7 +194,6 @@ bool Shell::run() {
                         break;
                     case DELETE_BIS_PRESSED:
                         suggestingMode = false;
-                        //TODO: Delete current char if possible
 #ifdef DEBUG
                         cout << "Delete pressed" << '\r' << endl;
 
