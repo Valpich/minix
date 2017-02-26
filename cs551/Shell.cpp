@@ -173,8 +173,18 @@ bool Shell::run() {
                     case RIGHT_ARROW_PRESSED:
                         suggestingMode = false;
                         //TODO: Go to the right if possible
+
+
+		
+		 		
 #ifdef DEBUG
                         cout << "Right arrow pressed" << '\r' << endl;
+                        if(!ch.empty()){
+			reverse(ch.begin(),ch.end());
+			commandLine+=ch.at(0);
+                        ch.erase(0,1);
+			reverse(ch.begin(),ch.end());
+			}
                         cout << commandLine << flush;
 #endif
                         break;
