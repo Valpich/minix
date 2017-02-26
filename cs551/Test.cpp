@@ -28,6 +28,7 @@ void Test::executeTestSuite() {
     executeTest6();
     executeTest7();
     executeTest8();
+    executeTest9();
 }
 
 /**
@@ -190,4 +191,11 @@ void Test::executeTest8() {
     cout << "End of the commands are" << endl;
     delete commandFinder;
     cout << "End test 8 !! " << endl;
+}
+
+void Test::executeTest9() {
+    History *history = new History();
+    vector<Command *> *commands = new vector<Command *>();
+    history->getCommandHistory(commands);
+    delete history;
 }

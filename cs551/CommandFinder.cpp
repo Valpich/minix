@@ -89,6 +89,8 @@ void CommandFinder::findAllCommands(vector<Command *> *commands) {
                 exit(2);
             }
         }
+    }else{
+        cout <<"You may have altered the source code, commands is not supposed to be NULL vector !"<<endl;
     }
 }
 
@@ -127,6 +129,8 @@ vector<string> *CommandFinder::parseProfilePathContent() {
 #ifdef DEBUG
         cout << "End of parsing profile" << endl;
 #endif
+    }else{
+        cout <<"You may have altered the source code, profile is not supposed to be NULL !"<<endl;
     }
     return paths;
 }

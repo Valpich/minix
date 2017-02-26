@@ -60,7 +60,6 @@ public:
      */
     void findAllCommands(vector<Command *> *commands);
 
-
     /**
      * Overload the ostream operator to display as a string a CommandFinder
      */

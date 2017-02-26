@@ -58,6 +58,41 @@ void History::logCommand(Command *command) {
     }
 }
 
+void History::getCommandHistory(vector<Command *> *commands){
+    char buffer[300];
+    char *answer = getcwd(buffer, sizeof(buffer));
+    string s_cwd;
+    if (answer){
+        s_cwd = answer;
+        remove(s_cwd.begin(), s_cwd.end(), ' ');
+    }
+    cout <<"Current path is " << s_cwd <<endl;
+    /*
+    if (commands != NULL) {
+        getcwd(cCurrentPath, sizeof(cCurrentPath));
+      vector<string> *paths = parseProfilePathContent();
+#ifdef DEBUG
+        cout << "History content parsed in find all commands";
+#endif
+        if (!paths->empty()) {
+            for (string line: *paths) {
+#ifdef DEBUG
+                cout << "One command line was " << line << endl;
+#endif
+
+                            Command *command = new Command();
+                           // command->setPath(new string(line));
+                           // command->setName(new string(file));
+                            commands->push_back(command);
+                        }
+                    }
+                }
+    }else{
+        cout <<"You may have altered the source code, commands is not supposed to be NULL vector !"<<endl;
+    }
+    */
+}
+
 ostream &operator<<(ostream &os, const History &history) {
     os << "path: ";
     if(history.path == NULL){

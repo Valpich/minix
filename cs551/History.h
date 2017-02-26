@@ -64,6 +64,12 @@ public:
     void logCommand(Command *command);
 
     /**
+     * Convert all potentials commands found in the history and add them to the vector givin as parameter
+     * @param commands The vector used to contains all the commands
+     */
+    void getCommandHistory(vector<Command *> *commands);
+
+    /**
      * Overload the ostream operator to display as a string an History
      */
     friend ostream &operator<<(ostream &os, const History &history);

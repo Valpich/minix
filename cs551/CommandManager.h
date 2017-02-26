@@ -53,7 +53,6 @@ public:
      */
     void executeInParallelWithoutWaitAndPopen(vector<Command *> commands);
 
-
     /**
      * Overload the ostream operator to display as a string a CommandManager
      */
