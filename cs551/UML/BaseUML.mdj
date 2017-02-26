@@ -463,7 +463,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setPath(value: string*): setPath",
+											"text": "+setPath(value): setPath",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -521,7 +521,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setName(name: string*): setName",
+											"text": "+setName(name): setName",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -579,7 +579,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setEnv(name: string*): setEnv",
+											"text": "+setEnv(name): setEnv",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -637,7 +637,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setParams(params: string*): setParams",
+											"text": "+setParams(params): setParams",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -695,7 +695,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setPid(pid: pid_t): setPid",
+											"text": "+setPid(pid): setPid",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -818,35 +818,6 @@
 										},
 										{
 											"_type": "UMLOperationView",
-											"_id": "AAAAAAFae+Q/oH11ZRg=",
-											"_parent": {
-												"$ref": "AAAAAAFae+Q/f30XsXk="
-											},
-											"model": {
-												"$ref": "AAAAAAFae+CyHnFYlf4="
-											},
-											"visible": true,
-											"enabled": true,
-											"lineColor": "#000000",
-											"fillColor": "#ffffff",
-											"fontColor": "#000000",
-											"font": "Arial;13;0",
-											"showShadow": true,
-											"containerChangeable": false,
-											"containerExtending": false,
-											"left": 37,
-											"top": 521,
-											"width": 373,
-											"height": 13,
-											"autoResize": false,
-											"underline": false,
-											"text": "+operator(os: ostream&, command: const Command&): operator",
-											"horizontalAlignment": 0,
-											"verticalAlignment": 5,
-											"wordWrap": false
-										},
-										{
-											"_type": "UMLOperationView",
 											"_id": "AAAAAAFae+Q/oX14ksA=",
 											"_parent": {
 												"$ref": "AAAAAAFae+Q/f30XsXk="
@@ -864,7 +835,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 37,
-											"top": 536,
+											"top": 521,
 											"width": 373,
 											"height": 13,
 											"autoResize": false,
@@ -893,7 +864,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 37,
-											"top": 551,
+											"top": 536,
 											"width": 373,
 											"height": 13,
 											"autoResize": false,
@@ -922,7 +893,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 37,
-											"top": 566,
+											"top": 551,
 											"width": 373,
 											"height": 13,
 											"autoResize": false,
@@ -951,7 +922,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 37,
-											"top": 581,
+											"top": 566,
 											"width": 373,
 											"height": 13,
 											"autoResize": false,
@@ -974,7 +945,7 @@
 									"left": 32,
 									"top": 291,
 									"width": 383,
-									"height": 308,
+									"height": 293,
 									"autoResize": false
 								},
 								{
@@ -1038,7 +1009,7 @@
 							"left": 32,
 							"top": 168,
 							"width": 383,
-							"height": 431,
+							"height": 417,
 							"autoResize": false,
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
@@ -1364,7 +1335,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setFolderPaths(value: string*): setFolderPaths",
+											"text": "+setFolderPaths(value): setFolderPaths",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1422,7 +1393,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setProfile(value: Profile*): setProfile",
+											"text": "+setProfile(value): setProfile",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1509,7 +1480,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "-parseLinePath(line: string): parseLinePath[*]",
+											"text": "-parseLinePath(line): parseLinePath[*]",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1538,7 +1509,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "-validateToken(token: const string&): validateToken",
+											"text": "-validateToken(token): validateToken",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1567,7 +1538,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "-split(s: const string&, c: char, v: vector<string>&): split",
+											"text": "-split(s, c: char, v: vector<string>&): split",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1596,7 +1567,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "-getFilesInDirectory(listOfCommand: vector<string> *, directory: const string&): getFilesInDirectory",
+											"text": "-getFilesInDirectory(listOfCommand: vector<string> *, directory): getFilesInDirectory",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2439,7 +2410,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+appendToFile(filePath: string, textToAppend): appendToFile",
+											"text": "+appendToFile(filePath, textToAppend): appendToFile",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2468,7 +2439,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+replaceFileContent(filePath: string, newFileContent): replaceFileContent",
+											"text": "+replaceFileContent(filePath, newFileContent): replaceFileContent",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2497,7 +2468,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+readFileToString(filePath: string): readFileToString",
+											"text": "+readFileToString(filePath): readFileToString",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2934,7 +2905,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setPath(value: string*): setPath",
+											"text": "+setPath(value): setPath",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2992,7 +2963,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setFileManager(value: FileManager*): setFileManager",
+											"text": "+setFileManager(value): setFileManager",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3021,7 +2992,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+logCommand(command: Command*): logCommand",
+											"text": "+logCommand(command): logCommand",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3864,7 +3835,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setProfile(value: Profile*): setProfile",
+											"text": "+setProfile(value): setProfile",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3922,7 +3893,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setHistory(value: History*): setHistory",
+											"text": "+setHistory(value): setHistory",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -3980,7 +3951,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setCommandList(value: [object Object]*[*]): setCommandList",
+											"text": "+setCommandList(value[*]): setCommandList",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -4038,7 +4009,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setCommandFinder(value: CommandFinder*): setCommandFinder",
+											"text": "+setCommandFinder(value): setCommandFinder",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -4125,7 +4096,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setCommand(command: Command*): setCommand",
+											"text": "+setCommand(command): setCommand",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -6527,7 +6498,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setPath(value: string*): setPath",
+											"text": "+setPath(value): setPath",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -6585,7 +6556,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setContent(value: [object Object]*[*]): setContent",
+											"text": "+setContent(value[*]): setContent",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -6643,7 +6614,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setFileManager(value: FileManager*): setFileManager",
+											"text": "+setFileManager(value): setFileManager",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -6701,6 +6672,35 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
+											"text": "+getDefaultProfile(): vector<string> *",
+											"horizontalAlignment": 0,
+											"verticalAlignment": 5,
+											"wordWrap": false
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFafCzlLG5i8kg=",
+											"_parent": {
+												"$ref": "AAAAAAFafAVDeZAPvU4="
+											},
+											"model": {
+												"$ref": "AAAAAAFafCzk+m5WgDc="
+											},
+											"visible": true,
+											"enabled": true,
+											"lineColor": "#000000",
+											"fillColor": "#ffffff",
+											"fontColor": "#000000",
+											"font": "Arial;13;0",
+											"showShadow": true,
+											"containerChangeable": false,
+											"containerExtending": false,
+											"left": 1037,
+											"top": 1107,
+											"width": 317,
+											"height": 13,
+											"autoResize": false,
+											"underline": false,
 											"text": "«destructor»+~Profile()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
@@ -6719,7 +6719,7 @@
 									"left": 1032,
 									"top": 967,
 									"width": 327,
-									"height": 143,
+									"height": 158,
 									"autoResize": false
 								},
 								{
@@ -6783,7 +6783,7 @@
 							"left": 1032,
 							"top": 904,
 							"width": 327,
-							"height": 206,
+							"height": 221,
 							"autoResize": false,
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
@@ -6840,8 +6840,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 958,
-									"top": 866,
+									"left": 954,
+									"top": 868,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -6874,8 +6874,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 950,
-									"top": 879,
+									"left": 946,
+									"top": 881,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -6908,8 +6908,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 973,
-									"top": 841,
+									"left": 971,
+									"top": 843,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -6942,8 +6942,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 1003,
-									"top": 895,
+									"left": 1001,
+									"top": 899,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -6976,8 +6976,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 993,
-									"top": 905,
+									"left": 991,
+									"top": 909,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -7010,8 +7010,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 1021,
-									"top": 874,
+									"left": 1019,
+									"top": 878,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -7044,8 +7044,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 856,
-									"top": 840,
+									"left": 852,
+									"top": 839,
 									"width": 75,
 									"height": 13,
 									"autoResize": false,
@@ -7079,7 +7079,7 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 907,
+									"left": 904,
 									"top": 851,
 									"width": 0,
 									"height": 13,
@@ -7113,7 +7113,7 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 923,
+									"left": 920,
 									"top": 813,
 									"width": 0,
 									"height": 13,
@@ -7194,7 +7194,7 @@
 								"$ref": "AAAAAAFafAVDeJAIMTc="
 							},
 							"lineStyle": 1,
-							"points": "1033:903;899:818",
+							"points": "1031:907;896:818",
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
 							"showProperty": true,
@@ -7685,7 +7685,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 738,
-									"top": 876,
+									"top": 880,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -7718,8 +7718,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 741,
-									"top": 861,
+									"left": 742,
+									"top": 865,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -7753,7 +7753,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 731,
-									"top": 905,
+									"top": 909,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -7787,7 +7787,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 467,
-									"top": 812,
+									"top": 814,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -7821,7 +7821,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 473,
-									"top": 799,
+									"top": 802,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -7855,7 +7855,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 457,
-									"top": 838,
+									"top": 840,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -7889,7 +7889,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 988,
-									"top": 940,
+									"top": 947,
 									"width": 43,
 									"height": 13,
 									"autoResize": false,
@@ -7923,8 +7923,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 1009,
-									"top": 926,
+									"left": 1010,
+									"top": 933,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -7957,8 +7957,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 1007,
-									"top": 968,
+									"left": 1006,
+									"top": 974,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -8038,7 +8038,7 @@
 								"$ref": "AAAAAAFae+XeioXiCQI="
 							},
 							"lineStyle": 1,
-							"points": "439:827;1031:967",
+							"points": "439:829;1031:974",
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
 							"showProperty": true,
@@ -8950,8 +8950,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 218,
-									"top": 617,
+									"left": 217,
+									"top": 610,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -8984,8 +8984,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 203,
-									"top": 618,
+									"left": 202,
+									"top": 610,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -9018,8 +9018,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 247,
-									"top": 616,
+									"left": 246,
+									"top": 609,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -9087,7 +9087,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 204,
-									"top": 613,
+									"top": 614,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -9154,8 +9154,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 186,
-									"top": 619,
+									"left": 185,
+									"top": 605,
 									"width": 65,
 									"height": 13,
 									"autoResize": false,
@@ -9190,7 +9190,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 204,
-									"top": 622,
+									"top": 608,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -9223,8 +9223,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 245,
-									"top": 614,
+									"left": 244,
+									"top": 600,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -9304,7 +9304,7 @@
 								"$ref": "AAAAAAFae+XeioXiCQI="
 							},
 							"lineStyle": 1,
-							"points": "234:647;232:599",
+							"points": "234:647;231:585",
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
 							"showProperty": true,
@@ -9534,9 +9534,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVHIr3AY="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -9618,9 +9615,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVHIr3AY="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -9702,9 +9696,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVHIr3AY="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -9786,9 +9777,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVHIr3AY="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -9870,9 +9858,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIsCj4="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -10037,75 +10022,6 @@
 									"isLeaf": false,
 									"type": {
 										"$ref": "AAAAAAFae+CyHnFWOvU="
-									},
-									"isReadOnly": false,
-									"isOrdered": false,
-									"isUnique": false,
-									"direction": "return"
-								}
-							],
-							"concurrency": "sequential",
-							"isQuery": false,
-							"isAbstract": false
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAFae+CyHnFYlf4=",
-							"_parent": {
-								"$ref": "AAAAAAFae+CyHHE0XA0="
-							},
-							"name": "operator",
-							"visibility": "public",
-							"isStatic": false,
-							"isLeaf": false,
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFae+CyHnFZbLA=",
-									"_parent": {
-										"$ref": "AAAAAAFae+CyHnFYlf4="
-									},
-									"name": "os",
-									"visibility": "public",
-									"isStatic": false,
-									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXItUNc="
-									},
-									"isReadOnly": false,
-									"isOrdered": false,
-									"isUnique": false,
-									"direction": "in"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFae+CyHnFaKII=",
-									"_parent": {
-										"$ref": "AAAAAAFae+CyHnFYlf4="
-									},
-									"name": "command",
-									"visibility": "public",
-									"isStatic": false,
-									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIuRVI="
-									},
-									"isReadOnly": false,
-									"isOrdered": false,
-									"isUnique": false,
-									"direction": "in"
-								},
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAFae+CyHnFbhZA=",
-									"_parent": {
-										"$ref": "AAAAAAFae+CyHnFYlf4="
-									},
-									"visibility": "public",
-									"isStatic": false,
-									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CyHnFYlf4="
 									},
 									"isReadOnly": false,
 									"isOrdered": false,
@@ -10383,9 +10299,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVHIr3AY="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -10467,9 +10380,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIvGJw="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -10601,9 +10511,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIxq0w="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -10653,9 +10560,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIyK1E="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -10704,9 +10608,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIyK1E="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -10803,9 +10704,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIyK1E="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -10899,9 +10797,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVnI0dAg="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -10950,9 +10845,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVnI1M54="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -11084,9 +10976,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIxq0w="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -11102,9 +10991,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVnI2gTg="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -11153,9 +11039,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIxq0w="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -11171,9 +11054,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVnI3jJw="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -11222,9 +11102,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIxq0w="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -11419,9 +11296,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVHIr3AY="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -11503,9 +11377,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVnI4ryM="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -11554,9 +11425,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVnI5OHc="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -11990,9 +11858,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVHIr3AY="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -12075,9 +11940,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIwqnA="
-									},
 									"multiplicity": "*",
 									"isReadOnly": false,
 									"isOrdered": false,
@@ -12160,9 +12022,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVnI4ryM="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -12226,6 +12085,38 @@
 						{
 							"_type": "UMLOperation",
 							"_id": "AAAAAAFafAYV3ZJ2Cig=",
+							"_parent": {
+								"$ref": "AAAAAAFae+Cys3GtCHI="
+							},
+							"name": "getDefaultProfile",
+							"stereotype": "",
+							"visibility": "public",
+							"isStatic": false,
+							"isLeaf": false,
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFafC2NVnGKzAw=",
+									"_parent": {
+										"$ref": "AAAAAAFafAYV3ZJ2Cig="
+									},
+									"visibility": "public",
+									"isStatic": false,
+									"isLeaf": false,
+									"type": "vector<string> *",
+									"isReadOnly": false,
+									"isOrdered": false,
+									"isUnique": false,
+									"direction": "return"
+								}
+							],
+							"concurrency": "sequential",
+							"isQuery": false,
+							"isAbstract": false
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAFafCzk+m5WgDc=",
 							"_parent": {
 								"$ref": "AAAAAAFae+Cys3GtCHI="
 							},
@@ -12528,9 +12419,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIvGJw="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -12612,9 +12500,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVnI6luw="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -12697,9 +12582,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVXIwqnA="
-									},
 									"multiplicity": "*",
 									"isReadOnly": false,
 									"isOrdered": false,
@@ -12782,9 +12664,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVnI7syo="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -12899,9 +12778,6 @@
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": {
-										"$ref": "AAAAAAFae+CzVnI5OHc="
-									},
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,

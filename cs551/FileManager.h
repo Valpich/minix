@@ -46,9 +46,14 @@ public:
      */
     vector<string> readFileToString(string filePath);
 
+    /**
+     * Overload the ostream operator to display as a string a FileManager
+     */
+    friend ostream &operator<<(ostream &os, const FileManager &manager);
+
 private:
-    ofstream * outStream;
-    ifstream * inStream;
+    ofstream *outStream;
+    ifstream *inStream;
 };
 
 #endif //_FILEMANAGER_H

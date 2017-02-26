@@ -72,19 +72,20 @@ void CommandFinder::findAllCommands(vector<Command *> *commands) {
         } else {
             // We regenerate the user profile from default and we retry one time to parse it
             // We exit with error code 2 if the program is unable to recover
-            FileManager * fileManager = new FileManager();
+            FileManager *fileManager = new FileManager();
             fileManager->replaceFileContent(*profile->getPath(), *profile->getDefaultContent());
             cout << "Profile was not found or cannot be opened" << endl;
             cout << "Default profile used, old profile replaced" << endl;
             profile->setContent(profile->getDefaultContent());
             delete fileManager;
-            if(retry){
+            if (retry) {
                 retry = false;
                 goto parseProfile;
 
-            }else{
-                cout << "The program is not able to work correctly, be sure to have the write/read enable for files!" <<endl;
-                cout << "Program shutdown with exit code 2 to prevent bad behaviors" <<endl;
+            } else {
+                cout << "The program is not able to work correctly, be sure to have the write/read enable for files!"
+                     << endl;
+                cout << "Program shutdown with exit code 2 to prevent bad behaviors" << endl;
                 exit(2);
             }
         }
@@ -213,6 +214,22 @@ void CommandFinder::getFilesInDirectory(vector<string> *listOfCommand, const str
 #ifdef DEBUG
     cout << "End of getting all files in the directory " << directory << endl;
 #endif
+}
+
+ostream &operator<<(ostream &os, const CommandFinder &finder) {
+    os << "folderPaths: ";
+    if(finder.folderPaths == NULL){
+        os <<"NULL";
+    }else{
+        os << *finder.folderPaths;
+    }
+    os << "profile: ";
+    if(finder.profile == NULL){
+        os <<"NULL";
+    }else{
+        os << *finder.profile;
+    }
+    return os;
 }
 
 CommandFinder::CommandFinder(void) {

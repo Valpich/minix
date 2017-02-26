@@ -8,6 +8,7 @@
 #ifndef _MAIN_H
 #define _MAIN_H
 
+#include <ostream>
 #include "Command.h"
 #include "CommandFinder.h"
 #include "FileManager.h"
@@ -39,11 +40,16 @@ public:
     /**
      * @return The shell of the main
      */
-    Shell * getShell();
+    Shell *getShell();
+
+    /**
+     * Overload the ostream operator to display as a string a Shell
+     */
+    friend ostream &operator<<(ostream &os, const Main &main1);
 
 private:
 
- Shell * shell;
+    Shell *shell;
 
 };
 

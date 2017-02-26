@@ -15,27 +15,27 @@ void CommandManager::executeInParallelWithWaitAndPopen(vector<Command *> command
     //If we are not on minix
 #ifndef MINIX
     vector<thread> threads;
-    for (Command * command: commands) {
+    for (Command *command: commands) {
         shared_ptr<Command> ptr_command(command);
 #ifdef DEBUG
-        cout << " Command name " << *command->getName() <<endl;
+        cout << " Command name " << *command->getName() << endl;
 #endif
         thread tmp(bind(&Command::execute, ptr_command));
         threads.push_back(move(tmp));
     }
-    #ifdef DEBUG
-    cout<< "Threads started" <<endl;
-    #endif
+#ifdef DEBUG
+    cout << "Threads started" << endl;
+#endif
     unsigned int size = threads.size();
-    #ifdef DEBUG
-    cout<< "Threads size is "<< size <<endl;
-    #endif
-    for(unsigned int i=0; i<size; ++i){
+#ifdef DEBUG
+    cout << "Threads size is " << size << endl;
+#endif
+    for (unsigned int i = 0; i < size; ++i) {
         threads.at(i).join();
     }
-    #ifdef DEBUG
-    cout<< "Threads joined" <<endl;
-    #endif
+#ifdef DEBUG
+    cout << "Threads joined" << endl;
+#endif
 #endif
     // TODO: the same with forks and wait
 }
@@ -43,22 +43,26 @@ void CommandManager::executeInParallelWithWaitAndPopen(vector<Command *> command
 void CommandManager::executeInParallelWithoutWaitAndPopen(vector<Command *> commands) {
     //If we are not on minix
 #ifndef MINIX
-    for (Command * command: commands) {
+    for (Command *command: commands) {
         shared_ptr<Command> ptr_command(command);
-        #ifdef DEBUG
-        cout << " Command name " << *command->getName() <<endl;
-        #endif
+#ifdef DEBUG
+        cout << " Command name " << *command->getName() << endl;
+#endif
         thread tmp(bind(&Command::execute, ptr_command));
         tmp.detach();
     }
-    #ifdef DEBUG
-    cout<< "Threads started" <<endl;
-    #endif
+#ifdef DEBUG
+    cout << "Threads started" << endl;
+#endif
 #endif
     // TODO: the same with forks without wait
 }
 
-CommandManager::CommandManager(void){
+ostream &operator<<(ostream &os, const CommandManager &manager) {
+    return os;
+}
+
+CommandManager::CommandManager(void) {
 
 }
 

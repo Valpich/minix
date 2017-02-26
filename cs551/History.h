@@ -10,6 +10,7 @@
 
 #include <string>
 #include <vector>
+#include <ostream>
 
 #include "FileManager.h"
 #include "Command.h"
@@ -37,34 +38,39 @@ public:
     /**
      * @return The history path string
      */
-    string * getPath();
+    string *getPath();
 
     /**
      * Set the path string of the history and remove the previous one if exists
      * @param value The new value of history path
      */
-    void setPath(string * value);
+    void setPath(string *value);
 
     /**
      * @return The file manager of the history
      */
-    FileManager * getFileManager();
+    FileManager *getFileManager();
 
     /**
      * Set the file manager of the history and remove the previous one if exists
      * @param value The new value of the file manager
      */
-    void setFileManager(FileManager * value);
+    void setFileManager(FileManager *value);
 
     /**
      * Log a command in the history
      * @param command The command to be logged in the history
      */
-    void logCommand(Command * command);
+    void logCommand(Command *command);
+
+    /**
+     * Overload the ostream operator to display as a string an History
+     */
+    friend ostream &operator<<(ostream &os, const History &history);
 
 private:
-    string * path;
-    FileManager * fileManager;
+    string *path;
+    FileManager *fileManager;
 };
 
 #endif //_HISTORY_H

@@ -10,6 +10,7 @@
 
 #include <string>
 #include <vector>
+#include <ostream>
 
 #include "FileManager.h"
 
@@ -36,45 +37,50 @@ public:
     /**
      * @return The profile path string
      */
-    string * getPath();
+    string *getPath();
 
     /**
      * Set the path string of the profile and remove the previous one if exists
      * @param value The new value of profile path
      */
-    void setPath(string * value);
+    void setPath(string *value);
 
     /**
       * @return The profile content as an array of string (one string per line)
       */
-    vector<string> * getContent();
+    vector<string> *getContent();
 
     /**
      * Set the content of the profile and remove the previous one if exists
      * @param value The new value of the content
      */
-    void setContent(vector<string> * value);
+    void setContent(vector<string> *value);
 
     /**
      * @return The file manager of the profile
      */
-    FileManager * getFileManager();
+    FileManager *getFileManager();
 
     /**
      * Set the file manager of the profile and remove the previous one if exists
      * @param value The new value of the file manager
      */
-    void setFileManager(FileManager * value);
+    void setFileManager(FileManager *value);
 
     /**
      * @return The default content of the profile
      */
     vector<string> *getDefaultContent();
-    
-private: 
-    string * path;
-    vector<string> * content;
-    FileManager * fileManager;
+
+    /**
+     * Overload the ostream operator to display as a string a Profile
+     */
+    friend ostream &operator<<(ostream &os, const Profile &profile);
+
+private:
+    string *path;
+    vector<string> *content;
+    FileManager *fileManager;
 
     /**
      * Utility method used to set if the shell uses or not an alarm of 5 second after starting a command

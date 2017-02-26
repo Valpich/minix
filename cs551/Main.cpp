@@ -19,17 +19,17 @@ Test *test = new Test();
 /**
  * The main class of the program
  */
-Main * mainClass = new Main();
+Main *mainClass = new Main();
 
-Main::Main(){
+Main::Main() {
     shell = new Shell();
 }
 
-Main::~Main(){
+Main::~Main() {
 #ifdef DEBUG
     cout << "Deleting shell in Main" << endl;
 #endif
-    if(shell!=NULL){
+    if (shell != NULL) {
         delete shell;
         shell = NULL;
     }
@@ -38,48 +38,48 @@ Main::~Main(){
 #endif
 }
 
-Shell * Main::getShell() {
+Shell *Main::getShell() {
     return shell;
 }
 
 void Main::signalHandler(int signum) {
 
-    if(signum == SIGINT){
+    if (signum == SIGINT) {
         //Disable cursive mode if still enabled
         endwin();
 #ifdef DEBUG
         cout << "\nCTRL+C INTERCEPTED." << endl;
 #endif
-        if(mainClass != NULL){
+        if (mainClass != NULL) {
             delete mainClass;
             mainClass = NULL;
         }
         exit(signum);
     }
-    if(signum == SIGALRM){
+    if (signum == SIGALRM) {
         bool scanning = true;
         int c;
-        cout <<"Do you want to kill the command ?" <<endl;
-       /*
-        while (scanning) {
-         // TODO: Scan the reponse
-            // If Y/y
-            if(c == 89 || c == 121){
-                if(mainClass->shell != NULL){
-                    if(mainClass->shell->getCommand()!= NULL){
-                        kill(mainClass->shell->getCommand()->getPid(),SIGKILL);
-                    }
-                }
-            }
-            // If N/n
-            if(c == 78 || c == 110){
-                // Else back to normal
-                scanning = false;
-            }
-            sleep(1);
+        cout << "Do you want to kill the command ?" << endl;
+        /*
+         while (scanning) {
+          // TODO: Scan the reponse
+             // If Y/y
+             if(c == 89 || c == 121){
+                 if(mainClass->shell != NULL){
+                     if(mainClass->shell->getCommand()!= NULL){
+                         kill(mainClass->shell->getCommand()->getPid(),SIGKILL);
+                     }
+                 }
+             }
+             // If N/n
+             if(c == 78 || c == 110){
+                 // Else back to normal
+                 scanning = false;
+             }
+             sleep(1);
 
-        }
-        */
+         }
+         */
 #ifdef TEST
         test->waitingAlarm = false;
 #endif
@@ -91,6 +91,10 @@ void Main::signalHandler(int signum) {
     }
 }
 
+ostream &operator<<(ostream &os, const Main &main1) {
+    os << "shell: " << main1.shell;
+    return os;
+}
 
 /**
  * @return int The return code of the program, should always be 0
@@ -101,7 +105,7 @@ int main() {
     delete test;
 #endif
     // Registering all 22 signal of POSIX
-    for(int i = 0 ; i<=22; i++){
+    for (int i = 0; i <= 22; i++) {
         signal(i, Main::signalHandler);
     }
     jmp_buf buf;

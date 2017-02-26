@@ -48,14 +48,30 @@ void History::logCommand(Command *command) {
     }
     // Should ever be true.
     if (this->getFileManager() != NULL) {
-        vector<string> * commands = new vector<string>();
+        vector<string> *commands = new vector<string>();
         // If the is a command
-        if(command != NULL){
+        if (command != NULL) {
             // We append the command name and params
-            commands->push_back(*command->getName()+" "+ *command->getParams());
-            this->fileManager->appendToFile(*this->getPath(),*commands);
+            commands->push_back(*command->getName() + " " + *command->getParams());
+            this->fileManager->appendToFile(*this->getPath(), *commands);
         }
     }
+}
+
+ostream &operator<<(ostream &os, const History &history) {
+    os << "path: ";
+    if(history.path == NULL){
+        os <<"NULL";
+    }else{
+        os << *history.path;
+    }
+    os << " fileManager: ";
+    if(history.fileManager == NULL){
+        os <<"NULL";
+    }else{
+        os << *history.fileManager;
+    }
+    return os;
 }
 
 History::History(void) {

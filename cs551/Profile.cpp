@@ -54,12 +54,93 @@ FileManager *Profile::getFileManager() {
     return fileManager;
 }
 
-vector<string>* Profile::getDefaultContent() {
+vector<string> *Profile::getDefaultContent() {
     vector<string> *defaultContent = new vector<string>();
     for (string line : defaultProfile) {
         defaultContent->push_back(line);
     }
     return defaultContent;
+}
+
+void Profile::setAlarmStatus() {
+    bool alarmFind = false;
+    // We try to find the alarm in the profile content for each line
+    for (string line: *content) {
+        size_t index = line.find("ALARM");
+        if (index == string::npos) {
+#ifdef DEBUG
+            cout << "ALARM line not found" << endl;
+#endif
+        } else {
+#ifdef DEBUG
+            cout << "ALARM line found at " << index << endl;
+#endif
+            string alarmString = line.substr(index + 5, line.size());
+            // If the value contains ON
+            if (alarmString.find("ON") == 1) {
+                // If we have already find an alarm status we inform the user, the
+                if (alarmFind) {
+                    cout << "Multiple definition detected of ALARM on the .profile file!" << endl;
+                    cout << "Last definition is used." << endl;
+                }
+#ifdef DEBUG
+                cout << "ALARM line is ON ! " << endl;
+#endif
+                alarmFind = true;
+                Command::setAlarmEnabled(true);
+            } else if (alarmString.find("OFF") == 1) {
+                // If we have already find an alarm status we inform the user, the
+                if (alarmFind) {
+                    cout << "Multiple definition detected of ALARM on the .profile file!" << endl;
+                    cout << "Last definition is used." << endl;
+                }
+#ifdef DEBUG
+                cout << "ALARM line is OFF ! " << endl;
+#endif
+                alarmFind = true;
+                Command::setAlarmEnabled(false);
+
+            }
+            cout << "AlarmString is " << alarmString << endl;
+#ifdef DEBUG
+            cout << "ALARM line parsed ! " << endl;
+#endif
+        }
+    }
+    // If we didn't find the alarm status, the alarm is activated by default
+    if (!alarmFind) {
+        Command::setAlarmEnabled(true);
+        cout
+                << "Alarm status not found or corrupted on the .profile file, be sure to follow the following format ALARM=ON || ALARM=OFF"
+                << endl;
+        cout << "Alarm is activated by default" << endl;
+    }
+#ifdef DEBUG
+    cout << "Alarm is set to " << Command::isAlarmEnabled() << endl;
+#endif
+}
+
+ostream &operator<<(ostream &os, const Profile &profile) {
+    os << "path: ";
+    if(profile.path == NULL){
+        os <<"NULL";
+    }else{
+        os << *profile.path;
+    }
+    os << " content: ";
+    if(profile.content == NULL){
+        os <<"NULL";
+    }else{
+        for(string stringTmp : *profile.content)
+        os << stringTmp;
+    }
+    os << " fileManager: ";
+    if(profile.fileManager == NULL){
+        os <<"NULL";
+    }else{
+        os << *profile.fileManager;
+    }
+    return os;
 }
 
 Profile::Profile(void) {
@@ -88,62 +169,6 @@ Profile::Profile(void) {
     }
     // We set up or not the alarm using the profile content
     setAlarmStatus();
-}
-
-void Profile::setAlarmStatus() {
-    bool alarmFind = false;
-    // We try to find the alarm in the profile content for each line
-    for (string line: *content) {
-        size_t index = line.find("ALARM");
-        if (index == string::npos) {
-#ifdef DEBUG
-            cout << "ALARM line not found" << endl;
-#endif
-        } else {
-#ifdef DEBUG
-            cout << "ALARM line found at " << index << endl;
-#endif
-            string alarmString = line.substr(index+5, line.size());
-            // If the value contains ON
-            if(alarmString.find("ON")==1){
-                // If we have already find an alarm status we inform the user, the
-                if(alarmFind){
-                    cout <<"Multiple definition detected of ALARM on the .profile file!"<<endl;
-                    cout <<"Last definition is used."<<endl;
-                }
-#ifdef DEBUG
-                cout << "ALARM line is ON ! " << endl;
-#endif
-                alarmFind = true;
-                Command::setAlarmEnabled(true);
-            }else if(alarmString.find("OFF") == 1){
-                // If we have already find an alarm status we inform the user, the
-                if(alarmFind) {
-                    cout << "Multiple definition detected of ALARM on the .profile file!" << endl;
-                    cout <<"Last definition is used."<<endl;
-                }
-#ifdef DEBUG
-                cout << "ALARM line is OFF ! " << endl;
-#endif
-                alarmFind = true;
-                Command::setAlarmEnabled(false);
-
-            }
-            cout<< "AlarmString is " << alarmString <<endl;
-#ifdef DEBUG
-            cout << "ALARM line parsed ! " << endl;
-#endif
-        }
-    }
-    // If we didn't find the alarm status, the alarm is activated by default
-    if(!alarmFind){
-        Command::setAlarmEnabled(true);
-        cout << "Alarm status not found or corrupted on the .profile file, be sure to follow the following format ALARM=ON || ALARM=OFF" << endl;
-        cout << "Alarm is activated by default" << endl;
-    }
-#ifdef DEBUG
-    cout << "Alarm is set to "<< Command::isAlarmEnabled() <<endl;
-#endif
 }
 
 Profile::~Profile(void) {

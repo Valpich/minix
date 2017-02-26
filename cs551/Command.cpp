@@ -16,43 +16,43 @@
  */
 bool Command::alarmEnabled;
 
-string * Command::getPath() {
+string *Command::getPath() {
     return path;
 }
 
-void Command::setPath(string * value) {
-    if(path != NULL){
+void Command::setPath(string *value) {
+    if (path != NULL) {
         delete path;
         path = NULL;
     }
     path = value;
 }
 
-string * Command::getName() {
+string *Command::getName() {
     return name;
 }
 
-void Command::setName(string * value) {
-    if(name != NULL){
+void Command::setName(string *value) {
+    if (name != NULL) {
         delete name;
         name = NULL;
     }
-	name = value;
+    name = value;
 }
 
-string * Command::getEnv() {
+string *Command::getEnv() {
     return env;
 }
 
-void Command::setEnv(string * value) {
-    if(env != NULL){
+void Command::setEnv(string *value) {
+    if (env != NULL) {
         delete env;
         env = NULL;
     }
     env = value;
 }
 
-string * Command::getParams() {
+string *Command::getParams() {
     return params;
 }
 
@@ -72,8 +72,8 @@ void Command::setAlarmEnabled(bool alarmEnabled) {
     Command::alarmEnabled = alarmEnabled;
 }
 
-void Command::setParams(string * value) {
-    if(params != NULL){
+void Command::setParams(string *value) {
+    if (params != NULL) {
         delete params;
         params = NULL;
     }
@@ -82,15 +82,15 @@ void Command::setParams(string * value) {
 
 string Command::execute() {
     // If we have a name and an environment
-    if(name != NULL && env != NULL){
+    if (name != NULL && env != NULL) {
         // If the environment is not empty
-        if(!(*env).empty()) {
+        if (!(*env).empty()) {
             string cmd;
             // If there is parameters
-            if(params!=NULL){
+            if (params != NULL) {
                 // We create the command
                 cmd = *env + "|" + *name + " " + *params;
-            } else{
+            } else {
                 cmd = *env + "|" + *name;
             }
             array<char, 128> buffer;
@@ -108,13 +108,14 @@ string Command::execute() {
 #endif
             // We return the result
             return result;
-        } else{
+        } else {
             string cmd;
-            if(params!=NULL){
+            if (params != NULL) {
                 cmd = *name + " " + *params;
-            } else{
+            } else {
                 cmd = *name;
-            }            array<char, 128> buffer;
+            }
+            array<char, 128> buffer;
             string result;
             shared_ptr<FILE> pipe(popen(cmd.c_str(), "r"), pclose);
             if (!pipe) throw runtime_error("popen() failed!");
@@ -137,24 +138,24 @@ string Command::execute() {
 
 void Command::executeWithExecve() {
     cout << "Begin of execve with code " << endl;
-    if(Command::alarmEnabled) {
+    if (Command::alarmEnabled) {
         signal(SIGALRM, Main::signalHandler);
 #ifdef DEBUG
-        cout << "ALARM STARTED" <<endl;
+        cout << "ALARM STARTED" << endl;
 #endif
         alarm(5);
     }
-    if ((pid = fork()) ==-1) {
+    if ((pid = fork()) == -1) {
         perror("fork error");
-    } else if (pid == 0){
+    } else if (pid == 0) {
         cout << "env " << env->c_str() << endl;
-        int i = execve(generateFileName(),generateParams(),generateEnv());
+        int i = execve(generateFileName(), generateParams(), generateEnv());
         cout << "End of execve with code " << i << endl;
-        cout << "Return not expected. Must be an execve error.n" <<endl;
+        cout << "Return not expected. Must be an execve error.n" << endl;
     }
 }
 
-const char * Command::generateFileName() {
+const char *Command::generateFileName() {
     //TODO: return the filename of the file that contains the executable image of the new process
 #ifdef TEST
     return "/bin/ls";
@@ -162,7 +163,7 @@ const char * Command::generateFileName() {
     return NULL;
 }
 
-char * const * Command::generateParams(){
+char *const *Command::generateParams() {
     // TODO:  return a param list like that: char *const parmList[] = {"/bin/ls", "-l", "/u/userid/dirname", NULL};
 #ifdef TEST
     char *const paramList[] = { "-al",NULL};
@@ -171,7 +172,7 @@ char * const * Command::generateParams(){
     return NULL;
 }
 
-char * const * Command::generateEnv(){
+char *const *Command::generateEnv() {
     // TODO:  return a env list like that: char *const envParms[2] = {"EXAMPLE=test", NULL};
 #ifdef TEST
     char *const envParams[2] = {"EXAMPLE=test", NULL};
@@ -181,23 +182,25 @@ char * const * Command::generateEnv(){
 }
 
 ostream &operator<<(ostream &os, const Command &command) {
-    os << "path: " << (command.path  == NULL ? "":*command.path) << " name: " << (command.name  == NULL ? "":*command.name) << " env: " << (command.env  == NULL ? "":*command.env) << " params: "
-       << (command.params  == NULL ? "":*command.params);
+    os << "path: " << (command.path == NULL ? "NULL" : *command.path) << " name: "
+       << (command.name == NULL ? "NULL" : *command.name) << " env: " << (command.env == NULL ? "NULL" : *command.env)
+       << " params: "
+       << (command.params == NULL ? "NULL" : *command.params);
     return os;
 }
 
-Command::Command(void){
+Command::Command(void) {
     path = NULL;
     name = NULL;
     env = NULL;
     params = NULL;
 }
 
-Command::~Command(void){
+Command::~Command(void) {
 #ifdef DEBUG
     cout << "Deleting path in Command" << endl;
 #endif
-    if(path != NULL){
+    if (path != NULL) {
         delete path;
         path = NULL;
     }
@@ -205,7 +208,7 @@ Command::~Command(void){
     cout << "path deleted in command" << endl;
     cout << "Deleting name in Command" << endl;
 #endif
-    if(name != NULL){
+    if (name != NULL) {
         delete name;
         name = NULL;
     }
@@ -213,7 +216,7 @@ Command::~Command(void){
     cout << "name deleted in command" << endl;
     cout << "Deleting env in Command" << endl;
 #endif
-    if(env != NULL){
+    if (env != NULL) {
         delete env;
         env = NULL;
     }
@@ -221,7 +224,7 @@ Command::~Command(void){
     cout << "env deleted in command" << endl;
     cout << "Deleting params in Command" << endl;
 #endif
-    if(params != NULL){
+    if (params != NULL) {
         delete params;
         params = NULL;
     }

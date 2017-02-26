@@ -60,46 +60,46 @@ public:
     /**
      * @return The profile used by the shell
      */
-    Profile * getProfile();
+    Profile *getProfile();
 
     /**
      * Set the profile and remove the previous one if exists
      * @param value The new value of the profile
      */
-    void setProfile(Profile * value);
+    void setProfile(Profile *value);
 
     /**
      * @return The history used by the shell
      */
-    History * getHistory();
+    History *getHistory();
 
     /**
       * Set the history and remove the previous one if exists
       * @param value The new value of the history
       */
-    void setHistory(History * value);
+    void setHistory(History *value);
 
     /**
      * @return The available command list of commands used by the shell
      */
-    vector<Command*> * getCommandList();
+    vector<Command *> *getCommandList();
 
     /**
       * Set the coammd list and remove the previous one if exists
       * @param value The new value of the command list
       */
-    void setCommandList(vector<Command*> * value);
+    void setCommandList(vector<Command *> *value);
 
     /**
      * @return The command finder used by the shell
      */
-    CommandFinder * getCommandFinder();
+    CommandFinder *getCommandFinder();
 
     /**
       * Set the command finder and remove the previous one if exists
       * @param value The new value of the command finder
       */
-    void setCommandFinder(CommandFinder * value);
+    void setCommandFinder(CommandFinder *value);
 
     /**
      * @return The name of the shell
@@ -122,12 +122,14 @@ public:
      */
     bool run();
 
-private: 
-    Profile * profile;
-    Command * command;
-    History * history;
-    vector<Command *> * commandList;
-    CommandFinder * commandFinder;
+    friend ostream &operator<<(ostream &os, const Shell &shell);
+
+private:
+    Profile *profile;
+    Command *command;
+    History *history;
+    vector<Command *> *commandList;
+    CommandFinder *commandFinder;
 };
 
 #endif //_SHELL_H

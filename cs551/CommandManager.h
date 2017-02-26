@@ -15,9 +15,13 @@
 #include <string>
 #include <array>
 #include <vector>
+
 #ifndef MINIX
+
 #include <thread>
+
 #endif
+
 #include "Command.h"
 
 using namespace std;
@@ -49,7 +53,13 @@ public:
      */
     void executeInParallelWithoutWaitAndPopen(vector<Command *> commands);
 
-private: 
+
+    /**
+     * Overload the ostream operator to display as a string a CommandManager
+     */
+    friend ostream &operator<<(ostream &os, const CommandManager &manager);
+
+private:
 };
 
 #endif //_COMMAND_MANAGER_H

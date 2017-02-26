@@ -63,9 +63,9 @@ void Test::executeTest1() {
 
 void Test::executeTest2() {
     cout << "Second test started !! " << endl;
-    Profile * profile = new Profile();
+    Profile *profile = new Profile();
     cout << "Content " << endl;
-    for(string line: *profile->getContent()) {
+    for (string line: *profile->getContent()) {
         cout << line << endl;
     }
     cout << "End of content " << endl;
@@ -76,7 +76,7 @@ void Test::executeTest2() {
 
 void Test::executeTest3() {
     cout << "Third test started !! " << endl;
-    Command * command = new Command();
+    Command *command = new Command();
     command->setName(new string("ls"));
     command->setEnv(new string("EXAMPLE=test env"));
     command->setParams(new string("-al"));
@@ -87,8 +87,8 @@ void Test::executeTest3() {
 
 void Test::executeTest4() {
     cout << "Test four started !! " << endl;
-    Command * command = new Command();
-    History * history = new History();
+    Command *command = new Command();
+    History *history = new History();
     command->setName(new string("ls"));
     command->setEnv(new string("EXAMPLE=test env"));
     command->setParams(new string("-al"));
@@ -103,18 +103,18 @@ void Test::executeTest4() {
 void Test::executeTest5() {
     cout << "Test five started !! " << endl;
     vector<Command *> commands;
-    CommandManager * commandManager = new CommandManager();
-    Command * command = new Command();
+    CommandManager *commandManager = new CommandManager();
+    Command *command = new Command();
     command->setName(new string("ls"));
     command->setEnv(new string("EXAMPLE=test env"));
     command->setParams(new string("-al"));
     commands.push_back(command);
-    Command * commandTwo = new Command();
+    Command *commandTwo = new Command();
     commandTwo->setName(new string("pwd"));
     commandTwo->setEnv(new string("EXAMPLE=test env"));
     commandTwo->setParams(new string(""));
     commands.push_back(commandTwo);
-    Command * commandThree = new Command();
+    Command *commandThree = new Command();
     commandThree->setName(new string("ls"));
     commandThree->setEnv(new string("EXAMPLE=test env"));
     commandThree->setParams(new string(""));
@@ -132,25 +132,25 @@ void Test::executeTest5() {
 void Test::executeTest6() {
     cout << "Test six started !! " << endl;
     vector<Command *> commands;
-    CommandManager * commandManager = new CommandManager();
-    Command * command = new Command();
+    CommandManager *commandManager = new CommandManager();
+    Command *command = new Command();
     command->setName(new string("ls"));
     command->setEnv(new string("EXAMPLE=test env"));
     command->setParams(new string("-al"));
     commands.push_back(command);
-    Command * commandTwo = new Command();
+    Command *commandTwo = new Command();
     commandTwo->setName(new string("pwd"));
     commandTwo->setEnv(new string("EXAMPLE=test env"));
     commandTwo->setParams(new string(""));
     commands.push_back(commandTwo);
-    Command * commandThree = new Command();
+    Command *commandThree = new Command();
     commandThree->setName(new string("ls"));
     commandThree->setEnv(new string("EXAMPLE=test env"));
     commandThree->setParams(new string(""));
     commands.push_back(commandThree);
     commandManager->executeInParallelWithoutWaitAndPopen(commands);
-    cout << "Hi" <<endl;
-   delete commandManager;
+    cout << "Hi" << endl;
+    delete commandManager;
     // DO NOT DELETE THIS POINTER, THREAD WILL DO IT
     // delete command;
     // delete commandTwo;
@@ -161,31 +161,31 @@ void Test::executeTest6() {
 void Test::executeTest7() {
     cout << "Test seven started !! " << endl;
     waitingAlarm = true;
-    Command * command = new Command();
+    Command *command = new Command();
     command->setName(new string("ls"));
     command->setEnv(new string("EXAMPLE=test env"));
     command->setParams(new string("-al"));
     command->executeWithExecve();
     delete command;
-  //  while(waitingAlarm);
+    //  while(waitingAlarm);
     cout << "End test seven !! " << endl;
 }
 
 void Test::executeTest8() {
     cout << "Test 8 started !! " << endl;
-    Profile * profile = new Profile();
+    Profile *profile = new Profile();
     cout << "Content " << endl;
-    for(string line: *profile->getContent()) {
+    for (string line: *profile->getContent()) {
         cout << line << endl;
     }
     cout << "End of content " << endl;
-    CommandFinder * commandFinder = new CommandFinder();
+    CommandFinder *commandFinder = new CommandFinder();
     commandFinder->setProfile(profile);
-    vector<Command *> * commands = new vector<Command *> ();
+    vector<Command *> *commands = new vector<Command *>();
     commandFinder->findAllCommands(commands);
     cout << "The finded commands are" << endl;
-    for(Command * command : *commands){
-        cout<< *command <<endl;
+    for (Command *command : *commands) {
+        cout << *command << endl;
     }
     cout << "End of the commands are" << endl;
     delete commandFinder;

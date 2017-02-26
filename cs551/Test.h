@@ -21,8 +21,8 @@
 using namespace std;
 
 class Test {
-public: 
-    
+public:
+
     Test();
 
     ~Test();

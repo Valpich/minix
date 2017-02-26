@@ -51,14 +51,14 @@ void Shell::setHistory(History *value) {
 /**
  * @return vector<Command>
  */
-vector<Command*> *Shell::getCommandList() {
+vector<Command *> *Shell::getCommandList() {
     return commandList;
 }
 
 /**
  * @param value
  */
-void Shell::setCommandList(vector<Command*> *value) {
+void Shell::setCommandList(vector<Command *> *value) {
     if (commandList != NULL) {
         delete commandList;
         commandList = NULL;
@@ -175,16 +175,16 @@ bool Shell::run() {
                         //TODO: Go to the right if possible
 
 
-		
-		 		
+
+
 #ifdef DEBUG
                         cout << "Right arrow pressed" << '\r' << endl;
-                        if(!ch.empty()){
-			reverse(ch.begin(),ch.end());
-			commandLine+=ch.at(0);
-                        ch.erase(0,1);
-			reverse(ch.begin(),ch.end());
-			}
+                        if (!ch.empty()) {
+                            reverse(ch.begin(), ch.end());
+                            commandLine += ch.at(0);
+                            ch.erase(0, 1);
+                            reverse(ch.begin(), ch.end());
+                        }
                         cout << commandLine << flush;
 #endif
                         break;
@@ -242,22 +242,62 @@ bool Shell::run() {
     return true;
 }
 
+ostream &operator<<(ostream &os, const Shell &shell) {
+    os << " profile: ";
+    if(shell.profile == NULL){
+        os <<"NULL";
+    }else{
+        os << *shell.profile;
+    }
+    os << " command: ";
+    if(shell.command == NULL){
+        os <<"NULL";
+    }else{
+        os << *shell.command;
+    }
+    os << " history: ";
+    if(shell.history == NULL){
+        os <<"NULL";
+    }else{
+        os << *shell.history;
+    }
+    os << " commandList: ";
+    if(shell.commandList == NULL){
+        os <<"NULL";
+    }else{
+        for(Command * cmdTmp: *shell.commandList){
+            if(cmdTmp == NULL){
+                os <<"NULL";
+            }else{
+                os << *cmdTmp;
+            }
+        }
+    }
+    os << " commandFinder: ";
+    if(shell.commandFinder == NULL){
+        os <<"NULL";
+    }else{
+        os << *shell.commandFinder;
+    }
+    return os;
+}
+
 Shell::Shell(void) {
     profile = new Profile();
     history = new History();
     command = NULL;
     commandFinder = new CommandFinder();
     commandFinder->setProfile(profile);
-    commandList = new vector<Command *> ();
+    commandList = new vector<Command *>();
     commandFinder->findAllCommands(commandList);
 #ifdef DEBUG
-    cout<< "Command list in shell is :"<<endl;
-    for(Command *commandTmp : *commandList){
-        cout << *commandTmp <<endl;
+    cout << "Command list in shell is :" << endl;
+    for (Command *commandTmp : *commandList) {
+        cout << *commandTmp << endl;
     }
-    cout<< "Profile content in shell is :"<<endl;
-    for(string stringTmp : *profile->getContent()){
-        cout<< stringTmp <<endl;
+    cout << "Profile content in shell is :" << endl;
+    for (string stringTmp : *profile->getContent()) {
+        cout << stringTmp << endl;
     }
 #endif
 
