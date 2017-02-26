@@ -61,16 +61,20 @@ void Main::signalHandler(int signum) {
         bool scanning = true;
         int c;
         cout << "Do you want to kill the command ?" << endl;
-        /*
+        
          while (scanning) {
           // TODO: Scan the reponse
              // If Y/y
+             c = getch();
              if(c == 89 || c == 121){
                  if(mainClass->shell != NULL){
-                     if(mainClass->shell->getCommand()!= NULL){
+                       //cout << mainClass->shell->getCommand() << endl; 
+                       if(mainClass->shell->getCommand()!= NULL){
                          kill(mainClass->shell->getCommand()->getPid(),SIGKILL);
                      }
                  }
+              // in case no command has been typed yet
+              scanning = false; 
              }
              // If N/n
              if(c == 78 || c == 110){
@@ -80,7 +84,7 @@ void Main::signalHandler(int signum) {
              sleep(1);
 
          }
-         */
+         
 #ifdef TEST
         test->waitingAlarm = false;
 #endif
