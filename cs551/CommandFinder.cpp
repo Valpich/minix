@@ -36,7 +36,9 @@ void CommandFinder::setProfile(Profile *value) {
 }
 
 void CommandFinder::findAllCommands(vector<Command *> *commands) {
+    bool retry = true;
     if (commands != NULL) {
+        parseProfile:
         vector<string> *paths = parseProfilePathContent();
 #ifdef DEBUG
         cout << "Profile content parsed in find all commands";
@@ -68,7 +70,27 @@ void CommandFinder::findAllCommands(vector<Command *> *commands) {
                 }
             }
         } else {
-            // TODO: RE-GENERATE DEFAULT PROFILE
+            // We regenerate the user profile from default and we retry one time to parse it
+            // We exit with error code 2 if the program is unable to recover
+            vector<string> *defaultContent = new vector<string>();
+            for (string line : Profile::defaultProfile) {
+                defaultContent->push_back(line);
+            }
+            FileManager * fileManager = new FileManager();
+            fileManager->replaceFileContent(*profile->getPath(), *defaultContent);
+            cout << "Profile was not found or cannot be opened" << endl;
+            cout << "Default profile used, old profile replaced" << endl;
+            profile->setContent(defaultContent);
+            delete fileManager;
+            if(retry){
+                retry = false;
+                goto parseProfile;
+
+            }else{
+                cout << "The program is not able to work correctly, be sure to have the write/read enable for files!" <<endl;
+                cout << "Program shutdown with exit code 2 to prevent bad behaviors" <<endl;
+                exit(2);
+            }
         }
     }
 }
