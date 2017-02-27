@@ -45,8 +45,9 @@ Shell *Main::getShell() {
 }
 
 void Main::signalHandler(int signum) {
-
+    // If we are stuck in a command
     if (signum == SIGINT) {
+
         //Disable cursive mode if still enabled
         endwin();
 #ifdef DEBUG
@@ -57,58 +58,50 @@ void Main::signalHandler(int signum) {
             mainClass = NULL;
         }
         exit(signum);
-    }else if (signum == SIGALRM) {
+    } else if (signum == SIGALRM) {
         bool scanning = true;
         int c;
-        cout << "Do you want to kill the command ?" << endl;
-        kill(mainClass->shell->getCommand()->getPid(),SIGKILL);
-
-        /*
-         while (scanning) {
-          // TODO: Scan the reponse
-             // If Y/y
-             scanf("%c",c);
-             if(c == 89 || c == 121){
-                 if(mainClass->shell != NULL){
-                       //cout << mainClass->shell->getCommand() << endl; 
-                       if(mainClass->shell->getCommand()!= NULL){
+        cout << "Do you want to kill the command ? Y/N ?" << endl;
+        while (scanning) {
+            c = getchar();
 #ifdef DEBUG
-                           cout<<"Send kill"<<endl;
+            cout << "Scanned " << c << endl;
 #endif
-                         kill(mainClass->shell->getCommand()->getPid(),SIGKILL);
+            // If Y/y
+            if (c == 89 || c == 121) {
+                if (mainClass->shell != NULL) {
+                    if (mainClass->shell->getCommand() != NULL) {
 #ifdef DEBUG
-                           cout<<"kill send"<<endl;
+                        cout << "Send kill" << endl;
 #endif
-                     }
-                 }
-              // in case no command has been typed yet
-              scanning = false; 
-             }
-             // If N/n
-             if(c == 78 || c == 110){
-                 // Else back to normal
-                 scanning = false;
-             }
-             sleep(1);
-         }
- */
+                        kill(mainClass->shell->getCommand()->getPid(), SIGKILL);
+                        //Disable cursive mode if still enabled
+                        endwin();
+                        cout << "\nSIGALRM INTERCEPTED." << endl;
+                        exit(1);
+#ifdef DEBUG
+                        cout << "kill send" << endl;
+#endif
+                    }
+                }
+                // in case no command has been typed yet
+                scanning = false;
+            }
+            // If N/n
+            if (c == 78 || c == 110) {
+                // Else back to normal
+                scanning = false;
+                cout << "Command will run until you usr CTRL+C or termination" << endl;
+            }
+            fflush(stdin);
+        }
 #ifdef TEST
         test->waitingAlarm = false;
 #endif
-#ifdef DEBUG
-        //Disable cursive mode if still enabled
-        endwin();
-        cout << "\nSIGALRM INTERCEPTED." << endl;
-#endif
-    }else {
+    } else {
         endwin();
         longjmp(buf, signum);
     }
-}
-
-ostream &operator<<(ostream &os, const Main &main1) {
-    os << "shell: " << main1.shell;
-    return os;
 }
 
 /**

@@ -42,11 +42,6 @@ public:
      */
     Shell *getShell();
 
-    /**
-     * Overload the ostream operator to display as a string a Shell
-     */
-    friend ostream &operator<<(ostream &os, const Main &main1);
-
 private:
 
     Shell *shell;

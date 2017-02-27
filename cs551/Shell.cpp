@@ -119,7 +119,6 @@ bool Shell::run() {
             cout << "Please, enter the command: " << '\r' << endl;
             string commandLine = "";
             bool suggestingMode = false;
-            int x, y;
             while (scanning) {
                 c = getch();
                 switch (c) {

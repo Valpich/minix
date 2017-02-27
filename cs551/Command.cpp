@@ -133,12 +133,20 @@ string Command::execute() {
     // If failed
     return NULL;
 }
-
+#include <iostream>
 void Command::executeWithExecve() {
     cout << "Begin of execve with code " << endl;
+    int pipefd[2];
+    pipe(pipefd);
     if ((pid = fork()) == 0) {
-        cout << "pid is " <<getpid() << endl;
         pid = getpid();
+        cout << "pid is " << pid << endl;
+        close(pipefd[0]);    // close reading end in the child
+
+        dup2(pipefd[1], 1);  // send stdout to the pipe
+        dup2(pipefd[1], 2);  // send stderr to the pipe
+
+        close(pipefd[1]);
         int i = execve(generateFileName(), generateParams(), generateEnv());
         if (Command::alarmEnabled) {
 #ifdef DEBUG
@@ -154,6 +162,13 @@ void Command::executeWithExecve() {
             cout << "ALARM STARTED" << endl;
 #endif
             alarm(5);
+        }
+        char buffer[1024];
+
+        close(pipefd[1]);  // close the write end of the pipe in the parent
+
+        while (read(pipefd[0], buffer, sizeof(buffer)) != 0)
+        {
         }
     }
 }
