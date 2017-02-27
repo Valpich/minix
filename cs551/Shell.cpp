@@ -102,6 +102,10 @@ void Shell::setCommand(Command *value) {
 
 
 bool Shell::run() {
+    CommandFinder * commandFinder = new CommandFinder();
+    commandFinder->setProfile(profile);
+    vector<Command *> * commands = new vector<Command *> ();
+    commandFinder->findAllCommands(commands);
     bool exit = false;
     while (!exit) {
         bool scanning = true;
