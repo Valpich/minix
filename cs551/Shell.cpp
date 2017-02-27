@@ -133,6 +133,9 @@ bool Shell::run() {
                     case ENTER_PRESSED:
                         suggestingMode = false;
                         scanning = false;
+                        // TODO: Create a command vector
+                        // TODO: Parse command line into command vector
+                        // TODO: Execute each command
 #ifdef DEBUG
                         cout << "Enter pressed" << '\r' << endl;
 #endif

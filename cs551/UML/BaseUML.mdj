@@ -9154,13 +9154,13 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 185,
-									"top": 605,
+									"left": 159,
+									"top": 607,
 									"width": 65,
 									"height": 13,
 									"autoResize": false,
-									"alpha": -0.5235987755982988,
-									"distance": 30,
+									"alpha": -0.9797598458968715,
+									"distance": 48.60041152089147,
 									"hostEdge": {
 										"$ref": "AAAAAAFafAh/vJuduUo="
 									},
