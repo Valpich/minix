@@ -150,6 +150,12 @@ void Command::executeWithExecve() {
     } else if (pid == 0) {
         cout << "env " << env->c_str() << endl;
         int i = execve(generateFileName(), generateParams(), generateEnv());
+        if (Command::alarmEnabled) {
+#ifdef DEBUG
+            cout << "ALARM DISABLED" << endl;
+#endif
+            alarm(0);
+        }
         cout << "End of execve with code " << i << endl;
         cout << "Return not expected. Must be an execve error.n" << endl;
     }
