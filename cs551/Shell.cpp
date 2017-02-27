@@ -115,7 +115,8 @@ bool Shell::run() {
             // i is used to iterate throught the substrings
             int i = 1;
             string ch;
-            initscr();    /* Start curses mode */
+            /* Start curses mode */
+            initscr();
             //One-character-a-time.
             cbreak();
             //No echo.
@@ -125,7 +126,6 @@ bool Shell::run() {
             cout << "Please, enter the command: " << '\r' << endl;
             string commandLine = "";
             bool suggestingMode = false;
-            //  int x, y;
             while (scanning) {
                 c = getch();
                 switch (c) {
@@ -260,7 +260,7 @@ bool Shell::run() {
                             reverse(ch.begin(), ch.end());
                             ch.erase(0, 1);
                             commandLine.append(ch);
-                            cout << commandLine << flush;
+                            cout << cToChar << flush;
                         }
                         break;
                 }
