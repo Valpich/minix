@@ -16,6 +16,8 @@ Test *test = new Test();
  * Main implementation
  */
 
+jmp_buf buf;
+
 /**
  * The main class of the program
  */
@@ -55,8 +57,7 @@ void Main::signalHandler(int signum) {
             mainClass = NULL;
         }
         exit(signum);
-    }
-    if (signum == SIGALRM) {
+    }else if (signum == SIGALRM) {
         bool scanning = true;
         int c;
         cout << "Do you want to kill the command ?" << endl;
@@ -88,6 +89,8 @@ void Main::signalHandler(int signum) {
         endwin();
         cout << "\nSIGALRM INTERCEPTED." << endl;
 #endif
+    }else {
+        longjmp(buf, signum);
     }
 }
 
@@ -108,7 +111,6 @@ int main() {
     for (int i = 0; i <= 22; i++) {
         signal(i, Main::signalHandler);
     }
-    jmp_buf buf;
     bool exit = false;
     // Save the program state before running the shell
     setjmp(buf);
