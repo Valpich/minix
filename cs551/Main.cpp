@@ -72,13 +72,13 @@ void Main::signalHandler(int signum) {
                 if (mainClass->shell != NULL) {
                     if (mainClass->shell->getCommand() != NULL) {
 #ifdef DEBUG
-                        cout << "Send kill" << endl;
+                        cout << "Send kill to "<< mainClass->shell->getCommand()->getPid() << endl;
 #endif
                         kill(mainClass->shell->getCommand()->getPid(), SIGKILL);
                         //Disable cursive mode if still enabled
                         endwin();
                         cout << "\nSIGALRM INTERCEPTED." << endl;
-                        exit(1);
+                   //     exit(1);
 #ifdef DEBUG
                         cout << "kill send" << endl;
 #endif
@@ -99,8 +99,9 @@ void Main::signalHandler(int signum) {
         test->waitingAlarm = false;
 #endif
     } else {
-        endwin();
-        longjmp(buf, signum);
+#ifdef DEBUG
+        cout << "Abnormal signal caught "<< signum << endl;
+#endif
     }
 }
 
