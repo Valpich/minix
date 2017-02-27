@@ -133,22 +133,25 @@ string Command::execute() {
     // If failed
     return NULL;
 }
-#include <iostream>
+
 void Command::executeWithExecve() {
     cout << "Begin of execve with code " << endl;
+    bool alarmEnabled = Command::alarmEnabled;
     int pipefd[2];
-    pipe(pipefd);
+    if (alarmEnabled) {
+        pipe(pipefd);
+    }
     if ((pid = fork()) == 0) {
         pid = getpid();
         cout << "pid is " << pid << endl;
-        close(pipefd[0]);    // close reading end in the child
-
-        dup2(pipefd[1], 1);  // send stdout to the pipe
-        dup2(pipefd[1], 2);  // send stderr to the pipe
-
-        close(pipefd[1]);
+        if (alarmEnabled) {
+            close(pipefd[0]);    // close reading end in the child
+            dup2(pipefd[1], 1);  // send stdout to the pipe
+            dup2(pipefd[1], 2);  // send stderr to the pipe
+            close(pipefd[1]);
+        }
         int i = execve(generateFileName(), generateParams(), generateEnv());
-        if (Command::alarmEnabled) {
+        if (alarmEnabled) {
 #ifdef DEBUG
             cout << "ALARM DISABLED" << endl;
 #endif
@@ -156,8 +159,8 @@ void Command::executeWithExecve() {
         }
         cout << "End of execve with code " << i << endl;
         cout << "Return not expected. Must be an execve error.n" << endl;
-    }else{
-        if (Command::alarmEnabled) {
+    } else {
+        if (alarmEnabled) {
 #ifdef DEBUG
             cout << "ALARM STARTED" << endl;
 #endif
@@ -165,10 +168,10 @@ void Command::executeWithExecve() {
         }
         char buffer[1024];
 
-        close(pipefd[1]);  // close the write end of the pipe in the parent
+        if (alarmEnabled) {
+            close(pipefd[1]);  // close the write end of the pipe in the parent
 
-        while (read(pipefd[0], buffer, sizeof(buffer)) != 0)
-        {
+            while (read(pipefd[0], buffer, sizeof(buffer)) != 0) {}
         }
     }
 }
@@ -182,7 +185,7 @@ const char *Command::generateFileName() {
         currentPathToString = answer;
         remove(currentPathToString.begin(), currentPathToString.end(), ' ');
     }
-    currentPathToString+="/main_loop";
+    currentPathToString += "/main_loop";
 #ifdef TEST
     return "/bin/ls";
 #endif
