@@ -61,16 +61,24 @@ void Main::signalHandler(int signum) {
         bool scanning = true;
         int c;
         cout << "Do you want to kill the command ?" << endl;
-        
+        kill(mainClass->shell->getCommand()->getPid(),SIGKILL);
+
+        /*
          while (scanning) {
           // TODO: Scan the reponse
              // If Y/y
-             c = getch();
+             scanf("%c",c);
              if(c == 89 || c == 121){
                  if(mainClass->shell != NULL){
                        //cout << mainClass->shell->getCommand() << endl; 
                        if(mainClass->shell->getCommand()!= NULL){
+#ifdef DEBUG
+                           cout<<"Send kill"<<endl;
+#endif
                          kill(mainClass->shell->getCommand()->getPid(),SIGKILL);
+#ifdef DEBUG
+                           cout<<"kill send"<<endl;
+#endif
                      }
                  }
               // in case no command has been typed yet
@@ -82,9 +90,8 @@ void Main::signalHandler(int signum) {
                  scanning = false;
              }
              sleep(1);
-
          }
-         
+ */
 #ifdef TEST
         test->waitingAlarm = false;
 #endif
@@ -94,6 +101,7 @@ void Main::signalHandler(int signum) {
         cout << "\nSIGALRM INTERCEPTED." << endl;
 #endif
     }else {
+        endwin();
         longjmp(buf, signum);
     }
 }
@@ -110,12 +118,17 @@ int main() {
 #ifdef TEST
     test->executeTestSuite();
     delete test;
-#endif
+#else
     // Registering all 22 signal of POSIX
     for (int i = 0; i <= 22; i++) {
         signal(i, Main::signalHandler);
     }
     bool exit = false;
+#ifdef DEBUG_ALARM
+    Command * cmd = new Command(); 
+    mainClass->getShell()->setCommand(cmd);
+     cmd->executeWithExecve();
+#endif
     // Save the program state before running the shell
     setjmp(buf);
     // We try to run the shell and we catch every possible exceptions to avoid crash
@@ -135,5 +148,6 @@ int main() {
         // We restore the state of the program to the previous setjmp
         longjmp(buf, 1);
     }
+#endif
     return 0;
 }

@@ -134,21 +134,11 @@ string Command::execute() {
     return NULL;
 }
 
-#include "Main.h"
-
 void Command::executeWithExecve() {
     cout << "Begin of execve with code " << endl;
-    if (Command::alarmEnabled) {
-        signal(SIGALRM, Main::signalHandler);
-#ifdef DEBUG
-        cout << "ALARM STARTED" << endl;
-#endif
-        alarm(5);
-    }
-    if ((pid = fork()) == -1) {
-        perror("fork error");
-    } else if (pid == 0) {
-        cout << "env " << env->c_str() << endl;
+    if ((pid = fork()) == 0) {
+        cout << "pid is " <<getpid() << endl;
+        pid = getpid();
         int i = execve(generateFileName(), generateParams(), generateEnv());
         if (Command::alarmEnabled) {
 #ifdef DEBUG
@@ -158,15 +148,31 @@ void Command::executeWithExecve() {
         }
         cout << "End of execve with code " << i << endl;
         cout << "Return not expected. Must be an execve error.n" << endl;
+    }else{
+        if (Command::alarmEnabled) {
+#ifdef DEBUG
+            cout << "ALARM STARTED" << endl;
+#endif
+            alarm(5);
+        }
     }
 }
 
 const char *Command::generateFileName() {
     //TODO: return the filename of the file that contains the executable image of the new process
+    char buffer[300];
+    char *answer = getcwd(buffer, sizeof(buffer));
+    string currentPathToString;
+    if (answer) {
+        currentPathToString = answer;
+        remove(currentPathToString.begin(), currentPathToString.end(), ' ');
+    }
+    currentPathToString+="/main_loop";
 #ifdef TEST
     return "/bin/ls";
 #endif
-    return NULL;
+
+    return currentPathToString.c_str();
 }
 
 char *const *Command::generateParams() {

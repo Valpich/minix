@@ -1,8 +1,9 @@
 
-/** @author Jules Baud / Valentin Pichavant / Antoine Regnier
+/**
+ * Project 1 Develop your own shell
+ * @author Jules Baud / Valentin Pichavant / Antoine Regnier
  * @version 1.0
  */
-
 
 #include "Shell.h"
 
@@ -234,7 +235,7 @@ bool Shell::run() {
             }
         }
     }
-    return true;
+    return exit;
 }
 
 ostream &operator<<(ostream &os, const Shell &shell) {
