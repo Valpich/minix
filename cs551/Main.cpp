@@ -54,7 +54,7 @@ void Main::signalHandler(int signum) {
         cout << "\nCTRL+C INTERCEPTED." << endl;
 #endif
         //Disable cursive mode if still enabled
-        endwin();
+       // endwin();
         bool commandKilled = false;
         if (mainClass != NULL) {
 #ifdef DEBUG
@@ -110,7 +110,7 @@ void Main::signalHandler(int signum) {
                             kill(mainClass->shell->getCommand()->getPid(), SIGKILL);
                             mainClass->shell->setCommand(NULL);
                             //Disable cursive mode if still enabled
-                            endwin();
+                          //  endwin();
                             cout << "\nSIGALRM INTERCEPTED." << endl;
 #ifdef DEBUG
                             cout << "kill send" << endl;
