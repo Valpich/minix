@@ -173,32 +173,34 @@ bool Shell::run() {
                         }
                         commandLine.assign(substrings[0]);
 #ifdef DEBUG
-
                         cout << " this is the value assigned " << commandLine << endl;
                         cout << "Tab pressed" << '\r' << endl;
 #endif
-
                         break;
                     case UP_ARROW_PRESSED:
                         if (suggestingMode) {
-#ifdef DEBUG
                             if (i > 0) {
                                 commandLine.assign(substrings[i - 1]);
                                 i = i - 1;
-                                cout << endl << "new suggestion found : " << commandLine << endl;
+                                cout <<'\r' << endl;
+                                cout << "new suggestion found : "<<'\r'<<endl;
+                                cout << commandLine << flush;
                             }
+#ifdef DEBUG
                             cout << "Find previous suggestion" << '\r' << endl;
 #endif
                         }
                         break;
                     case DOWN_ARROW_PRESSED:
                         if (suggestingMode) {
-#ifdef DEBUG
                             if (i < substrings.size()) {
                                 commandLine.assign(substrings[i]);
                                 i = i + 1;
-                                cout << endl << "new suggestion found " << commandLine << endl;
+                                cout <<'\r' << endl;
+                                cout << "new suggestion found : "<<'\r' <<endl;
+                                cout << commandLine << flush;
                             }
+#ifdef DEBUG
                             cout << "Find next suggestion" << '\r' << endl;
 #endif
                         }
@@ -207,17 +209,20 @@ bool Shell::run() {
                         suggestingMode = false;
 #ifdef DEBUG
                         cout << "Left arrow pressed" << '\r' << endl;
+#endif
+                        cout << '\r' << endl;
                         if (!commandLine.empty()) {
                             ch += commandLine.back();
                             commandLine = commandLine.substr(0, commandLine.size() - 1);
                         }
                         cout << commandLine << flush;
-#endif
                         break;
                     case RIGHT_ARROW_PRESSED:
                         suggestingMode = false;
 #ifdef DEBUG
                         cout << "Right arrow pressed" << '\r' << endl;
+#endif
+                        cout << '\r' << endl;
                         if (!ch.empty()) {
                             reverse(ch.begin(), ch.end());
                             commandLine += ch.at(0);
@@ -225,28 +230,31 @@ bool Shell::run() {
                             reverse(ch.begin(), ch.end());
                         }
                         cout << commandLine << flush;
-#endif
                         break;
                     case DELETE_PRESSED:
                         suggestingMode = false;
 #ifdef DEBUG
                         cout << "Delete pressed" << '\r' << endl;
-
-                        if (!commandLine.empty())
-                            commandLine = commandLine.substr(0, commandLine.size() - 1);
-                        cout << commandLine << flush;
 #endif
+                        cout << '\r' << endl;
+                        if (!commandLine.empty()){
+                            commandLine = commandLine.substr(0, commandLine.size() - 1);
+                        }
+
+                        cout << commandLine << flush;
                         break;
                     case DELETE_BIS_PRESSED:
                         suggestingMode = false;
 #ifdef DEBUG
                         cout << "Delete pressed" << '\r' << endl;
-
-                        if (!commandLine.empty())
-                            commandLine = commandLine.substr(0, commandLine.size() - 1);
-                        cout << commandLine << flush;
 #endif
-                        break;
+                        cout << '\r' << endl;
+                        if (!commandLine.empty()){
+                            commandLine = commandLine.substr(0, commandLine.size() - 1);
+                        }
+
+                        cout << commandLine << flush;
+                       break;
                     default:
                         suggestingMode = false;
 #ifdef DEBUG
