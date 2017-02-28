@@ -45,13 +45,16 @@ Shell *Main::getShell() {
 }
 
 void Main::signalHandler(int signum) {
+#ifdef DEBUG
+    cout << "\nSALUT." << endl;
+#endif
     // If we are stuck in a command
     if (signum == SIGINT) {
-        //Disable cursive mode if still enabled
-        endwin();
 #ifdef DEBUG
         cout << "\nCTRL+C INTERCEPTED." << endl;
 #endif
+        //Disable cursive mode if still enabled
+        endwin();
         bool commandKilled = false;
         if (mainClass != NULL) {
 #ifdef DEBUG
@@ -111,7 +114,6 @@ void Main::signalHandler(int signum) {
                             //Disable cursive mode if still enabled
                             endwin();
                             cout << "\nSIGALRM INTERCEPTED." << endl;
-                            //     exit(1);
 #ifdef DEBUG
                             cout << "kill send" << endl;
 #endif
@@ -134,7 +136,6 @@ void Main::signalHandler(int signum) {
 #endif
     } else {
         endwin();
-        cout <<"Catch sug" <<endl;
         exit(signum);
     }
 }
