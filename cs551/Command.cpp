@@ -180,7 +180,7 @@ void Command::executeWithExecve() {
         system(tmp.c_str());
 #else
         // We execute the command
-        int i = execlp(fileName, "", NULL);
+      //  int i = execlp(fileName, "", NULL);
         //int i = execv(fileName, generatedParams);
         cout << "Failed to execute command with code" <<endl;
 #endif
