@@ -158,9 +158,9 @@ int main() {
     signal(SIGALRM, Main::signalHandler);
     bool exit = false;
 #ifdef DEBUG_ALARM
-    Command * cmd = new Command(); 
+    Command * cmd = new Command();
     mainClass->getShell()->setCommand(cmd);
-     cmd->executeWithExecve();
+    cmd->executeWithExecve();
 #endif
     // Save the program state before running the shell
     setjmp(buf);

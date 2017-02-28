@@ -160,7 +160,9 @@ void Command::executeWithExecve() {
         const char * fileName = generateFileName();
         char *const * generatedParams = generateParams();
         char *const * generatedEnv = generateEnv();
+#ifdef DEBUG
         cout <<"Executed fileName "<<fileName << endl;
+#endif
         if (alarmEnabled) {
             close(pipefd[0]);    // close reading end in the child
             dup2(pipefd[1], 1);  // send stdout to the pipe
@@ -280,5 +282,6 @@ Command::~Command(void) {
     }
 #ifdef DEBUG
     cout << "params deleted in command" << endl;
+    cout << this <<endl;
 #endif
 }
