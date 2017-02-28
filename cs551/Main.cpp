@@ -134,6 +134,7 @@ void Main::signalHandler(int signum) {
 #endif
     } else {
         endwin();
+        cout <<"Catch sug" <<endl;
         exit(signum);
     }
 }
