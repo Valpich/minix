@@ -271,6 +271,8 @@ bool Shell::run() {
 #ifdef DEBUG
                         cout << "Enter pressed" << '\r' << endl;
 #endif
+                        cout <<'\r' << endl;
+                        commandLine ="";
                         break;
                     case TAB_PRESSED:
                         //TODO: Auto complete

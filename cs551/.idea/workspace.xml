@@ -30,7 +30,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Command.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Command.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Command.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-780">
@@ -116,7 +116,7 @@
       <file leaf-file-name="Main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="709">
+            <state relative-caret-position="575">
               <caret line="171" column="6" selection-start-line="171" selection-start-column="6" selection-end-line="171" selection-end-column="6" />
               <folding>
                 <element signature="e#378#583#0" expanded="true" />
@@ -139,16 +139,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Shell.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Shell.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Shell.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="407" column="5" selection-start-line="407" selection-start-column="5" selection-end-line="407" selection-end-column="5" />
+            <state relative-caret-position="380">
+              <caret line="274" column="40" selection-start-line="274" selection-start-column="40" selection-end-line="274" selection-end-column="40" />
               <folding>
                 <element signature="e#6619#6659#0" expanded="true" />
-                <element signature="e#12262#12324#0" expanded="true" />
-                <element signature="e#13572#13855#0" expanded="true" />
-                <element signature="e#13902#14985#0" expanded="true" />
+                <element signature="e#12348#12410#0" expanded="true" />
+                <element signature="e#13658#13941#0" expanded="true" />
+                <element signature="e#13988#15071#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -178,8 +178,8 @@
         <option value="$PROJECT_DIR$/Profile.cpp" />
         <option value="$PROJECT_DIR$/Command.h" />
         <option value="$PROJECT_DIR$/Main.cpp" />
-        <option value="$PROJECT_DIR$/Shell.cpp" />
         <option value="$PROJECT_DIR$/Command.cpp" />
+        <option value="$PROJECT_DIR$/Shell.cpp" />
       </list>
     </option>
   </component>
@@ -465,12 +465,12 @@
       <workItem from="1488214363052" duration="703000" />
       <workItem from="1488238117573" duration="13215000" />
       <workItem from="1488253002018" duration="1901000" />
-      <workItem from="1488258210927" duration="1850000" />
+      <workItem from="1488258210927" duration="1940000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122787000" />
+    <option name="totallyTimeSpent" value="122877000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -565,9 +565,9 @@
           <caret line="88" column="1" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
           <folding>
             <element signature="e#6619#6659#0" expanded="true" />
-            <element signature="e#12262#12324#0" expanded="true" />
-            <element signature="e#13572#13855#0" expanded="true" />
-            <element signature="e#13902#14985#0" expanded="true" />
+            <element signature="e#12348#12410#0" expanded="true" />
+            <element signature="e#13658#13941#0" expanded="true" />
+            <element signature="e#13988#15071#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -657,9 +657,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#6619#6659#0" expanded="true" />
-            <element signature="e#12262#12324#0" expanded="true" />
-            <element signature="e#13572#13855#0" expanded="true" />
-            <element signature="e#13902#14985#0" expanded="true" />
+            <element signature="e#12348#12410#0" expanded="true" />
+            <element signature="e#13658#13941#0" expanded="true" />
+            <element signature="e#13988#15071#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -895,33 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
-          <caret line="171" column="6" selection-start-line="171" selection-start-column="6" selection-end-line="171" selection-end-column="6" />
-          <folding>
-            <element signature="e#378#583#0" expanded="true" />
-            <element signature="e#697#737#0" expanded="true" />
-            <element signature="e#3525#3552#0" expanded="true" />
-            <element signature="e#3672#3714#0" expanded="true" />
-            <element signature="e#3891#3995#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shell.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="407" column="5" selection-start-line="407" selection-start-column="5" selection-end-line="407" selection-end-column="5" />
-          <folding>
-            <element signature="e#6619#6659#0" expanded="true" />
-            <element signature="e#12262#12324#0" expanded="true" />
-            <element signature="e#13572#13855#0" expanded="true" />
-            <element signature="e#13902#14985#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Command.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-780">
@@ -939,6 +912,33 @@
             <element signature="e#5311#5672#0" expanded="true" />
             <element signature="e#6080#6110#0" expanded="true" />
             <element signature="e#7112#7884#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="171" column="6" selection-start-line="171" selection-start-column="6" selection-end-line="171" selection-end-column="6" />
+          <folding>
+            <element signature="e#378#583#0" expanded="true" />
+            <element signature="e#697#737#0" expanded="true" />
+            <element signature="e#3525#3552#0" expanded="true" />
+            <element signature="e#3672#3714#0" expanded="true" />
+            <element signature="e#3891#3995#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shell.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="274" column="40" selection-start-line="274" selection-start-column="40" selection-end-line="274" selection-end-column="40" />
+          <folding>
+            <element signature="e#6619#6659#0" expanded="true" />
+            <element signature="e#12348#12410#0" expanded="true" />
+            <element signature="e#13658#13941#0" expanded="true" />
+            <element signature="e#13988#15071#0" expanded="true" />
           </folding>
         </state>
       </provider>
