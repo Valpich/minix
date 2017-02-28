@@ -11,6 +11,8 @@
  * Command implementation
  */
 
+#include "CommandFinder.h"
+
 /**
  * The static attribute representing if the alarm option is enabled
  */

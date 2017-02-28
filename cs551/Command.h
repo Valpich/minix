@@ -19,8 +19,6 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-#include "CommandFinder.h"
-
 using namespace std;
 
 class Command {
