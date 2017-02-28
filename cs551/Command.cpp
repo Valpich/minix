@@ -152,6 +152,7 @@ void Command::executeWithExecve() {
         pipe(pipefd);
     }
     int status;
+    // We fork the child process
     if ((pid = fork()) == 0) {
         pid = getpid();
 #ifdef DEBUG
@@ -163,19 +164,23 @@ void Command::executeWithExecve() {
 #ifdef DEBUG
         cout <<"Executed fileName "<<fileName << endl;
 #endif
+        // We set off the output if alarm enabled
         if (alarmEnabled) {
             close(pipefd[0]);    // close reading end in the child
             dup2(pipefd[1], 1);  // send stdout to the pipe
             dup2(pipefd[1], 2);  // send stderr to the pipe
             close(pipefd[1]);
         }
+        // We execute the command
         int i = execve(fileName, generatedParams, generatedEnv);
 #ifdef DEBUG
         cout << "End of execve with code " << i << endl;
         cout << "Return not expected. Must be an execve error.n" << endl;
 #endif
     } else {
+        // We set as running the command
         setRunning(true);
+        // We launch the command if required
         if (alarmEnabled) {
 #ifdef DEBUG
             cout << "ALARM STARTED" << endl;
@@ -183,22 +188,24 @@ void Command::executeWithExecve() {
             alarm(5);
         }
         char buffer[1024];
-
         if (alarmEnabled) {
             close(pipefd[1]);  // close the write end of the pipe in the parent
 
             while (read(pipefd[0], buffer, sizeof(buffer)) != 0) {}
         }
+        // We wait the child to return
         pid = wait(&status);
 #ifdef DEBUG
         cout<<"PID WAIT EXIT" <<endl;
 #endif
+        // We set off the alarm
         if (alarmEnabled) {
 #ifdef DEBUG
             cout << "ALARM DISABLED" << endl;
 #endif
             alarm(0);
         }
+        // We say the program as not runnable
         setRunning(false);
     }
 }

@@ -122,6 +122,9 @@ public:
      */
     bool run();
 
+    /**
+     * Overload the ostream operator to display as a string a Shell
+     */
     friend ostream &operator<<(ostream &os, const Shell &shell);
 
 private:

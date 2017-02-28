@@ -115,8 +115,15 @@ public:
      */
     friend ostream &operator<<(ostream &os, const Command &command);
 
+    /**
+     * @return If a command is currently runnong
+     */
     bool isRunning();
 
+    /**
+     * Set the new running value to say if a command currently running
+     * @param alarmEnabled The new value of the running
+     */
     void setRunning(bool running);
 
 private:
