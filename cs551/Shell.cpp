@@ -399,7 +399,6 @@ bool Shell::run() {
                 }
                 cbreak();
             }
-            endwin();
             if (!exit) {
 #ifdef DEBUG
                 cout << "Scan of " << commandLine << " done!" << '\r' << endl;
@@ -407,6 +406,7 @@ bool Shell::run() {
             }
         }
     }
+    endwin();
     return exit;
 }
 
