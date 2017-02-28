@@ -239,9 +239,9 @@ const char *Command::generateFileName() {
 
 char *const *Command::generateParams() {
     // TODO:  return a param list like that: char *const parmList[] = {"/bin/ls", "-l", "/u/userid/dirname", NULL};
-    char *toEncodePoint = new char[getParams()->size()+1];
-    toEncodePoint[getParams()->size()]= '\0';
-    copy(getParams()->begin(), getParams()->end(), toEncodePoint);
+    char *toEncodePoint = new char[getName()->size()+1];
+    toEncodePoint[getName()->size()]= '\0';
+    copy(getName()->begin(), getName()->end(), toEncodePoint);
     char *const paramListND[2] = {toEncodePoint, NULL};
     cout << toEncodePoint << endl;
     return NULL;
