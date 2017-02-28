@@ -173,7 +173,12 @@ void Command::executeWithExecve() {
         }
         // We execute the command
         cout<<(*params).c_str()<<endl;
-        int i = execlp(fileName, fileName, (*params).c_str(), NULL);
+        int i;
+        if((*params).c_str()!= "" || (*params)!= NULL || params != NULL){
+            i = execlp(fileName, fileName, (*params).c_str(), NULL);
+        }else{
+            i = execlp(fileName, "", NULL);
+        }
         cout << "Failed to execute command with code" <<endl;
     } else {
         // We set as running the command
