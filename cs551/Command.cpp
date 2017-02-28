@@ -172,9 +172,9 @@ void Command::executeWithExecve() {
             dup2(pipefd[1], 2);  // send stderr to the pipe
             close(pipefd[1]);
         }
-        //  system(generateFileName());
+          system(generateFileName());
         // We execute the command
-        int i = execve(fileName, generatedParams, generatedEnv);
+        //int i = execve(fileName, generatedParams, generatedEnv);
 #ifdef DEBUG
         cout << "End of execve with code " << i << endl;
         cout << "Return not expected. Must be an execve error.n" << endl;
