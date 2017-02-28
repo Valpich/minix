@@ -45,7 +45,7 @@ Main::~Main() {
 Shell *Main::getShell() {
     return shell;
 }
-
+#include <unistd.h>
 void Main::signalHandler(int signum) {
     // If we are stuck in a command
     if (signum == SIGINT) {
@@ -83,11 +83,11 @@ void Main::signalHandler(int signum) {
                 cout << "Command::isRunning() false" << endl;
 #endif
                 cout << "Kill main " << endl;
-                exit(signum);
+                kill(getpid(), SIGKILL);
             }
         } else {
             cout << "Exit " << endl;
-            exit(signum);
+            kill(getpid(), SIGKILL);
         }
     } else if (signum == SIGALRM) {
         bool scanning = true;
