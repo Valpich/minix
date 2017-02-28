@@ -131,6 +131,8 @@ void Main::signalHandler(int signum) {
 #ifdef TEST
         test->waitingAlarm = false;
 #endif
+    }else{
+                kill(getpid(), SIGKILL);
     }
 }
 
@@ -142,10 +144,8 @@ int main() {
     test->executeTestSuite();
     delete test;
 #else
-    // Registering all 22 signal of POSIX
-    for (int i = 0; i <= 22; i++) {
-        signal(i, Main::signalHandler);
-    }
+    signal(SIGINT, Main::signalHandler);
+    signal(SIGALRM, Main::signalHandler);
     bool exit = false;
 #ifdef DEBUG_ALARM
     Command * cmd = new Command();
