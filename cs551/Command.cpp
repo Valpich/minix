@@ -6,7 +6,7 @@
 
 
 #include "Command.h"
-#include <sys/wait.h>
+
 /**
  * Command implementation
  */
