@@ -143,7 +143,9 @@ string Command::execute() {
 }
 
 void Command::executeWithExecve() {
+#ifdef DEBUG
     cout << "Begin of execve with code " << endl;
+#endif
     bool alarmEnabled = Command::alarmEnabled;
     int pipefd[2];
     if (alarmEnabled) {
@@ -151,16 +153,24 @@ void Command::executeWithExecve() {
     }
     if ((pid = fork()) == 0) {
         pid = getpid();
+#ifdef DEBUG
         cout << "pid is " << pid << endl;
+#endif
         if (alarmEnabled) {
             close(pipefd[0]);    // close reading end in the child
             dup2(pipefd[1], 1);  // send stdout to the pipe
             dup2(pipefd[1], 2);  // send stderr to the pipe
             close(pipefd[1]);
         }
-        int i = execve(generateFileName(), generateParams(), generateEnv());
+        const char * fileName = generateFileName();
+        char *const * generatedParams = generateParams();
+        char *const * generatedEnv = generateEnv();
+        cout <<"Executed fileName "<<fileName << endl;
+        int i = execve(fileName, generatedParams, generatedEnv);
+#ifdef DEBUG
         cout << "End of execve with code " << i << endl;
         cout << "Return not expected. Must be an execve error.n" << endl;
+#endif
     } else {
         setRunning(true);
         if (alarmEnabled) {
