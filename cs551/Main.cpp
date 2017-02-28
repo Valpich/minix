@@ -134,10 +134,6 @@ void Main::signalHandler(int signum) {
 #endif
     } else {
         endwin();
-#ifdef DEBUG
-        cout << "longjmp executed to recover" << endl;
-#endif
-        longjmp(buf, signum);
     }
 }
 
@@ -156,6 +152,7 @@ int main() {
     }*/
     signal(SIGINT, Main::signalHandler);
     signal(SIGALRM, Main::signalHandler);
+    signal(SIGSEGV, Main::signalHandler);
     bool exit = false;
 #ifdef DEBUG_ALARM
     Command * cmd = new Command();
