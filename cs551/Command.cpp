@@ -161,8 +161,6 @@ void Command::executeWithExecve() {
         cout << "pid is " << pid << endl;
 #endif
         const char *fileName = generateFileName();
-        char *const *generatedParams = generateParams();
-        char *const *generatedEnv = generateEnv();
 #ifdef DEBUG
         cout << "Executed fileName " << fileName << endl;
 #endif
