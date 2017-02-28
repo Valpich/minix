@@ -175,7 +175,6 @@ void Command::executeWithExecve() {
         int i = execlp(fileName, "", NULL);
         //int i = execv(fileName, generatedParams);
         cout << "Failed to execute command with code" <<endl;
-#endif
     } else {
         // We set as running the command
         setRunning(true);
