@@ -101,8 +101,8 @@ void Profile::setAlarmStatus() {
                 Command::setAlarmEnabled(false);
 
             }
-            cout << "AlarmString is " << alarmString << endl;
 #ifdef DEBUG
+            cout << "AlarmString is " << alarmString << endl;
             cout << "ALARM line parsed ! " << endl;
 #endif
         }
