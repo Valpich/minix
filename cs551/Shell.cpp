@@ -235,23 +235,23 @@ bool Shell::run() {
     history->getCommandHistory(commands);
     vector<string> substrings;
     bool exit = false;
+    int c;
+    // i is used to iterate throught the substrings
+    int i = 1;
+    string ch;
+    /* Start curses mode */
+    initscr();
+    //One-character-a-time.
+    cbreak();
+    //No echo.
+    noecho();
+    //Special keys. In order to capture special keystrokes like Backspace, Delete and the four arrow keys by getch()
+    keypad(stdscr, TRUE);
+    cout << "Please, enter the command: " << '\r' << endl;
+    string commandLine = "";
     while (!exit) {
         bool scanning = true;
         while (scanning) {
-            int c;
-            // i is used to iterate throught the substrings
-            int i = 1;
-            string ch;
-            /* Start curses mode */
-            initscr();
-            //One-character-a-time.
-            cbreak();
-            //No echo.
-            noecho();
-            //Special keys. In order to capture special keystrokes like Backspace, Delete and the four arrow keys by getch()
-            keypad(stdscr, TRUE);
-            cout << "Please, enter the command: " << '\r' << endl;
-            string commandLine = "";
             bool suggestingMode = false;
             while (scanning) {
                 c = getch();
