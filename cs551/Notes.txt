@@ -1,0 +1,28 @@
+Exception handling: 
+- Every c++ exception of the shell instance is catch on the main, when they occurs the main will get back at the beginning with a new Main instance to try to start from scratch. 
+- Every signal is also caught on the main that why only a SIGKILL could kill the program, otherwise we handle SIGINT to end the shell and SIGALRM to offer the possibility to kill the process. Other signals make the program restart at the beginning with a new Main instance. 
+
+Exception avoiding:
+- Each constructor initialize the class dynamic attributes either with a NULL or with a new to avoid bad memory access (even if a SIGFAULT will be catch by the signal handler and make the program restart).
+- Each destructor delete only the NOT NULL dynamic objects .
+- Setters delete also NOT NULL dynamic objects before setting the new value to avoid memory leak.
+- Every pointer is checked as NOT NULL before access, for instance in the Main before handling SIGALRM we check if their is a shell then if this shell contains a command and then we send the kill signal otherwise we didn’t send it because a SIGALRM could came from another reason.
+- The code require at least to be compiled in C++11 which means more security because instead using for loop over collection, we use the for each loop to avoid NULL exception.
+- We have created several mechanism to control that every step of execution is secure, the most significant example is the parsing of the profile. The parsing is able to handle multiple PATH definition, if no PATH is found then this try to restore the .profile file, if that fail, the default profile will be used even if the .profile is not stored as a file. For each line of PATH, the validity of each token in the line is tested. We have a similar system for the ALARM value, we try to find if their is an ALARM in the .profile, if no we force alarm to be enable, else if we find ON or a string containing ON we set ALARM as ON otherwise if OFF is found are a string containing OFF we set the alarm to OFF. If multiple definition of ALARM are detected then the user is informed of the corrupted file and the last occurence of ALARM is used.
+- File access are managed by the FileManager class which means that the way that file are open/closed is abstract for other classes, and inside we use c++ stream to secure the way file are open for instance the instream open will call the c++ method basic_ifstream<_CharT, _Traits>::open(const string& __s, ios_base::openmode __mode) then basic_filebuf<_CharT, _Traits>::open(const string& __s, ios_base::openmode __mode) then basic_filebuf<_CharT, _Traits>::open(const char* __s, ios_base::openmode __mode) and finally the fopen C function and will verify that everything is ok to read the file. 
+- The shell is design to securely scan only authorized characters, every other character are ignored (for instance special char).
+
+Maintainability: 
+- The program code use preprocessor instruction to handle if it’s supposed to execute test cases or/and in DEBUG mode (which means to print debug informations) and if it executed on MINIX or not (at the beginning we used thread to implement parallels process but we found that minix does not implements pthread.h so we keep the code that work on UNIX.
+- The code follow object oriented design which make it easy to use and to change.
+- Most of the source code is documented with comments / javadoc like documentation for the methods / debug printing.
+- The code is modular so we can assume to make it more like a real shell in the future, for instance for each command we could imagine define an environment or add an environment into the PROFILE.
+- All class can be displayed as a string due to the overload of every ostream (like toString() in java).
+
+Functionality:
+- We have added the parsing of potential commands in the folder defined as PATH to suggest commands to the user merging them with the history (only executable file on the PATH folder are added).
+- We can remove by using delete while we scan the command.
+- Using left arrow we can get before to change a char, for instance if we have “Hello” by pressing left arrow to time “Hel” will be displayed and we will be able to change the second l character and then we are able to use the right arrow to go back to the end of the string.
+
+Testing:
+- Most of the functionalities were tested individually and then together to be sure that every module was working before more integration thanks to the C++ object oriented design.
