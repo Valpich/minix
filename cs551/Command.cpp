@@ -151,6 +151,7 @@ void Command::executeWithExecve() {
     if (alarmEnabled) {
         pipe(pipefd);
     }
+    int status;
     if ((pid = fork()) == 0) {
         pid = getpid();
 #ifdef DEBUG
@@ -186,8 +187,7 @@ void Command::executeWithExecve() {
 
             while (read(pipefd[0], buffer, sizeof(buffer)) != 0) {}
         }
-        int status;
-        waitpid(-1, &status, 0);
+        wait(&status);
         if (alarmEnabled) {
 #ifdef DEBUG
             cout << "ALARM DISABLED" << endl;
