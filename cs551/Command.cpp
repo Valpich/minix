@@ -161,6 +161,8 @@ void Command::executeWithExecve() {
         cout << "pid is " << pid << endl;
 #endif
         const char *fileName = generateFileName();
+        char *const *generatedParams = generateParams();
+        char *const *generatedEnv = generateEnv();
 #ifdef DEBUG
         cout << "Executed fileName " << fileName << endl;
 #endif
@@ -175,6 +177,7 @@ void Command::executeWithExecve() {
         int i = execlp(fileName, "", NULL);
         //int i = execv(fileName, generatedParams);
         cout << "Failed to execute command with code" <<endl;
+#endif
     } else {
         // We set as running the command
         setRunning(true);
@@ -209,7 +212,6 @@ void Command::executeWithExecve() {
 }
 
 const char *Command::generateFileName() {
-    return "/bin/ls";
 #ifndef DEBUG_ALARM
     CommandFinder cf;
     string *tmp = getName();
