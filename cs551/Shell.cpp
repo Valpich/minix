@@ -406,7 +406,6 @@ bool Shell::run() {
             }
         }
     }
-    endwin();
     return exit;
 }
 
