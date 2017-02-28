@@ -173,17 +173,10 @@ void Command::executeWithExecve() {
             dup2(pipefd[1], 2);  // send stderr to the pipe
             close(pipefd[1]);
         }
-#ifndef MINIX
-        string tmp = generateFileName();
-        tmp+= " ";
-        tmp+= *getParams();
-        system(tmp.c_str());
-#else
         // We execute the command
-      //  int i = execlp(fileName, "", NULL);
+       // int i = execlp(fileName, "", NULL);
         //int i = execv(fileName, generatedParams);
         cout << "Failed to execute command with code" <<endl;
-#endif
     } else {
         // We set as running the command
         setRunning(true);
