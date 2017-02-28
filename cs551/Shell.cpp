@@ -268,9 +268,6 @@ bool Shell::run() {
                         suggestingMode = false;
                         scanning = false;
                         parseCommand(commandLine);
-                        // TODO: Create a command vector
-                        // TODO: Parse command line into command vector
-                        // TODO: Execute each command
 #ifdef DEBUG
                         cout << "Enter pressed" << '\r' << endl;
 #endif
@@ -407,8 +404,6 @@ bool Shell::run() {
 #ifdef DEBUG
                 cout << "Scan of " << commandLine << " done!" << '\r' << endl;
 #endif
-                // TODO: Get the command and set it as the Command value in Shell
-                // TODO: Execute the command from command
             }
         }
     }
