@@ -176,7 +176,7 @@ void Command::executeWithExecve() {
         string tmp = generateFileName();
         tmp+= " ";
         tmp+= *getParams();
-        system(tmp);
+        system(tmp.c_str());
         // We execute the command
         //int i = execve(fileName, generatedParams, generatedEnv);
     } else {
