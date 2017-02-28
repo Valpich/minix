@@ -45,9 +45,10 @@ Main::~Main() {
 Shell *Main::getShell() {
     return shell;
 }
-#include <unistd.h>
+
 void Main::signalHandler(int signum) {
     // If we are stuck in a command
+    cout << "ERROR IN PID "<< getpid();
     if (signum == SIGINT) {
 #ifdef DEBUG
         cout << "\nCTRL+C INTERCEPTED." << endl;
@@ -131,8 +132,6 @@ void Main::signalHandler(int signum) {
 #ifdef TEST
         test->waitingAlarm = false;
 #endif
-    }else{
-                kill(getpid(), SIGKILL);
     }
 }
 
@@ -144,8 +143,10 @@ int main() {
     test->executeTestSuite();
     delete test;
 #else
-    signal(SIGINT, Main::signalHandler);
-    signal(SIGALRM, Main::signalHandler);
+    // Registering all 22 signal of POSIX
+    for (int i = 0; i <= 22; i++) {
+        signal(i, Main::signalHandler);
+    }
     bool exit = false;
 #ifdef DEBUG_ALARM
     Command * cmd = new Command();
