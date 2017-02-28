@@ -267,11 +267,11 @@ bool Shell::run() {
                     case ENTER_PRESSED:
                         suggestingMode = false;
                         scanning = false;
+                        cout <<'\r' << endl;
                         parseCommand(commandLine);
 #ifdef DEBUG
                         cout << "Enter pressed" << '\r' << endl;
 #endif
-                        cout <<'\r' << endl;
                         commandLine ="";
                         break;
                     case TAB_PRESSED:
