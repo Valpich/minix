@@ -180,7 +180,8 @@ void Command::executeWithExecve() {
         system(tmp.c_str());
 #else
         // We execute the command
-        int i = execv(fileName, generatedParams);
+        int i = execlp(fileName, "", NULL);
+        //int i = execv(fileName, generatedParams);
         cout << "Failed to execute command with code" <<endl;
 #endif
     } else {
@@ -219,9 +220,7 @@ void Command::executeWithExecve() {
 const char *Command::generateFileName() {
 #ifndef DEBUG_ALARM
     CommandFinder cf;
-    string *tmp = new string(cf.getEnvPath());
-    *tmp += " ";
-    *tmp += *getName();
+    string *tmp = getName();
 #ifdef DEBUG
     cout << '\r' << endl;
     cout << *tmp << endl;
