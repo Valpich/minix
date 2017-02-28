@@ -127,11 +127,11 @@
       <file leaf-file-name="Main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="138" column="14" selection-start-line="138" selection-start-column="14" selection-end-line="138" selection-end-column="14" />
+            <state relative-caret-position="94">
+              <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
               <folding>
-                <element signature="e#3633#3660#0" expanded="true" />
-                <element signature="e#4027#4131#0" expanded="true" />
+                <element signature="e#3519#3546#0" expanded="true" />
+                <element signature="e#3885#3989#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -446,12 +446,12 @@
       <workItem from="1488161889603" duration="2854000" />
       <workItem from="1488165204219" duration="4382000" />
       <workItem from="1488214363052" duration="703000" />
-      <workItem from="1488238117573" duration="9254000" />
+      <workItem from="1488238117573" duration="9410000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115075000" />
+    <option name="totallyTimeSpent" value="115231000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -581,8 +581,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3633#3660#0" expanded="true" />
-            <element signature="e#4027#4131#0" expanded="true" />
+            <element signature="e#3519#3546#0" expanded="true" />
+            <element signature="e#3885#3989#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -880,11 +880,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="138" column="14" selection-start-line="138" selection-start-column="14" selection-end-line="138" selection-end-column="14" />
+        <state relative-caret-position="94">
+          <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
           <folding>
-            <element signature="e#3633#3660#0" expanded="true" />
-            <element signature="e#4027#4131#0" expanded="true" />
+            <element signature="e#3519#3546#0" expanded="true" />
+            <element signature="e#3885#3989#0" expanded="true" />
           </folding>
         </state>
       </provider>

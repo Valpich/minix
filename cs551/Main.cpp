@@ -45,12 +45,6 @@ Shell *Main::getShell() {
 }
 
 void Main::signalHandler(int signum) {
-#ifdef DEBUG
-    cout << "\nSALUT." << endl;
-#endif
-#ifdef DEBUG
-    cout << "\nCAUGHT "<< signum << endl;
-#endif
     // If we are stuck in a command
     if (signum == SIGINT) {
 #ifdef DEBUG
@@ -135,8 +129,6 @@ void Main::signalHandler(int signum) {
 #ifdef TEST
         test->waitingAlarm = false;
 #endif
-    }else{
-        exit(1);
     }
 }
 
