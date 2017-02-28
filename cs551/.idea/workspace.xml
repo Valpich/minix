@@ -30,15 +30,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Command.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Command.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Command.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="205" column="26" selection-start-line="205" selection-start-column="26" selection-end-line="205" selection-end-column="26" />
+            <state relative-caret-position="472">
+              <caret line="223" column="6" selection-start-line="223" selection-start-column="6" selection-end-line="223" selection-end-column="6" />
               <folding>
                 <element signature="e#123#143#0" expanded="true" />
-                <element signature="e#5616#5977#0" expanded="true" />
-                <element signature="e#7506#8278#0" expanded="true" />
+                <element signature="e#5545#5906#0" expanded="true" />
+                <element signature="e#7427#8199#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,7 +78,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="97">
@@ -93,21 +93,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="History.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/History.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1185">
+              <caret line="139" column="6" selection-start-line="139" selection-start-column="6" selection-end-line="139" selection-end-column="6" />
+              <folding>
+                <element signature="e#3120#3549#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="CommandManager.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CommandManager.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="750">
               <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Main.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="22" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -166,9 +168,9 @@
         <option value="$PROJECT_DIR$/Shell.cpp" />
         <option value="$PROJECT_DIR$/Command.h" />
         <option value="$PROJECT_DIR$/Shell.h" />
-        <option value="$PROJECT_DIR$/Command.cpp" />
         <option value="$PROJECT_DIR$/Profile.cpp" />
         <option value="$PROJECT_DIR$/Main.cpp" />
+        <option value="$PROJECT_DIR$/Command.cpp" />
       </list>
     </option>
   </component>
@@ -453,12 +455,12 @@
       <workItem from="1488165204219" duration="4382000" />
       <workItem from="1488214363052" duration="703000" />
       <workItem from="1488238117573" duration="13215000" />
-      <workItem from="1488253002018" duration="850000" />
+      <workItem from="1488253002018" duration="1046000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119886000" />
+    <option name="totallyTimeSpent" value="120082000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -558,9 +560,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1320">
           <caret line="88" column="1" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
-          <folding>
-            <element signature="e#13807#14890#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -652,9 +652,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#13807#14890#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -764,23 +762,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/History.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="139" column="6" selection-start-line="139" selection-start-column="6" selection-end-line="139" selection-end-column="6" />
-          <folding>
-            <element signature="e#3120#3549#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Shell.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5704">
           <caret line="395" column="4" selection-start-line="395" selection-start-column="0" selection-end-line="396" selection-end-column="0" />
-          <folding>
-            <element signature="e#13807#14890#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -894,18 +880,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Command.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="205" column="26" selection-start-line="205" selection-start-column="26" selection-end-line="205" selection-end-column="26" />
-          <folding>
-            <element signature="e#123#143#0" expanded="true" />
-            <element signature="e#5616#5977#0" expanded="true" />
-            <element signature="e#7506#8278#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
@@ -915,6 +889,28 @@
             <element signature="e#3461#3488#0" expanded="true" />
             <element signature="e#3608#3650#0" expanded="true" />
             <element signature="e#3827#3931#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/History.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1185">
+          <caret line="139" column="6" selection-start-line="139" selection-start-column="6" selection-end-line="139" selection-end-column="6" />
+          <folding>
+            <element signature="e#3120#3549#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Command.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="223" column="6" selection-start-line="223" selection-start-column="6" selection-end-line="223" selection-end-column="6" />
+          <folding>
+            <element signature="e#123#143#0" expanded="true" />
+            <element signature="e#5545#5906#0" expanded="true" />
+            <element signature="e#7427#8199#0" expanded="true" />
           </folding>
         </state>
       </provider>

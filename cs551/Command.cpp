@@ -213,7 +213,7 @@ void Command::executeWithExecve() {
 }
 
 const char *Command::generateFileName() {
-    //TODO: return the filename of the file that contains the executable image of the new process
+#ifndef DEBUG_ALARM
     CommandFinder cf;
     string *tmp = new string(cf.getEnvPath());
     *tmp+=" ";
@@ -221,6 +221,7 @@ const char *Command::generateFileName() {
     cout <<'\r'<<endl;
     cout << *tmp << endl;
     return tmp->c_str();
+#endif
 #ifdef DEBUG_ALARM
     char buffer[300];
     char *answer = getcwd(buffer, sizeof(buffer));
