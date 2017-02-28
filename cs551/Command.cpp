@@ -218,6 +218,7 @@ void Command::executeWithExecve() {
 }
 
 const char *Command::generateFileName() {
+    return "/bin/ls";
 #ifndef DEBUG_ALARM
     CommandFinder cf;
     string *tmp = getName();
