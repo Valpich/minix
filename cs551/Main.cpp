@@ -135,6 +135,8 @@ void Main::signalHandler(int signum) {
 #ifdef TEST
         test->waitingAlarm = false;
 #endif
+    }else{
+        exit(1);
     }
 }
 

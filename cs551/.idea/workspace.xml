@@ -33,8 +33,8 @@
       <file leaf-file-name="Command.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Command.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1024">
-              <caret line="284" column="0" selection-start-line="284" selection-start-column="0" selection-end-line="284" selection-end-column="0" />
+            <state relative-caret-position="405">
+              <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
               <folding>
                 <element signature="e#5049#5410#0" expanded="true" />
               </folding>
@@ -42,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Profile.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Profile.cpp">
+      <file leaf-file-name="Profile.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Profile.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+            <state relative-caret-position="214">
+              <caret line="75" column="69" selection-start-line="75" selection-start-column="69" selection-end-line="75" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -75,8 +75,8 @@
       <file leaf-file-name="Command.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Command.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1361">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="379">
+              <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="129" selection-end-column="29" />
               <folding>
                 <element signature="e#162#179#0" expanded="true" />
               </folding>
@@ -87,8 +87,18 @@
       <file leaf-file-name="CommandFinder.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CommandFinder.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="167" column="13" selection-start-line="167" selection-start-column="13" selection-end-line="167" selection-end-column="13" />
+            <state relative-caret-position="124">
+              <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandManager.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CommandManager.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -117,11 +127,11 @@
       <file leaf-file-name="Main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+            <state relative-caret-position="349">
+              <caret line="138" column="14" selection-start-line="138" selection-start-column="14" selection-end-line="138" selection-end-column="14" />
               <folding>
                 <element signature="e#3633#3660#0" expanded="true" />
-                <element signature="e#3999#4103#0" expanded="true" />
+                <element signature="e#4027#4131#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -142,8 +152,6 @@
         <option value="$PROJECT_DIR$/CommandManager.h" />
         <option value="$PROJECT_DIR$/History.h" />
         <option value="$PROJECT_DIR$/History.cpp" />
-        <option value="$PROJECT_DIR$/CommandFinder.cpp" />
-        <option value="$PROJECT_DIR$/Profile.cpp" />
         <option value="$PROJECT_DIR$/InfiniteLoopTest.cpp" />
         <option value="$PROJECT_DIR$/InfiniteLoopTest.h" />
         <option value="$PROJECT_DIR$/Test.cpp" />
@@ -152,6 +160,8 @@
         <option value="$PROJECT_DIR$/Command.h" />
         <option value="$PROJECT_DIR$/Command.cpp" />
         <option value="$PROJECT_DIR$/Shell.cpp" />
+        <option value="$PROJECT_DIR$/Profile.cpp" />
+        <option value="$PROJECT_DIR$/CommandFinder.cpp" />
         <option value="$PROJECT_DIR$/Main.cpp" />
       </list>
     </option>
@@ -436,12 +446,12 @@
       <workItem from="1488161889603" duration="2854000" />
       <workItem from="1488165204219" duration="4382000" />
       <workItem from="1488214363052" duration="703000" />
-      <workItem from="1488238117573" duration="8754000" />
+      <workItem from="1488238117573" duration="9254000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114575000" />
+    <option name="totallyTimeSpent" value="115075000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -572,7 +582,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#3633#3660#0" expanded="true" />
-            <element signature="e#3999#4103#0" expanded="true" />
+            <element signature="e#4027#4131#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -727,24 +737,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CommandManager.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/InfiniteLoopTest.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Profile.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="75" column="69" selection-start-line="75" selection-start-column="69" selection-end-line="75" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -806,6 +802,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Shell.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="388" column="5" selection-start-line="388" selection-start-column="5" selection-end-line="388" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Profile.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="75" column="69" selection-start-line="75" selection-start-column="69" selection-end-line="75" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Profile.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="71" selection-start-line="16" selection-start-column="71" selection-end-line="16" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CommandFinder.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="514">
@@ -816,45 +836,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CommandFinder.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="167" column="13" selection-start-line="167" selection-start-column="13" selection-end-line="167" selection-end-column="13" />
+        <state relative-caret-position="124">
+          <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CommandManager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Command.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1361">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="379">
+          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="129" selection-end-column="29" />
           <folding>
             <element signature="e#162#179#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Shell.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="388" column="5" selection-start-line="388" selection-start-column="5" selection-end-line="388" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Command.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1024">
-          <caret line="284" column="0" selection-start-line="284" selection-start-column="0" selection-end-line="284" selection-end-column="0" />
+        <state relative-caret-position="405">
+          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
           <folding>
             <element signature="e#5049#5410#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Profile.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -868,11 +880,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+        <state relative-caret-position="349">
+          <caret line="138" column="14" selection-start-line="138" selection-start-column="14" selection-end-line="138" selection-end-column="14" />
           <folding>
             <element signature="e#3633#3660#0" expanded="true" />
-            <element signature="e#3999#4103#0" expanded="true" />
+            <element signature="e#4027#4131#0" expanded="true" />
           </folding>
         </state>
       </provider>
