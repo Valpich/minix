@@ -47,6 +47,9 @@ Shell *Main::getShell() {
 }
 
 void Main::signalHandler(int signum) {
+#ifdef DEBUG
+    cout << signum<<" INTERCEPTED." << endl;
+#endif
     // If we are stuck in a command
     if (signum == SIGINT) {
 #ifdef DEBUG
