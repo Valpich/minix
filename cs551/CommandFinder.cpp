@@ -7,9 +7,20 @@
 
 #include "CommandFinder.h"
 
+
+string CommandFinder::pathD;
+
 /**
  * CommandFinder implementation
  */
+
+ string CommandFinder::getEnvPath() {
+   return pathD;
+ }
+
+ void CommandFinder::setEnvPath(string path) {
+   pathD = path;
+ }
 
 string *CommandFinder::getFolderPaths() {
     return folderPaths;
@@ -44,10 +55,19 @@ void CommandFinder::findAllCommands(vector<Command *> *commands) {
         cout << "Profile content parsed in find all commands";
 #endif
         if (!paths->empty()) {
+          string pathTBD = "PATH=";
+          int cnt;
             for (string line: *paths) {
 #ifdef DEBUG
                 cout << "One path is " << line << endl;
 #endif
+              if(cnt == paths->size()){
+                pathTBD+=line;
+              }else if(cnt != paths->size()){
+                pathTBD+=line;
+                pathTBD+=":";
+                cnt++;
+              }
                 vector<string> *tempFolderFiles = new vector<string>();
                 if (tempFolderFiles != NULL) {
                     getFilesInDirectory(tempFolderFiles, line);
@@ -69,6 +89,7 @@ void CommandFinder::findAllCommands(vector<Command *> *commands) {
                     }
                 }
             }
+            setEnvPath(pathTBD);
         } else {
             // We regenerate the user profile from default and we retry one time to parse it
             // We exit with error code 2 if the program is unable to recover
@@ -242,8 +263,7 @@ CommandFinder::CommandFinder(void) {
 }
 
 CommandFinder::~CommandFinder(void) {
-#ifdef CLEAN
-    #ifdef DEBUG
+#ifdef DEBUG
     cout << "Deleting folderPaths in CommandFinder" << endl;
 #endif
     if (folderPaths != NULL) {
@@ -260,6 +280,5 @@ CommandFinder::~CommandFinder(void) {
     }
 #ifdef DEBUG
     cout << "profile deleted in CommandFinder" << endl;
-#endif
 #endif
 }
