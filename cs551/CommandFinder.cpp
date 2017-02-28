@@ -242,7 +242,8 @@ CommandFinder::CommandFinder(void) {
 }
 
 CommandFinder::~CommandFinder(void) {
-#ifdef DEBUG
+#ifdef CLEAN
+    #ifdef DEBUG
     cout << "Deleting folderPaths in CommandFinder" << endl;
 #endif
     if (folderPaths != NULL) {
@@ -259,5 +260,6 @@ CommandFinder::~CommandFinder(void) {
     }
 #ifdef DEBUG
     cout << "profile deleted in CommandFinder" << endl;
+#endif
 #endif
 }

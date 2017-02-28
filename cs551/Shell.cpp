@@ -349,6 +349,7 @@ Shell::Shell(void) {
 }
 
 Shell::~Shell(void) {
+#ifdef CLEAN
 #ifdef DEBUG
     cout << "Deleting commandFinder in shell" << endl;
 #endif
@@ -391,5 +392,6 @@ Shell::~Shell(void) {
     }
 #ifdef DEBUG
     cout << "command deleted in shell" << endl;
+#endif
 #endif
 }

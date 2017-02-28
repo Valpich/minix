@@ -249,7 +249,8 @@ Command::Command(void) {
 }
 
 Command::~Command(void) {
-#ifdef DEBUG
+#ifdef CLEAN
+    #ifdef DEBUG
     cout << "Deleting path in Command" << endl;
 #endif
     if (path != NULL) {
@@ -282,5 +283,6 @@ Command::~Command(void) {
     }
 #ifdef DEBUG
     cout << "params deleted in command" << endl;
+#endif
 #endif
 }

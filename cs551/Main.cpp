@@ -28,7 +28,18 @@ Main::Main() {
 }
 
 Main::~Main() {
-
+#ifdef CLEAN
+    #ifdef DEBUG
+    cout << "Deleting shell in Main" << endl;
+#endif
+    if (shell != NULL) {
+        delete shell;
+        shell = NULL;
+    }
+#ifdef DEBUG
+    cout << "shell deleted in Main" << endl;
+#endif
+#endif
 }
 
 Shell *Main::getShell() {

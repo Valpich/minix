@@ -172,7 +172,8 @@ Profile::Profile(void) {
 }
 
 Profile::~Profile(void) {
-#ifdef DEBUG
+#ifdef CLEAN
+    #ifdef DEBUG
     cout << "Deleting fileManager in profile" << endl;
 #endif
     if (fileManager != NULL) {
@@ -197,5 +198,6 @@ Profile::~Profile(void) {
     }
 #ifdef DEBUG
     cout << "content deleted in profile" << endl;
+#endif
 #endif
 }

@@ -18,6 +18,7 @@ FileManager::FileManager(void) {
 }
 
 FileManager::~FileManager(void) {
+#ifdef CLEAN
     // Close file stream if open
 #ifdef DEBUG
     cout << "Deleting outStream in fileManager" << endl;
@@ -42,6 +43,7 @@ FileManager::~FileManager(void) {
     }
 #ifdef DEBUG
     cout << "inStream deleted in fileManager" << endl;
+#endif
 #endif
 }
 
