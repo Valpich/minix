@@ -33,6 +33,17 @@ public:
     ~CommandFinder();
 
     /**
+     * @return The path string
+     */
+    string getEnvPath();
+
+    /**
+     * Set the path string
+     * @param value The new value of the path
+     */
+    void setEnvPath(string path);
+
+    /**
      * @return The folder paths string
      */
     string *getFolderPaths();
@@ -68,6 +79,8 @@ public:
 private:
     string *folderPaths;
     Profile *profile;
+
+    static string pathD;
 
     /**
      * Utility method used to parse the profile content to find the PATH values

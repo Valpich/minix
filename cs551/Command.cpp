@@ -6,6 +6,7 @@
 
 
 #include "Command.h"
+#include "CommandFinder.h"
 
 /**
  * Command implementation
@@ -171,6 +172,7 @@ void Command::executeWithExecve() {
             dup2(pipefd[1], 2);  // send stderr to the pipe
             close(pipefd[1]);
         }
+        //  system(generateFileName());
         // We execute the command
         int i = execve(fileName, generatedParams, generatedEnv);
 #ifdef DEBUG
@@ -212,6 +214,13 @@ void Command::executeWithExecve() {
 
 const char *Command::generateFileName() {
     //TODO: return the filename of the file that contains the executable image of the new process
+    CommandFinder cf;
+    string *tmp = new string(cf.getEnvPath());
+    *tmp+=" ";
+    *tmp+= *getName();
+    cout <<'\r'<<endl;
+    cout << *tmp << endl;
+    return tmp->c_str();
 #ifdef DEBUG_ALARM
     char buffer[300];
     char *answer = getcwd(buffer, sizeof(buffer));
@@ -230,12 +239,25 @@ const char *Command::generateFileName() {
 
 char *const *Command::generateParams() {
     // TODO:  return a param list like that: char *const parmList[] = {"/bin/ls", "-l", "/u/userid/dirname", NULL};
+    char *toEncodePoint = new char[getParams()->size()+1];
+    toEncodePoint[getParams()->size()]= '\0';
+    copy(getParams()->begin(), getParams()->end(), toEncodePoint);
+    char *const paramListND[2] = {toEncodePoint, NULL};
+    cout << toEncodePoint << endl;
+    return NULL;
+    return paramListND;
+    delete[] toEncodePoint;
     char *const paramList[] = {NULL};
     return paramList;
 }
 
 char *const *Command::generateEnv() {
     // TODO:  return a env list like that: char *const envParms[2] = {"EXAMPLE=test", NULL};
+    CommandFinder cf;
+    char *toEncodePoint2 = new char[cf.getEnvPath().size()+1];
+    toEncodePoint2[cf.getEnvPath().size()]= '\0';
+    copy(cf.getEnvPath().begin(), cf.getEnvPath().end(), toEncodePoint2);
+  //  char *const envParamsND[2] = {toEncodePoint2, NULL};
     char *const envParams[] = {NULL};
     return envParams;
 }
