@@ -282,6 +282,5 @@ Command::~Command(void) {
     }
 #ifdef DEBUG
     cout << "params deleted in command" << endl;
-    cout << this <<endl;
 #endif
 }

@@ -386,7 +386,7 @@ Shell::~Shell(void) {
     cout << "Deleting command in shell" << endl;
 #endif
     if (command != NULL) {
-        delete command;
+     //   delete command;
         command = NULL;
     }
 #ifdef DEBUG
