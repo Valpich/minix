@@ -87,8 +87,6 @@ void Main::signalHandler(int signum) {
                 cout << "Command::isRunning() false" << endl;
 #endif
                 cout << "Kill main " << endl;
-                delete mainClass;
-                mainClass = NULL;
                 exit(signum);
             }
         } else {
