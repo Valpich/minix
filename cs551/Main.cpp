@@ -134,6 +134,7 @@ void Main::signalHandler(int signum) {
 #endif
     } else {
         endwin();
+        exit(signum);
     }
 }
 
@@ -146,13 +147,9 @@ int main() {
     delete test;
 #else
     // Registering all 22 signal of POSIX
-    /*
     for (int i = 0; i <= 22; i++) {
         signal(i, Main::signalHandler);
-    }*/
-    signal(SIGINT, Main::signalHandler);
-    signal(SIGALRM, Main::signalHandler);
-    signal(SIGSEGV, Main::signalHandler);
+    }
     bool exit = false;
 #ifdef DEBUG_ALARM
     Command * cmd = new Command();
