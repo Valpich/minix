@@ -48,7 +48,6 @@ Shell *Main::getShell() {
 
 void Main::signalHandler(int signum) {
     // If we are stuck in a command
-    cout << "ERROR IN PID "<< getpid();
     if (signum == SIGINT) {
 #ifdef DEBUG
         cout << "\nCTRL+C INTERCEPTED." << endl;
