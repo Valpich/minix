@@ -47,17 +47,48 @@ Shell *Main::getShell() {
 void Main::signalHandler(int signum) {
     // If we are stuck in a command
     if (signum == SIGINT) {
-
         //Disable cursive mode if still enabled
         endwin();
 #ifdef DEBUG
         cout << "\nCTRL+C INTERCEPTED." << endl;
 #endif
+        bool commandKilled = false;
         if (mainClass != NULL) {
-            delete mainClass;
-            mainClass = NULL;
+#ifdef DEBUG
+            cout << "mainClass != NULL" << endl;
+#endif
+            if (mainClass->getShell() != NULL) {
+#ifdef DEBUG
+                cout << "mainClass->getShell() != NULL" << endl;
+#endif
+                if (mainClass->getShell()->getCommand() != NULL) {
+#ifdef DEBUG
+                    cout << "mainClass->getShell()->getCommand() != NULL" << endl;
+#endif
+                    if(mainClass->getShell()->getCommand()->isRunning()){
+#ifdef DEBUG
+                        cout << "mainClass->getShell()->getCommand()->isRunning() true" << endl;
+#endif
+                        kill(mainClass->shell->getCommand()->getPid(), SIGKILL);
+                        mainClass->shell->setCommand(NULL);
+                        commandKilled = true;
+                        cout << "Kill command " << endl;
+                   }
+                }
+            }
+            if (!commandKilled) {
+#ifdef DEBUG
+                cout << "Command::isRunning() false" << endl;
+#endif
+                cout << "Kill main " << endl;
+                delete mainClass;
+                mainClass = NULL;
+                exit(signum);
+            }
+        } else {
+            cout << "Exit " << endl;
+            exit(signum);
         }
-        exit(signum);
     } else if (signum == SIGALRM) {
         bool scanning = true;
         int c;
@@ -69,19 +100,22 @@ void Main::signalHandler(int signum) {
 #endif
             // If Y/y
             if (c == 89 || c == 121) {
-                if (mainClass->shell != NULL) {
-                    if (mainClass->shell->getCommand() != NULL) {
+                if (mainClass != NULL) {
+                    if (mainClass->shell != NULL) {
+                        if (mainClass->shell->getCommand() != NULL) {
 #ifdef DEBUG
-                        cout << "Send kill" << endl;
+                            cout << "Send kill" << endl;
 #endif
-                        kill(mainClass->shell->getCommand()->getPid(), SIGKILL);
-                        //Disable cursive mode if still enabled
-                        endwin();
-                        cout << "\nSIGALRM INTERCEPTED." << endl;
-                        exit(1);
+                            kill(mainClass->shell->getCommand()->getPid(), SIGKILL);
+                            mainClass->shell->setCommand(NULL);
+                            //Disable cursive mode if still enabled
+                            endwin();
+                            cout << "\nSIGALRM INTERCEPTED." << endl;
+                            //     exit(1);
 #ifdef DEBUG
-                        cout << "kill send" << endl;
+                            cout << "kill send" << endl;
 #endif
+                        }
                     }
                 }
                 // in case no command has been typed yet
@@ -100,6 +134,9 @@ void Main::signalHandler(int signum) {
 #endif
     } else {
         endwin();
+#ifdef DEBUG
+        cout << "longjmp executed to recover" << endl;
+#endif
         longjmp(buf, signum);
     }
 }
@@ -113,9 +150,12 @@ int main() {
     delete test;
 #else
     // Registering all 22 signal of POSIX
+    /*
     for (int i = 0; i <= 22; i++) {
         signal(i, Main::signalHandler);
-    }
+    }*/
+    signal(SIGINT, Main::signalHandler);
+    signal(SIGALRM, Main::signalHandler);
     bool exit = false;
 #ifdef DEBUG_ALARM
     Command * cmd = new Command(); 

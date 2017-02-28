@@ -114,6 +114,10 @@ public:
      */
     friend ostream &operator<<(ostream &os, const Command &command);
 
+    bool isRunning();
+
+    void setRunning(bool running);
+
 private:
     string *path;
     string *name;
@@ -123,6 +127,8 @@ private:
     pid_t pid;
 
     static bool alarmEnabled;
+
+    bool running;
 
     const char *generateFileName();
 

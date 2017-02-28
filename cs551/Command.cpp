@@ -72,6 +72,14 @@ void Command::setAlarmEnabled(bool alarmEnabled) {
     Command::alarmEnabled = alarmEnabled;
 }
 
+bool Command::isRunning() {
+    return running;
+}
+
+void Command::setRunning(bool running){
+    Command::running = running;
+}
+
 void Command::setParams(string *value) {
     if (params != NULL) {
         delete params;
@@ -151,15 +159,10 @@ void Command::executeWithExecve() {
             close(pipefd[1]);
         }
         int i = execve(generateFileName(), generateParams(), generateEnv());
-        if (alarmEnabled) {
-#ifdef DEBUG
-            cout << "ALARM DISABLED" << endl;
-#endif
-            alarm(0);
-        }
         cout << "End of execve with code " << i << endl;
         cout << "Return not expected. Must be an execve error.n" << endl;
     } else {
+        setRunning(true);
         if (alarmEnabled) {
 #ifdef DEBUG
             cout << "ALARM STARTED" << endl;
@@ -173,11 +176,21 @@ void Command::executeWithExecve() {
 
             while (read(pipefd[0], buffer, sizeof(buffer)) != 0) {}
         }
+        int status;
+        waitpid(pid, &status, 0);
+        if (alarmEnabled) {
+#ifdef DEBUG
+            cout << "ALARM DISABLED" << endl;
+#endif
+            alarm(0);
+        }
+        setRunning(false);
     }
 }
 
 const char *Command::generateFileName() {
     //TODO: return the filename of the file that contains the executable image of the new process
+#ifdef DEBUG_ALARM
     char buffer[300];
     char *answer = getcwd(buffer, sizeof(buffer));
     string currentPathToString;
@@ -189,8 +202,8 @@ const char *Command::generateFileName() {
 #ifdef TEST
     return "/bin/ls";
 #endif
-
     return currentPathToString.c_str();
+#endif
 }
 
 char *const *Command::generateParams() {
