@@ -161,12 +161,14 @@ void Command::executeWithExecve() {
         char *const * generatedParams = generateParams();
         char *const * generatedEnv = generateEnv();
         cout <<"Executed fileName "<<fileName << endl;
+#ifndef DEBUG_ALARM
         if (alarmEnabled) {
             close(pipefd[0]);    // close reading end in the child
             dup2(pipefd[1], 1);  // send stdout to the pipe
             dup2(pipefd[1], 2);  // send stderr to the pipe
             close(pipefd[1]);
         }
+#endif
         int i = execve(fileName, generatedParams, generatedEnv);
 #ifdef DEBUG
         cout << "End of execve with code " << i << endl;
