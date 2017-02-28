@@ -9,15 +9,16 @@
 #define _CONTEXTSAVER_H
 
 class ContextSaver {
-public: 
-    
+public:
+
     jmp_buf getJumpBuffer();
-    
+
     /**
      * @param value
      */
     void setJumpBuffer(jmp_buf value);
-private: 
+
+private:
     jmp_buf jumpBuffer;
 };
 

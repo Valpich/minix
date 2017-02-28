@@ -101,8 +101,7 @@ void Shell::setCommand(Command *value) {
     command = value;
 }
 
-void returnCMD(string command, int code)
-{
+void returnCMD(string command, int code) {
     string temp = command;
     string token = " ";
     string name = "";
@@ -112,138 +111,122 @@ void returnCMD(string command, int code)
     size_t found;
     bool aa = false;
 
-    if(code == 0){
-      while((found = temp.find(""))!=std::string::npos && aa == false){
-        cnt++;
-        string cmp = temp.substr(0, temp.find(" "));
-        temp = temp.substr(temp.find(" ")+1);
-        if(cmp == temp){
-          aa = true;
+    if (code == 0) {
+        while ((found = temp.find("")) != std::string::npos && aa == false) {
+            cnt++;
+            string cmp = temp.substr(0, temp.find(" "));
+            temp = temp.substr(temp.find(" ") + 1);
+            if (cmp == temp) {
+                aa = true;
+            }
         }
-      }
 
-      switch(cnt)
-      {
-        case 1:
-          name = command.substr(0, command.find(token));
-          break;
-        case 2:
-          name = command.substr(0, command.find(token));
-          command = command.substr(command.find(token)+1);
-          param = command.substr(0, command.find(token));
-          break;
-        case 3:
-          name = command.substr(0, command.find(token));
-          command = command.substr(command.find(token)+1);
-          param = command.substr(0, command.find(token));
-          env = command.substr(command.find(token)+1);
-          break;
-        default:
-          break;
-      }
+        switch (cnt) {
+            case 1:
+                name = command.substr(0, command.find(token));
+                break;
+            case 2:
+                name = command.substr(0, command.find(token));
+                command = command.substr(command.find(token) + 1);
+                param = command.substr(0, command.find(token));
+                break;
+            case 3:
+                name = command.substr(0, command.find(token));
+                command = command.substr(command.find(token) + 1);
+                param = command.substr(0, command.find(token));
+                env = command.substr(command.find(token) + 1);
+                break;
+            default:
+                break;
+        }
 
 
-      Command *command = new Command();
-      command->setEnv(new string(env));
-      command->setName(new string(name));
-      command->setParams(new string(param));
-      command->executeWithExecve();
-  }
+        Command *command = new Command();
+        command->setEnv(new string(env));
+        command->setName(new string(name));
+        command->setParams(new string(param));
+        command->executeWithExecve();
+    }
 
 }
 
-void parseCommand(string chaine)
-{
-  string token;
-  string otherToken;
-  string tmp;
-  string state;
+void parseCommand(string chaine) {
+    string token;
+    string otherToken;
+    string tmp;
+    string state;
 
-  size_t found;
+    size_t found;
 
-  int cntR = 0;
-  int cntL = 0;
+    int cntR = 0;
+    int cntL = 0;
 
-  bool ok = true;
+    bool ok = true;
 
-  while(ok)
-  {
-    if((found = chaine.find_first_of("()"))!=string::npos)
-    {
+    while (ok) {
+        if ((found = chaine.find_first_of("()")) != string::npos) {
 
-      if((tmp = chaine[found]) == "(")
-      {
-        token = "(";
-        otherToken = ")";
-        cntR++;
-      }else{
-        otherToken = "(";
-        token = ")";
-        cntL++;
-      }
-
-      if(cntR < cntL)
-      {
-        state = "ERROR";
-        ok = false;
-      }
-
-      string cmd1 = chaine.substr(0, chaine.find(token));
-      chaine = chaine.substr(chaine.find(token)+1);
-      if(chaine == chaine.substr(chaine.find(otherToken)+1) && chaine == "")
-      {
-        if(cntR == cntL)
-        {
-          state = "OK";
-          ok = false;
-          cout << "ERROR WITH YOUR PARENTHESIS" << endl;
-        }
-
-      }
-    }
-    else
-    {
-      ok = false;
-      if(cntR != cntL)
-      {
-        state = "ERROR";
-      }
-    }
-  }
-
-  if(state != "ERROR")
-  {
-    if(cntR == 0 && cntL == 0)
-    {
-      if((found = chaine.find_first_of("&;"))==string::npos){
-        returnCMD(chaine, 0);
-      }
-      while((found = chaine.find_first_of("&;"))!=string::npos)
-      {
-        if((tmp = chaine[found]) == ";")
-        {
-          token = ";";
-          otherToken = "&";
-          }else{
-            otherToken = ";";
-            token = "&";
-          }
-          string cmd1 = chaine.substr(0, chaine.find(token));
-          chaine = chaine.substr(chaine.find(token)+1);
-
-          returnCMD(cmd1, 0);
-
-          if(chaine == chaine.substr(chaine.find(token)+1)){
-            if(chaine == chaine.substr(chaine.find(otherToken)+1))
-            {
-              returnCMD(chaine, 0);
+            if ((tmp = chaine[found]) == "(") {
+                token = "(";
+                otherToken = ")";
+                cntR++;
+            } else {
+                otherToken = "(";
+                token = ")";
+                cntL++;
             }
-          }
-      }
+
+            if (cntR < cntL) {
+                state = "ERROR";
+                ok = false;
+            }
+
+            string cmd1 = chaine.substr(0, chaine.find(token));
+            chaine = chaine.substr(chaine.find(token) + 1);
+            if (chaine == chaine.substr(chaine.find(otherToken) + 1) && chaine == "") {
+                if (cntR == cntL) {
+                    state = "OK";
+                    ok = false;
+                    cout << "ERROR WITH YOUR PARENTHESIS" << endl;
+                }
+
+            }
+        } else {
+            ok = false;
+            if (cntR != cntL) {
+                state = "ERROR";
+            }
+        }
     }
-  }else{
-    cout << "ERROR WITH THE COMMAND" << '\n';
-  }
+
+    if (state != "ERROR") {
+        if (cntR == 0 && cntL == 0) {
+            if ((found = chaine.find_first_of("&;")) == string::npos) {
+                returnCMD(chaine, 0);
+            }
+            while ((found = chaine.find_first_of("&;")) != string::npos) {
+                if ((tmp = chaine[found]) == ";") {
+                    token = ";";
+                    otherToken = "&";
+                } else {
+                    otherToken = ";";
+                    token = "&";
+                }
+                string cmd1 = chaine.substr(0, chaine.find(token));
+                chaine = chaine.substr(chaine.find(token) + 1);
+
+                returnCMD(cmd1, 0);
+
+                if (chaine == chaine.substr(chaine.find(token) + 1)) {
+                    if (chaine == chaine.substr(chaine.find(otherToken) + 1)) {
+                        returnCMD(chaine, 0);
+                    }
+                }
+            }
+        }
+    } else {
+        cout << "ERROR WITH THE COMMAND" << '\n';
+    }
 }
 
 bool Shell::run() {
@@ -327,8 +310,8 @@ bool Shell::run() {
                             if (i > 0) {
                                 commandLine.assign(substrings[i - 1]);
                                 i = i - 1;
-                                cout <<'\r' << endl;
-                                cout << "new suggestion found : "<<'\r'<<endl;
+                                cout << '\r' << endl;
+                                cout << "new suggestion found : " << '\r' << endl;
                                 cout << commandLine << flush;
                             }
 #ifdef DEBUG
@@ -341,8 +324,8 @@ bool Shell::run() {
                             if (i < substrings.size()) {
                                 commandLine.assign(substrings[i]);
                                 i = i + 1;
-                                cout <<'\r' << endl;
-                                cout << "new suggestion found : "<<'\r' <<endl;
+                                cout << '\r' << endl;
+                                cout << "new suggestion found : " << '\r' << endl;
                                 cout << commandLine << flush;
                             }
 #ifdef DEBUG
@@ -382,7 +365,7 @@ bool Shell::run() {
                         cout << "Delete pressed" << '\r' << endl;
 #endif
                         cout << '\r' << endl;
-                        if (!commandLine.empty()){
+                        if (!commandLine.empty()) {
                             commandLine = commandLine.substr(0, commandLine.size() - 1);
                         }
 
@@ -394,12 +377,12 @@ bool Shell::run() {
                         cout << "Delete pressed" << '\r' << endl;
 #endif
                         cout << '\r' << endl;
-                        if (!commandLine.empty()){
+                        if (!commandLine.empty()) {
                             commandLine = commandLine.substr(0, commandLine.size() - 1);
                         }
 
                         cout << commandLine << flush;
-                       break;
+                        break;
                     default:
                         suggestingMode = false;
 #ifdef DEBUG

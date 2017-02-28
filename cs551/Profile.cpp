@@ -122,22 +122,22 @@ void Profile::setAlarmStatus() {
 
 ostream &operator<<(ostream &os, const Profile &profile) {
     os << "path: ";
-    if(profile.path == NULL){
-        os <<"NULL";
-    }else{
+    if (profile.path == NULL) {
+        os << "NULL";
+    } else {
         os << *profile.path;
     }
     os << " content: ";
-    if(profile.content == NULL){
-        os <<"NULL";
-    }else{
-        for(string stringTmp : *profile.content)
-        os << stringTmp;
+    if (profile.content == NULL) {
+        os << "NULL";
+    } else {
+        for (string stringTmp : *profile.content)
+            os << stringTmp;
     }
     os << " fileManager: ";
-    if(profile.fileManager == NULL){
-        os <<"NULL";
-    }else{
+    if (profile.fileManager == NULL) {
+        os << "NULL";
+    } else {
         os << *profile.fileManager;
     }
     return os;
@@ -173,7 +173,7 @@ Profile::Profile(void) {
 
 Profile::~Profile(void) {
 #ifdef CLEAN
-    #ifdef DEBUG
+#ifdef DEBUG
     cout << "Deleting fileManager in profile" << endl;
 #endif
     if (fileManager != NULL) {

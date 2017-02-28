@@ -199,8 +199,8 @@ void Test::executeTest9() {
     vector<Command *> *commands = new vector<Command *>();
     history->getCommandHistory(commands);
     cout << "This is the list of history command found" << endl;
-    for(Command * command : *commands){
-        cout << *command <<endl;
+    for (Command *command : *commands) {
+        cout << *command << endl;
     }
     cout << "End of the found command" << endl;
     cout << "End test 9 !! " << endl;

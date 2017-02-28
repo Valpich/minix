@@ -123,15 +123,15 @@ vector<string> FileManager::readFileToString(string filePath) {
 
 ostream &operator<<(ostream &os, const FileManager &manager) {
     os << "outStream:";
-    if(manager.outStream == NULL){
-        os <<"NULL";
-    }else{
+    if (manager.outStream == NULL) {
+        os << "NULL";
+    } else {
         os << "NOT NULL";
     }
-    os <<" inStream: ";
-    if(manager.inStream  == NULL){
-        os <<"NULL";
-    }else{
+    os << " inStream: ";
+    if (manager.inStream == NULL) {
+        os << "NULL";
+    } else {
         os << "NOT NULL";
     }
     return os;

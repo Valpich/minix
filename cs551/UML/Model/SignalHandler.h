@@ -9,8 +9,8 @@
 #define _SIGNALHANDLER_H
 
 class SignalHandler {
-protected: 
-    
+protected:
+
     void sigKillHandler();
 };
 

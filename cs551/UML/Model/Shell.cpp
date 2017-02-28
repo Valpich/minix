@@ -50,14 +50,14 @@ History Shell::getHistory() {
 /**
  * @return vector<Command>
  */
-vector<Command> Shell::getCommandList() {
+vector <Command> Shell::getCommandList() {
     return null;
 }
 
 /**
  * @param value
  */
-void Shell::setCommandList(vector<Command> value) {
+void Shell::setCommandList(vector <Command> value) {
 
 }
 

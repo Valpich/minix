@@ -72,8 +72,8 @@ void History::getCommandHistory(vector<Command *> *commands) {
     if (commands != NULL) {
         if (currentPathToString.size() != 0) {
             string pathOfHistory = currentPathToString;
-            pathOfHistory+="/";
-            pathOfHistory+=*path;
+            pathOfHistory += "/";
+            pathOfHistory += *path;
             vector<string> paths = fileManager->readFileToString(pathOfHistory);
 #ifdef DEBUG
             cout << "History content parsed in find all commands";
@@ -98,15 +98,15 @@ void History::getCommandHistory(vector<Command *> *commands) {
 
 ostream &operator<<(ostream &os, const History &history) {
     os << "path: ";
-    if(history.path == NULL){
-        os <<"NULL";
-    }else{
+    if (history.path == NULL) {
+        os << "NULL";
+    } else {
         os << *history.path;
     }
     os << " fileManager: ";
-    if(history.fileManager == NULL){
-        os <<"NULL";
-    }else{
+    if (history.fileManager == NULL) {
+        os << "NULL";
+    } else {
         os << *history.fileManager;
     }
     return os;
@@ -119,7 +119,7 @@ History::History(void) {
 
 History::~History(void) {
 #ifdef CLEAN
-    #ifdef DEBUG
+#ifdef DEBUG
     cout << "Deleting fileMananger in History" << endl;
 #endif
     if (fileManager != NULL) {

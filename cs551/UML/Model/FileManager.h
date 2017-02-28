@@ -9,15 +9,16 @@
 #define _FILEMANAGER_H
 
 class FileManager {
-public: 
-    
+public:
+
     std::string getFilePath();
-    
+
     /**
      * @param value
      */
     void setFilePath(std::string value);
-private: 
+
+private:
     std::string filePath;
 };
 

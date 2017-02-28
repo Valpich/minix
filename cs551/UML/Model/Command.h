@@ -9,15 +9,16 @@
 #define _COMMAND_H
 
 class Command {
-public: 
-    
+public:
+
     std::string getName();
-    
+
     /**
      * @param value
      */
     void setName(std::string value);
-private: 
+
+private:
     std::string name;
     std::string path;
 };

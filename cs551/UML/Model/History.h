@@ -12,22 +12,23 @@
 
 
 class History {
-public: 
-    
+public:
+
     std::string getPath();
-    
+
     /**
      * @param value
      */
     void setPath(std::string value);
-    
+
     /**
      * @param value
      */
     void setFileManager(FileManager value);
-    
+
     FileManager getFileManager();
-private: 
+
+private:
     std::string path;
     FileManager fileManager;
 };

@@ -12,29 +12,30 @@
 
 
 class Profile {
-public: 
-    
+public:
+
     std::string getPath();
-    
+
     /**
      * @param value
      */
     void setPath(std::string value);
-    
+
     std::string getHome();
-    
+
     /**
      * @param value
      */
     void setHome(std::string value);
-    
+
     /**
      * @param value
      */
     void setFileManager(FileManager value);
-    
+
     FileManager getFileManager();
-private: 
+
+private:
     std::string path;
     std::string home;
     FileManager fileManager;

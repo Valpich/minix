@@ -33,13 +33,22 @@
       <file leaf-file-name="Command.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Command.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="223" column="6" selection-start-line="223" selection-start-column="6" selection-end-line="223" selection-end-column="6" />
+            <state relative-caret-position="-105">
+              <caret line="248" column="6" selection-start-line="248" selection-start-column="6" selection-end-line="248" selection-end-column="6" />
               <folding>
-                <element signature="e#123#143#0" expanded="true" />
-                <element signature="e#5545#5906#0" expanded="true" />
-                <element signature="e#7427#8199#0" expanded="true" />
+                <element signature="e#5468#5829#0" expanded="true" />
+                <element signature="e#7269#8041#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Command.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Command.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1451">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -49,7 +58,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="4230">
               <caret line="282" column="6" selection-start-line="282" selection-start-column="6" selection-end-line="282" selection-end-column="6" />
-              <folding />
+              <folding>
+                <marker date="1488257388000" expanded="true" signature="0:120" ph="/**...*/" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,7 +83,18 @@
             <state relative-caret-position="1530">
               <caret line="103" column="12" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="12" />
               <folding>
-                <element signature="e#5160#5790#0" expanded="true" />
+                <element signature="e#5176#5806#0" expanded="true" />
+                <marker date="1488257388000" expanded="true" signature="493:513" ph="{...}" />
+                <marker date="1488257388000" expanded="true" signature="552:645" ph="{...}" />
+                <marker date="1488257388000" expanded="true" signature="685:708" ph="{...}" />
+                <marker date="1488257388000" expanded="true" signature="758:863" ph="{...}" />
+                <marker date="1488257388000" expanded="true" signature="914:1035" ph="{...}" />
+                <marker date="1488257388000" expanded="true" signature="1076:1103" ph="{...}" />
+                <marker date="1488257388000" expanded="true" signature="1150:1327" ph="{...}" />
+                <marker date="1488257388000" expanded="true" signature="1360:3500" ph="{...}" />
+                <marker date="1488257388000" expanded="true" signature="3559:4022" ph="{...}" />
+                <marker date="1488257388000" expanded="true" signature="4047:5135" ph="{...}" />
+                <marker date="1488257388000" expanded="true" signature="5161:5815" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -84,10 +106,10 @@
             <state relative-caret-position="97">
               <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
-                <element signature="e#382#587#0" expanded="true" />
-                <element signature="e#3461#3488#0" expanded="true" />
-                <element signature="e#3608#3650#0" expanded="true" />
-                <element signature="e#3827#3931#0" expanded="true" />
+                <element signature="e#378#583#0" expanded="true" />
+                <element signature="e#3460#3487#0" expanded="true" />
+                <element signature="e#3607#3649#0" expanded="true" />
+                <element signature="e#3826#3930#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -99,7 +121,7 @@
             <state relative-caret-position="1185">
               <caret line="139" column="6" selection-start-line="139" selection-start-column="6" selection-end-line="139" selection-end-column="6" />
               <folding>
-                <element signature="e#3120#3549#0" expanded="true" />
+                <element signature="e#3130#3559#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,16 +132,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="750">
               <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Profile.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Profile.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="76" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -166,10 +178,10 @@
         <option value="$PROJECT_DIR$/FileManager.cpp" />
         <option value="$PROJECT_DIR$/CommandFinder.cpp" />
         <option value="$PROJECT_DIR$/Shell.cpp" />
-        <option value="$PROJECT_DIR$/Command.h" />
         <option value="$PROJECT_DIR$/Shell.h" />
         <option value="$PROJECT_DIR$/Profile.cpp" />
         <option value="$PROJECT_DIR$/Main.cpp" />
+        <option value="$PROJECT_DIR$/Command.h" />
         <option value="$PROJECT_DIR$/Command.cpp" />
       </list>
     </option>
@@ -455,12 +467,12 @@
       <workItem from="1488165204219" duration="4382000" />
       <workItem from="1488214363052" duration="703000" />
       <workItem from="1488238117573" duration="13215000" />
-      <workItem from="1488253002018" duration="1046000" />
+      <workItem from="1488253002018" duration="1454000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120082000" />
+    <option name="totallyTimeSpent" value="120490000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -515,7 +527,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="17" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -590,10 +602,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#382#587#0" expanded="true" />
-            <element signature="e#3461#3488#0" expanded="true" />
-            <element signature="e#3608#3650#0" expanded="true" />
-            <element signature="e#3827#3931#0" expanded="true" />
+            <element signature="e#378#583#0" expanded="true" />
+            <element signature="e#3460#3487#0" expanded="true" />
+            <element signature="e#3607#3649#0" expanded="true" />
+            <element signature="e#3826#3930#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -770,16 +782,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Command.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1860">
-          <caret line="124" column="55" selection-start-line="124" selection-start-column="55" selection-end-line="124" selection-end-column="55" />
-          <folding>
-            <element signature="e#162#179#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CommandFinder.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="990">
@@ -856,7 +858,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4230">
           <caret line="282" column="6" selection-start-line="282" selection-start-column="6" selection-end-line="282" selection-end-column="6" />
-          <folding />
+          <folding>
+            <marker date="1488257388000" expanded="true" signature="0:120" ph="/**...*/" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -875,7 +879,18 @@
         <state relative-caret-position="1530">
           <caret line="103" column="12" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="12" />
           <folding>
-            <element signature="e#5160#5790#0" expanded="true" />
+            <element signature="e#5176#5806#0" expanded="true" />
+            <marker date="1488257388000" expanded="true" signature="493:513" ph="{...}" />
+            <marker date="1488257388000" expanded="true" signature="552:645" ph="{...}" />
+            <marker date="1488257388000" expanded="true" signature="685:708" ph="{...}" />
+            <marker date="1488257388000" expanded="true" signature="758:863" ph="{...}" />
+            <marker date="1488257388000" expanded="true" signature="914:1035" ph="{...}" />
+            <marker date="1488257388000" expanded="true" signature="1076:1103" ph="{...}" />
+            <marker date="1488257388000" expanded="true" signature="1150:1327" ph="{...}" />
+            <marker date="1488257388000" expanded="true" signature="1360:3500" ph="{...}" />
+            <marker date="1488257388000" expanded="true" signature="3559:4022" ph="{...}" />
+            <marker date="1488257388000" expanded="true" signature="4047:5135" ph="{...}" />
+            <marker date="1488257388000" expanded="true" signature="5161:5815" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -885,10 +900,10 @@
         <state relative-caret-position="97">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding>
-            <element signature="e#382#587#0" expanded="true" />
-            <element signature="e#3461#3488#0" expanded="true" />
-            <element signature="e#3608#3650#0" expanded="true" />
-            <element signature="e#3827#3931#0" expanded="true" />
+            <element signature="e#378#583#0" expanded="true" />
+            <element signature="e#3460#3487#0" expanded="true" />
+            <element signature="e#3607#3649#0" expanded="true" />
+            <element signature="e#3826#3930#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -898,19 +913,26 @@
         <state relative-caret-position="1185">
           <caret line="139" column="6" selection-start-line="139" selection-start-column="6" selection-end-line="139" selection-end-column="6" />
           <folding>
-            <element signature="e#3120#3549#0" expanded="true" />
+            <element signature="e#3130#3559#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Command.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1451">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Command.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="223" column="6" selection-start-line="223" selection-start-column="6" selection-end-line="223" selection-end-column="6" />
+        <state relative-caret-position="-105">
+          <caret line="248" column="6" selection-start-line="248" selection-start-column="6" selection-end-line="248" selection-end-column="6" />
           <folding>
-            <element signature="e#123#143#0" expanded="true" />
-            <element signature="e#5545#5906#0" expanded="true" />
-            <element signature="e#7427#8199#0" expanded="true" />
+            <element signature="e#5468#5829#0" expanded="true" />
+            <element signature="e#7269#8041#0" expanded="true" />
           </folding>
         </state>
       </provider>

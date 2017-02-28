@@ -29,7 +29,7 @@ Main::Main() {
 
 Main::~Main() {
 #ifdef CLEAN
-    #ifdef DEBUG
+#ifdef DEBUG
     cout << "Deleting shell in Main" << endl;
 #endif
     if (shell != NULL) {
@@ -65,7 +65,7 @@ void Main::signalHandler(int signum) {
 #ifdef DEBUG
                     cout << "mainClass->getShell()->getCommand() != NULL" << endl;
 #endif
-                    if(mainClass->getShell()->getCommand()->isRunning()){
+                    if (mainClass->getShell()->getCommand()->isRunning()) {
 #ifdef DEBUG
                         cout << "mainClass->getShell()->getCommand()->isRunning() true" << endl;
 #endif
@@ -73,7 +73,7 @@ void Main::signalHandler(int signum) {
                         mainClass->shell->setCommand(NULL);
                         commandKilled = true;
                         cout << "Kill command " << endl;
-                   }
+                    }
                 }
             }
             if (!commandKilled) {

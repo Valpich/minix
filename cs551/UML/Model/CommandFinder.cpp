@@ -15,20 +15,20 @@
 /**
  * @return vector<std::string>
  */
-vector<std::string> CommandFinder::getFolderPaths() {
+vector <std::string> CommandFinder::getFolderPaths() {
     return null;
 }
 
 /**
  * @param value
  */
-void CommandFinder::setFolderPaths(vector<std::string> value) {
+void CommandFinder::setFolderPaths(vector <std::string> value) {
 
 }
 
 /**
  * @return vector<Command>
  */
-vector<Command> CommandFinder::findAllCommands() {
+vector <Command> CommandFinder::findAllCommands() {
     return null;
 }

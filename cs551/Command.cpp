@@ -6,7 +6,6 @@
 
 
 #include "Command.h"
-#include "CommandFinder.h"
 
 /**
  * Command implementation
@@ -77,7 +76,7 @@ bool Command::isRunning() {
     return running;
 }
 
-void Command::setRunning(bool running){
+void Command::setRunning(bool running) {
     Command::running = running;
 }
 
@@ -159,11 +158,11 @@ void Command::executeWithExecve() {
 #ifdef DEBUG
         cout << "pid is " << pid << endl;
 #endif
-        const char * fileName = generateFileName();
-        char *const * generatedParams = generateParams();
-        char *const * generatedEnv = generateEnv();
+        const char *fileName = generateFileName();
+        char *const *generatedParams = generateParams();
+        char *const *generatedEnv = generateEnv();
 #ifdef DEBUG
-        cout <<"Executed fileName "<<fileName << endl;
+        cout << "Executed fileName " << fileName << endl;
 #endif
         // We set off the output if alarm enabled
         if (alarmEnabled) {
@@ -172,13 +171,12 @@ void Command::executeWithExecve() {
             dup2(pipefd[1], 2);  // send stderr to the pipe
             close(pipefd[1]);
         }
-          system(generateFileName());
+        string tmp = generateFileName();
+        tmp+= " ";
+        tmp+= *getParams();
+        system(tmp);
         // We execute the command
         //int i = execve(fileName, generatedParams, generatedEnv);
-#ifdef DEBUG
-        cout << "End of execve with code " << i << endl;
-        cout << "Return not expected. Must be an execve error.n" << endl;
-#endif
     } else {
         // We set as running the command
         setRunning(true);
@@ -198,7 +196,7 @@ void Command::executeWithExecve() {
         // We wait the child to return
         pid = wait(&status);
 #ifdef DEBUG
-        cout<<"PID WAIT EXIT" <<endl;
+        cout << "PID WAIT EXIT" << endl;
 #endif
         // We set off the alarm
         if (alarmEnabled) {
@@ -216,10 +214,12 @@ const char *Command::generateFileName() {
 #ifndef DEBUG_ALARM
     CommandFinder cf;
     string *tmp = new string(cf.getEnvPath());
-    *tmp+=" ";
-    *tmp+= *getName();
-    cout <<'\r'<<endl;
+    *tmp += " ";
+    *tmp += *getName();
+#ifdef DEBUG
+    cout << '\r' << endl;
     cout << *tmp << endl;
+#endif
     return tmp->c_str();
 #endif
 #ifdef DEBUG_ALARM
@@ -240,25 +240,23 @@ const char *Command::generateFileName() {
 
 char *const *Command::generateParams() {
     // TODO:  return a param list like that: char *const parmList[] = {"/bin/ls", "-l", "/u/userid/dirname", NULL};
-    char *toEncodePoint = new char[getName()->size()+1];
-    toEncodePoint[getName()->size()]= '\0';
+    char *toEncodePoint = new char[getName()->size() + 1];
+    toEncodePoint[getName()->size()] = '\0';
     copy(getName()->begin(), getName()->end(), toEncodePoint);
     char *const paramListND[2] = {toEncodePoint, NULL};
+#ifdef DEBUG
     cout << toEncodePoint << endl;
-    return NULL;
+#endif
     return paramListND;
-    delete[] toEncodePoint;
-    char *const paramList[] = {NULL};
-    return paramList;
 }
 
 char *const *Command::generateEnv() {
     // TODO:  return a env list like that: char *const envParms[2] = {"EXAMPLE=test", NULL};
     CommandFinder cf;
-    char *toEncodePoint2 = new char[cf.getEnvPath().size()+1];
-    toEncodePoint2[cf.getEnvPath().size()]= '\0';
+    char *toEncodePoint2 = new char[cf.getEnvPath().size() + 1];
+    toEncodePoint2[cf.getEnvPath().size()] = '\0';
     copy(cf.getEnvPath().begin(), cf.getEnvPath().end(), toEncodePoint2);
-  //  char *const envParamsND[2] = {toEncodePoint2, NULL};
+    //  char *const envParamsND[2] = {toEncodePoint2, NULL};
     char *const envParams[] = {NULL};
     return envParams;
 }
@@ -280,7 +278,7 @@ Command::Command(void) {
 
 Command::~Command(void) {
 #ifdef CLEAN
-    #ifdef DEBUG
+#ifdef DEBUG
     cout << "Deleting path in Command" << endl;
 #endif
     if (path != NULL) {

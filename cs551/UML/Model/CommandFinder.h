@@ -9,18 +9,19 @@
 #define _COMMANDFINDER_H
 
 class CommandFinder {
-public: 
-    
-    vector<std::string> getFolderPaths();
-    
+public:
+
+    vector <std::string> getFolderPaths();
+
     /**
      * @param value
      */
-    void setFolderPaths(vector<std::string> value);
-    
-    vector<Command> findAllCommands();
-private: 
-    vector<std::string> folderPaths;
+    void setFolderPaths(vector <std::string> value);
+
+    vector <Command> findAllCommands();
+
+private:
+    vector <std::string> folderPaths;
 };
 
 #endif //_COMMANDFINDER_H

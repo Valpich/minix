@@ -14,13 +14,13 @@ string CommandFinder::pathD;
  * CommandFinder implementation
  */
 
- string CommandFinder::getEnvPath() {
-   return pathD;
- }
+string CommandFinder::getEnvPath() {
+    return pathD;
+}
 
- void CommandFinder::setEnvPath(string path) {
-   pathD = path;
- }
+void CommandFinder::setEnvPath(string path) {
+    pathD = path;
+}
 
 string *CommandFinder::getFolderPaths() {
     return folderPaths;
@@ -55,19 +55,19 @@ void CommandFinder::findAllCommands(vector<Command *> *commands) {
         cout << "Profile content parsed in find all commands";
 #endif
         if (!paths->empty()) {
-          string pathTBD = "PATH=";
-          int cnt;
+            string pathTBD = "PATH=";
+            int cnt;
             for (string line: *paths) {
 #ifdef DEBUG
                 cout << "One path is " << line << endl;
 #endif
-              if(cnt == paths->size()){
-                pathTBD+=line;
-              }else if(cnt != paths->size()){
-                pathTBD+=line;
-                pathTBD+=":";
-                cnt++;
-              }
+                if (cnt == paths->size()) {
+                    pathTBD += line;
+                } else if (cnt != paths->size()) {
+                    pathTBD += line;
+                    pathTBD += ":";
+                    cnt++;
+                }
                 vector<string> *tempFolderFiles = new vector<string>();
                 if (tempFolderFiles != NULL) {
                     getFilesInDirectory(tempFolderFiles, line);
@@ -110,8 +110,8 @@ void CommandFinder::findAllCommands(vector<Command *> *commands) {
                 exit(2);
             }
         }
-    }else{
-        cout <<"You may have altered the source code, commands is not supposed to be NULL vector !"<<endl;
+    } else {
+        cout << "You may have altered the source code, commands is not supposed to be NULL vector !" << endl;
     }
 }
 
@@ -150,8 +150,8 @@ vector<string> *CommandFinder::parseProfilePathContent() {
 #ifdef DEBUG
         cout << "End of parsing profile" << endl;
 #endif
-    }else{
-        cout <<"You may have altered the source code, profile is not supposed to be NULL !"<<endl;
+    } else {
+        cout << "You may have altered the source code, profile is not supposed to be NULL !" << endl;
     }
     return paths;
 }
@@ -243,15 +243,15 @@ void CommandFinder::getFilesInDirectory(vector<string> *listOfCommand, const str
 
 ostream &operator<<(ostream &os, const CommandFinder &finder) {
     os << "folderPaths: ";
-    if(finder.folderPaths == NULL){
-        os <<"NULL";
-    }else{
+    if (finder.folderPaths == NULL) {
+        os << "NULL";
+    } else {
         os << *finder.folderPaths;
     }
     os << "profile: ";
-    if(finder.profile == NULL){
-        os <<"NULL";
-    }else{
+    if (finder.profile == NULL) {
+        os << "NULL";
+    } else {
         os << *finder.profile;
     }
     return os;
