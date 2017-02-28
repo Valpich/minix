@@ -172,7 +172,7 @@ void Command::executeWithExecve() {
             close(pipefd[1]);
         }
         // We execute the command
-        int i = execlp(fileName, *params, NULL);
+        int i = execlp(fileName, (*params).c_str(), NULL);
         cout << "Failed to execute command with code" <<endl;
     } else {
         // We set as running the command
