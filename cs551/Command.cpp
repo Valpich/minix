@@ -223,20 +223,14 @@ const char *Command::generateFileName() {
 
 char *const *Command::generateParams() {
     // TODO:  return a param list like that: char *const parmList[] = {"/bin/ls", "-l", "/u/userid/dirname", NULL};
-#ifdef TEST
-    char *const paramList[] = { "-al",NULL};
+    char *const paramList[] = {NULL};
     return paramList;
-#endif
-    return NULL;
 }
 
 char *const *Command::generateEnv() {
     // TODO:  return a env list like that: char *const envParms[2] = {"EXAMPLE=test", NULL};
-#ifdef TEST
-    char *const envParams[2] = {"EXAMPLE=test", NULL};
+    char *const envParams[] = { NULL};
     return envParams;
-#endif
-    return NULL;
 }
 
 ostream &operator<<(ostream &os, const Command &command) {
