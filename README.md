@@ -2,7 +2,7 @@
 
 CS 551 Project 1: Develop your own shell
 
-Requierements:
+Requirements:
 
 Your shell shall be invoked from the Ash shell provided with Minix.
 
