@@ -1,5 +1,4 @@
 # minix
-MINIX 3 (mirror)
 
 CS 551 Project 1: Develop your own shell
 
