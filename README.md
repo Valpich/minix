@@ -1,4 +1,4 @@
-# minix
+# minix_project_1
 
 CS 551 Project 1: Develop your own shell
 
@@ -46,3 +46,7 @@ A command line is a command or a set of commands connected by the operators.
 A pair of parentheses encloses a command line which can be treated as a commands. 
 
 Therefore cmd&(cmd1;cmd2) is a valid command line specifying that cmd will be executed in parallel with (cmd1;cmd2).
+
+Objectifs:
+
+Créer sous Minix un shell semblable à celui déjà présent.
